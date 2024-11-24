@@ -26,7 +26,7 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 	//获取挂单信  当前持仓信息
 	GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
 
-	//找出当前合约的持仓
+	//找出当前合约的持仓,test
 	std::map<std::string, cwPositionPtr>::iterator PosIt;
 	PosIt = CurrentPosMap.find(pPriceData->InstrumentID);
 	if (PosIt != CurrentPosMap.end())
