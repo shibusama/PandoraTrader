@@ -190,7 +190,12 @@ void cwStrategyDemo::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwStrategyDemo::OnReady()
 {
+	// 加载交易日信息
 	std::cout << "UPDATE BAR DATA >>>>>>" << std::endl;
+
+	// 获取60天近期交易日序列
+
+	std::string sqlTradingDay = "select * from tradeday where tradingday < '" + cursor_str + "' order by tradingday DESC Limit 60;";
 	SubScribePrice("ag2312");
 }
 
