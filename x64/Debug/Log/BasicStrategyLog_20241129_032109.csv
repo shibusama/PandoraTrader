@@ -1,0 +1,26 @@
+20241129_03:22:00,MSG,EasyInputOrder Begin! 
+20241129_03:22:00,MSG,FG501, vol:-1, P:1243.00, OpenClose: CloseTodayThenYd(0)  OrderType:Limit
+20241129_03:22:00,MSG,FG501, Pos: B,Total:1,Today:1
+20241129_03:22:00,MSG,FG501, iCloseYdOrder:0, iCloseTdOrder:0
+20241129_03:22:00,IO,FG501, Ref:6228, P:1243.00, V:1 S OpenClose:close 
+20241129_03:22:00,MSG,EasyInputOrder End!  
+
+20241129_03:22:00,MSG,EasyInputOrder Begin! 
+20241129_03:22:00,MSG,SA501, vol:-1, P:1505.00, OpenClose: CloseTodayThenYd(0)  OrderType:Limit
+20241129_03:22:00,MSG,SA501, Pos: B,Total:1,Today:1
+20241129_03:22:00,MSG,SA501, iCloseYdOrder:0, iCloseTdOrder:0
+20241129_03:22:00,IO,SA501, Ref:8265, P:1505.00, V:1 S OpenClose:close 
+20241129_03:22:00,MSG,EasyInputOrder End!  
+
+20241129_03:22:01,MSG,EasyInputOrder Begin! 
+20241129_03:22:01,MSG,FG501, vol:1, P:1243.00, OpenClose: CloseTodayThenYd(0)  OrderType:Limit
+20241129_03:22:01,MSG,FG501, Pos: S,Total:0,Today:0
+20241129_03:22:01,IO,FG501, Ref:10074, P:1243.00, V:1 B OpenClose:open 
+20241129_03:22:01,MSG,EasyInputOrder End!  
+
+20241129_03:22:01,MSG,EasyInputOrder Begin! 
+20241129_03:22:01,MSG,SA501, vol:1, P:1506.00, OpenClose: CloseTodayThenYd(0)  OrderType:Limit
+20241129_03:22:01,MSG,SA501, Pos: S,Total:0,Today:0
+20241129_03:22:01,IO,SA501, Ref:12055, P:1506.00, V:1 B OpenClose:open 
+20241129_03:22:01,MSG,EasyInputOrder End!  
+

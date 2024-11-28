@@ -190,6 +190,7 @@ void cwStrategyDemo::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwStrategyDemo::OnReady()
 {
+	std::cout << "UPDATE BAR DATA >>>>>>" << std::endl;
 	SubScribePrice("ag2312");
 }
 
