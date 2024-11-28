@@ -1,0 +1,13 @@
+﻿  cwBasicCTAStrategy.cpp
+  cwChasingRisingStrategy.cpp
+  cwCTAPlatform.cpp
+  cwDualTrust.cpp
+  cwEmptyStrategy.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(26,23): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  cwMarketDataReceiver.cpp
+  cwPandoraAgentManager.cpp
+  cwPandoraPairTrading.cpp
+  cwPandoraPositionAgent.cpp
+  cwStrategyDemo.cpp
+  正在生成代码...
+  PandoraStrategy.vcxproj -> D:\Users\13191\source\repos\shibusama\PandoraTrader\x64\Debug\PandoraStrategy.lib

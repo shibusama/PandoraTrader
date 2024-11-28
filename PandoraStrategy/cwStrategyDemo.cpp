@@ -12,6 +12,7 @@ cwStrategyDemo::~cwStrategyDemo()
 
 void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 {
+	std::cout << "test" << std::endl;
 	if (pPriceData.get() == NULL)
 	{
 		return;
