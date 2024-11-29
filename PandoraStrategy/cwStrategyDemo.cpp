@@ -1,4 +1,5 @@
 #include "cwStrategyDemo.h"
+#include "sqlite3.h"
 
 
 cwStrategyDemo::cwStrategyDemo()
@@ -39,7 +40,7 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 			bool bHasWaitOrder = false;
 			//检查所有挂单
 			for (auto WaitOrderIt = WaitOrderList.begin();
-			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
+				WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 			{
 				//确定这个挂单是这个合约的
 				if ((std::string)pPriceData->InstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
@@ -80,7 +81,7 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 
 			bool bHasWaitOrder = false;
 			for (auto WaitOrderIt = WaitOrderList.begin();
-			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
+				WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 			{
 				if ((std::string)pPriceData->InstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
 				{
@@ -118,7 +119,7 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 			//看看有没有挂单
 			bool bHasWaitOrder = false;
 			for (auto WaitOrderIt = WaitOrderList.begin();
-			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
+				WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 			{
 				if ((std::string)pPriceData->InstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
 				{
@@ -151,7 +152,7 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 		//看看有没有挂单
 		bool bHasWaitOrder = false;
 		for (auto WaitOrderIt = WaitOrderList.begin();
-		WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
+			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
 			if ((std::string)pPriceData->InstrumentID == (std::string)WaitOrderIt->second->InstrumentID
 				&& (WaitOrderIt->second->Direction == CW_FTDC_D_Buy))
@@ -173,7 +174,7 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 		}
 	}
 
-	
+
 }
 
 void cwStrategyDemo::OnRtnTrade(cwTradePtr pTrade)

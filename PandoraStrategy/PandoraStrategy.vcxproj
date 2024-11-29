@@ -133,6 +133,7 @@
     <ClCompile Include="cwPandoraPairTrading.cpp" />
     <ClCompile Include="cwPandoraPositionAgent.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
+    <ClCompile Include="SqlliteHelp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cwBasicCTAStrategy.h" />
@@ -145,6 +146,8 @@
     <ClInclude Include="cwPandoraPairTrading.h" />
     <ClInclude Include="cwPandoraPositionAgent.h" />
     <ClInclude Include="cwStrategyDemo.h" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="SqlliteHelp.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="CTAPlatformConfig.xml" />

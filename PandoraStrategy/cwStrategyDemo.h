@@ -1,5 +1,6 @@
 #pragma once
 #include "cwBasicKindleStrategy.h"
+#include "sqlite3.h"
 
 class cwStrategyDemo :
 	public cwBasicKindleStrategy
@@ -7,6 +8,10 @@ class cwStrategyDemo :
 public:
 	cwStrategyDemo();
 	~cwStrategyDemo();
+
+	static sqlite3* cnn;
+	static sqlite3* cnnSys;
+	const char* dbFilePath;
 
 	//MarketData SPI
 	///行情更新
