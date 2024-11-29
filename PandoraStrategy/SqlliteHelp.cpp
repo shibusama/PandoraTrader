@@ -3,7 +3,8 @@
 #include "sqlite3.h"
 
 // 创建数据库连接
-sqlite3* OpenDatabase(const char* dbFilePath) {
+sqlite3* SqlliteHelp::OpenDatabase(const char* dbFilePath)
+{
     sqlite3* db;
 
     // 打开数据库
@@ -15,13 +16,14 @@ sqlite3* OpenDatabase(const char* dbFilePath) {
     return db;
 }
 
+
 // 关闭数据库连接
-void CloseDatabase(sqlite3* db) {
+void SqlliteHelp::CloseDatabase(sqlite3* db) {
     sqlite3_close(db);
 }
 
 // 创建表
-void CreateTable(sqlite3* db) {
+void SqlliteHelp::CreateTable(sqlite3* db) {
     const char* createTableSQL = "CREATE TABLE IF NOT EXISTS Users (Id INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Age INTEGER);";
 
     if (sqlite3_exec(db, createTableSQL, nullptr, nullptr, nullptr) != SQLITE_OK) {
@@ -33,7 +35,7 @@ void CreateTable(sqlite3* db) {
 }
 
 // 插入数据
-void InsertData(sqlite3* db, const char* name, int age) {
+void SqlliteHelp::InsertData(sqlite3* db, const char* name, int age) {
     const char* insertDataSQL = "INSERT INTO Users (Name, Age) VALUES (?, ?);";
     sqlite3_stmt* statement;
 
@@ -56,7 +58,7 @@ void InsertData(sqlite3* db, const char* name, int age) {
 }
 
 // 查询数据
-void QueryData(sqlite3* db) {
+void SqlliteHelp::QueryData(sqlite3* db) {
     const char* queryDataSQL = "SELECT * FROM Users;";
     sqlite3_stmt* statement;
 
@@ -76,7 +78,7 @@ void QueryData(sqlite3* db) {
 }
 
 // 更新数据
-void UpdateData(sqlite3* db, int id, const char* name, int age) {
+void SqlliteHelp::UpdateData(sqlite3* db, int id, const char* name, int age) {
     const char* updateDataSQL = "UPDATE Users SET Name=?, Age=? WHERE Id=?;";
     sqlite3_stmt* statement;
 
@@ -100,7 +102,7 @@ void UpdateData(sqlite3* db, int id, const char* name, int age) {
 }
 
 // 删除数据
-void DeleteData(sqlite3* db, int id) {
+void SqlliteHelp::DeleteData(sqlite3* db, int id) {
     const char* deleteDataSQL = "DELETE FROM Users WHERE Id=?;";
     sqlite3_stmt* statement;
 
@@ -120,3 +122,4 @@ void DeleteData(sqlite3* db, int id) {
         sqlite3_finalize(statement);
     }
 }
+

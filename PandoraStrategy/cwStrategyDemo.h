@@ -9,10 +9,6 @@ public:
 	cwStrategyDemo();
 	~cwStrategyDemo();
 
-	static sqlite3* cnn;
-	static sqlite3* cnnSys;
-	const char* dbFilePath;
-
 	//MarketData SPI
 	///行情更新
 	virtual void PriceUpdate(cwMarketDataPtr pPriceData);
@@ -28,5 +24,8 @@ public:
 	virtual void			OnReady();
 
 	std::string m_strCurrentUpdateTime;
+	static sqlite3* cnn;
+	static sqlite3* cnnSys;
+	const char* dbFilePath;
 };
 

@@ -1,5 +1,6 @@
 #include "cwStrategyDemo.h"
-#include "sqlite3.h"
+#include "SqlliteHelp.h"
+
 
 
 cwStrategyDemo::cwStrategyDemo()
@@ -10,6 +11,13 @@ cwStrategyDemo::cwStrategyDemo()
 cwStrategyDemo::~cwStrategyDemo()
 {
 }
+
+const char* dbFilePath = "D:/sqllite/tmp.db";
+
+// 创建数据库连接
+sqlite3* cnn = SqlliteHelp::OpenDatabase(dbFilePath);
+sqlite3* cnn = SqlliteHelp::OpenDatabase(dbFilePath);
+
 
 void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 {
