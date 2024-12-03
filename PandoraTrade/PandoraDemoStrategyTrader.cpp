@@ -143,7 +143,7 @@ bool ReadXmlConfigFile()
 			TiXmlNode* SubChildNode = ChildNode->FirstChild("MarketDataServer");
 			if (SubChildNode != NULL)
 			{
-				TiXmlElement * Element = SubChildNode->ToElement();
+				TiXmlElement* Element = SubChildNode->ToElement();
 				GetCharElement(Md, Front);
 				GetCharElement(Md, BrokerID);
 				GetCharElement(Md, UserID);
@@ -153,7 +153,7 @@ bool ReadXmlConfigFile()
 			SubChildNode = ChildNode->FirstChild("TradeServer");
 			if (SubChildNode != NULL)
 			{
-				TiXmlElement * Element = SubChildNode->ToElement();
+				TiXmlElement* Element = SubChildNode->ToElement();
 				GetCharElement(Td, Front);
 				GetCharElement(Td, BrokerID);
 				GetCharElement(Td, UserID);
@@ -171,8 +171,8 @@ bool ReadXmlConfigFile()
 			TiXmlNode* SubChildNode = ChildNode->FirstChild("Instrument");
 			while (SubChildNode != NULL)
 			{
-				TiXmlElement * Element = SubChildNode->ToElement();
-				const char * pszTemp = Element->Attribute("ID");
+				TiXmlElement* Element = SubChildNode->ToElement();
+				const char* pszTemp = Element->Attribute("ID");
 				if (pszTemp != NULL)
 				{
 					m_SubscribeInstrument.push_back(pszTemp);
@@ -185,8 +185,8 @@ bool ReadXmlConfigFile()
 		ChildNode = RootNode->FirstChild("StrategyConfigFile");
 		if (ChildNode != NULL)
 		{
-			TiXmlElement * Element = ChildNode->ToElement();
-			const char * pszTemp = Element->GetText();
+			TiXmlElement* Element = ChildNode->ToElement();
+			const char* pszTemp = Element->GetText();
 			if (pszTemp != NULL)
 			{
 				m_strStrategyConfigFile = pszTemp;
@@ -197,8 +197,8 @@ bool ReadXmlConfigFile()
 		ChildNode = RootNode->FirstChild("HisDataFolder");
 		if (ChildNode != nullptr)
 		{
-			TiXmlElement * Element = ChildNode->ToElement();
-			const char * pszTemp = Element->GetText();
+			TiXmlElement* Element = ChildNode->ToElement();
+			const char* pszTemp = Element->GetText();
 			if (pszTemp != NULL)
 			{
 				m_strHisDataFolder = pszTemp;
@@ -227,7 +227,7 @@ void ResetParameter()
 
 unsigned int PriceServerThread()
 {
-	
+
 	m_mdCollector.SetUserLoginField(m_szMdBrokerID, m_szMdUserID, m_szMdPassWord);
 	m_mdCollector.SubscribeMarketData(m_SubscribeInstrument);
 
@@ -298,7 +298,7 @@ bool CtrlHandler(DWORD fdwCtrlType)
 }
 #endif // WIN32
 
-//int main()
+int main()
 {
 
 #ifdef WIN32
@@ -309,6 +309,11 @@ bool CtrlHandler(DWORD fdwCtrlType)
 	}
 #endif // WIN32
 	std::string strStrategyName = m_cwStategy.GetStrategyName();
+
+	m_cwShow.AddLog("Welcome To Pandora Trader !!");
+	m_cwShow.AddLog("Powered By PandoraTrader:");
+	m_cwShow.AddLog("GitHub: https://github.com/pegasusTrader/PandoraTrader");
+	m_cwShow.AddLog("Gitee: https://gitee.com/wuchangsheng/PandoraTrader");
 
 	m_cwShow.AddLog("Current Version:%s", GetPandoraTraderVersion());
 	m_cwShow.AddLog("Init Config From File!");
@@ -338,10 +343,10 @@ bool CtrlHandler(DWORD fdwCtrlType)
 	strAppMutexName += m_cwStategy.GetStrategyName().c_str();
 
 #ifdef WIN32
-	int  unicodeLen = ::MultiByteToWideChar(CP_ACP,	0, strAppMutexName.c_str(),	-1,	NULL, 0);
-	wchar_t  * TAppMutexName = new wchar_t[unicodeLen + 1];
-	memset(TAppMutexName, 0, (unicodeLen + 1)*sizeof(wchar_t));
-	::MultiByteToWideChar(CP_ACP, 0, strAppMutexName.c_str(), -1,(LPWSTR)TAppMutexName,	unicodeLen);
+	int  unicodeLen = ::MultiByteToWideChar(CP_ACP, 0, strAppMutexName.c_str(), -1, NULL, 0);
+	wchar_t* TAppMutexName = new wchar_t[unicodeLen + 1];
+	memset(TAppMutexName, 0, (unicodeLen + 1) * sizeof(wchar_t));
+	::MultiByteToWideChar(CP_ACP, 0, strAppMutexName.c_str(), -1, (LPWSTR)TAppMutexName, unicodeLen);
 
 	//声明互斥体，同一个名称只能声明一次，如果声明两次，将返回ERROR_ALREADY_EXISTS错误。
 	m_hAppMutex = ::CreateMutex(NULL, TRUE, TAppMutexName);
@@ -351,7 +356,7 @@ bool CtrlHandler(DWORD fdwCtrlType)
 		m_cwShow.AddLog("程序将在5秒后自动退出！！");
 		CloseHandle(m_hAppMutex);
 		m_hAppMutex = NULL;
-		delete [] TAppMutexName;
+		delete[] TAppMutexName;
 
 		int nCnt = 0;
 		while (nCnt < 6)
@@ -360,11 +365,11 @@ bool CtrlHandler(DWORD fdwCtrlType)
 			m_cwShow.AddLog("%d . ", nCnt);
 			nCnt++;
 		}
-		
+
 		return -1;
 	}
 
-	delete [] TAppMutexName;
+	delete[] TAppMutexName;
 #endif
 
 	if (m_strHisDataFolder.size() > 0)
@@ -391,18 +396,18 @@ bool CtrlHandler(DWORD fdwCtrlType)
 
 	std::thread m_TradeServerThread = std::thread(TradeServerThread);
 
-	
+
 	int iCnt = 0;
 	while (1)
 	{
-		
+
 		iCnt++;
 		if (iCnt % 20 == 0)
 		{
 			if (iCnt % 80 == 0)
 			{
 				m_cwShow.AddLog("%s %s Md:%s Trade:%s",
-					m_szTdUserID, strStrategyName.c_str(), 
+					m_szTdUserID, strStrategyName.c_str(),
 					m_mdCollector.GetCurrentStatusString(),
 					m_TradeChannel.GetCurrentStatusString());
 			}
@@ -418,5 +423,5 @@ bool CtrlHandler(DWORD fdwCtrlType)
 		}
 		cwSleep(1000);
 	}
-    return 0;
+	return 0;
 }

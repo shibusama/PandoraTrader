@@ -142,5 +142,7 @@ public:
      std::vector<std::string> tarCateList;
 
      std::string cursor_str;
+
+     std::string m_strCurrentUpdateTime;
 };
 
