@@ -298,7 +298,7 @@ bool CtrlHandler(DWORD fdwCtrlType)
 }
 #endif // WIN32
 
-int main()
+//int main()
 {
 
 #ifdef WIN32

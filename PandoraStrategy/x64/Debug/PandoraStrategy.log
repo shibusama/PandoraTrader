@@ -1,2 +1,6 @@
 ﻿  cwStrategyDemo.cpp
-  PandoraStrategy.vcxproj -> D:\Users\13191\source\repos\shibusama\PandoraTrader\x64\Debug\PandoraStrategy.lib
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(19,10): error C2374: “cnn”: 重定义；多次初始化
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(18,10):
+      参见“cnn”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(207,78): error C2065: “cursor_str”: 未声明的标识符

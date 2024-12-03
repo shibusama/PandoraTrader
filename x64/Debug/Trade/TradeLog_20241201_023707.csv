@@ -1,0 +1,5 @@
+LocalTime,Type,Symbol,ClientOrderID,ExchangeOrderID,ExchangeTradeID/UserProductInfo,Price/YdPosition,OrigionVolume/Position,TradedVolume/TdPosition,Side,OpenClose,OrderType,InsertTime,CancelTime,Status,Text
+20241201_02:37:07,MSG,,,,,,,,,,,,,,Authenticate:正确
+20241201_02:37:08,MSG,,,,,,,,,,,,,,212893 Login:正确
+20241201_02:37:10,RP,hc2501,N/A,N/A,N/A,1,1,0,L,History,N/A,N/A,N/A,N/A,N/A
+20241201_02:37:13,MSG,,,,,,,,,,,,,,DisConnect!!
