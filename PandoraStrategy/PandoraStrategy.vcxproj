@@ -146,6 +146,8 @@
     <ClInclude Include="cwPandoraPairTrading.h" />
     <ClInclude Include="cwPandoraPositionAgent.h" />
     <ClInclude Include="cwStrategyDemo.h" />
+    <ClInclude Include="getdate.h" />
+    <ClInclude Include="inDay.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="SqlliteHelp.h" />
   </ItemGroup>

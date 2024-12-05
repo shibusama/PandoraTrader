@@ -89,6 +89,12 @@
     <ClInclude Include="SqlliteHelp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="getdate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inDay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="cwChasingRisingStrategy.xml">
