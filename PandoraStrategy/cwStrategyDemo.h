@@ -22,6 +22,7 @@ public:
 	virtual void OnOrderCanceled(cwOrderPtr pOrder);
 	//当策略交易初始化完成时会调用OnReady, 可以在此函数做策略的初始化操作
 	virtual void			OnReady();
+	std::string m_strCurrentUpdateTime;
 
 };
 
