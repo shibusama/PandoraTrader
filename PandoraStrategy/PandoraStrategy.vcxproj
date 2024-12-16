@@ -133,6 +133,7 @@
     <ClCompile Include="cwPandoraPairTrading.cpp" />
     <ClCompile Include="cwPandoraPositionAgent.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
+    <ClCompile Include="inday.cpp" />
     <ClCompile Include="SqlliteHelp.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,10 @@
 #include "cwStrategyDemo.h"
 #include "SqlliteHelp.h"
+#include "inDay.h"
+
+using namespace MyTrade;
 
 
-const char* dbFilePath = "D:/sqllite/tmp.db";
-
-// 创建数据库连接
-sqlite3* cnn = SqlliteHelp::OpenDatabase(dbFilePath);
-sqlite3* cnn = SqlliteHelp::OpenDatabase(dbFilePath);
 
 cwStrategyDemo::cwStrategyDemo()
 {
@@ -196,12 +194,6 @@ void cwStrategyDemo::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwStrategyDemo::OnReady()
 {
-	// 加载交易日信息
-	std::cout << "UPDATE BAR DATA >>>>>>" << std::endl;
-
-	// 获取60天近期交易日序列
-
-	std::string sqlTradingDay = "select * from tradeday where tradingday < '" + cursor_str + "' order by tradingday DESC Limit 60;";
-	SubScribePrice("ag2312");
+	Class1::UpdateBarData();
 }
 

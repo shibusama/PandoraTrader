@@ -1,6 +1,12 @@
-﻿  cwStrategyDemo.cpp
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(19,10): error C2374: “cnn”: 重定义；多次初始化
-      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(18,10):
-      参见“cnn”的声明
-  
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(207,78): error C2065: “cursor_str”: 未声明的标识符
+﻿  cwCTAPlatform.cpp
+  cwPandoraAgentManager.cpp
+  cwPandoraPairTrading.cpp
+  cwPandoraPositionAgent.cpp
+  cwStrategyDemo.cpp
+  inday.cpp
+  正在生成代码...
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(17,51): error C2059: 语法错误:“;”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(18,55): error C2059: 语法错误:“;”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(19,51): error C2059: 语法错误:“;”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(21,59): error C2059: 语法错误:“;”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(22,53): error C2059: 语法错误:“;”
