@@ -3,8 +3,13 @@
 #include <ctime>
 #include <sstream>
 #include <string>
+#include "Strformatdate.h"
 #pragma warning(disable:4996)
-string getCurrentDateString() {
+
+using namespace std;
+
+
+string Strformatdate::getCurrentDateString() {
     time_t currentTime = time(nullptr);
     tm* timeInfo = localtime(&currentTime);
 
@@ -12,10 +17,5 @@ string getCurrentDateString() {
     strftime(buffer, sizeof(buffer), "%Y%m%d", timeInfo);
 
     return string(buffer);
-}
 
-int main() {
-    string cursor_str = getCurrentDateString();
-    cout << cursor_str << endl;
-    return 0;
-}
+};
