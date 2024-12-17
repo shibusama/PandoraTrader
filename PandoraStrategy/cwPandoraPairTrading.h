@@ -46,11 +46,11 @@ public:
 	//策略交易次主力合约
 	void		 DoManualSpread();
 
-	std::string					m_strCurrentUpdateTime;			//最新行情时间
+	string					m_strCurrentUpdateTime;			//最新行情时间
 
 protected:
-	std::string					m_MainInstrumentID;				//主力合约
-	std::string					m_SubMainInstrumentID;			//次主力合约
+	string					m_MainInstrumentID;				//主力合约
+	string					m_SubMainInstrumentID;			//次主力合约
 
 	//价差定义为主力-次主力
 	double						m_dBuyThreadHold;				//价差买阈值

@@ -43,7 +43,7 @@ void cwBasicCTAStrategy::_PreOnBar(bool bFinished, int iTimeScale, cwBasicKindle
 		UpdateEvaluator(m_cwSettlement.m_dMaxFundOccupied, m_cwSettlement.m_dBalance, m_strLastUpdateTime, pKindle->StartTime, 0.05);
 
 		//存储更新权益
-		TimeBalanceDataPtr tbdPtr = std::make_shared<TimeBalanceData>();
+		TimeBalanceDataPtr tbdPtr = make_shared<TimeBalanceData>();
 		tbdPtr->strDateTime = m_strLastUpdateTime;
 		tbdPtr->iTimeStamp = pKindle->StartTime;
 		tbdPtr->dBalance = m_cwSettlement.m_dBalance;
@@ -55,7 +55,7 @@ void cwBasicCTAStrategy::_PreOnBar(bool bFinished, int iTimeScale, cwBasicKindle
 }
 
 //策略评价更新函数
-void cwBasicCTAStrategy::UpdateEvaluator(double dCurrentMoneyUsed, double dCurrentTotalProfit, std::string str_time, std::uint64_t timeStamp, double dExpectedRet)
+void cwBasicCTAStrategy::UpdateEvaluator(double dCurrentMoneyUsed, double dCurrentTotalProfit, string str_time, uint64_t timeStamp, double dExpectedRet)
 {
 	m_cwEvaluator.UpdateNetValueByTotalPNL(timeStamp, dCurrentTotalProfit, dCurrentMoneyUsed);
 	
@@ -84,7 +84,7 @@ void cwBasicCTAStrategy::UpdateEvaluator(double dCurrentMoneyUsed, double dCurre
 
 void cwBasicCTAStrategy::SetStrategyPosition(int iPosition, char* szInstrumentID)
 {
-	std::string InstrumentID;
+	string InstrumentID;
 	if (szInstrumentID == nullptr)
 	{
 		InstrumentID = m_strDealInstrument;
@@ -93,7 +93,7 @@ void cwBasicCTAStrategy::SetStrategyPosition(int iPosition, char* szInstrumentID
 	{
 		InstrumentID = szInstrumentID;
 	}
-	auto ret = m_iStrategyPositionMap.insert(std::pair<std::string, int>(InstrumentID, iPosition));
+	auto ret = m_iStrategyPositionMap.insert(pair<string, int>(InstrumentID, iPosition));
 	if (ret.second)
 	{
 		if (iPosition != 0)
@@ -141,7 +141,7 @@ void cwBasicCTAStrategy::SetStrategyPosition(int iPosition, char* szInstrumentID
 
 int cwBasicCTAStrategy::GetStrategyPosition(char* szInstrumentID)
 {
-	std::string InstrumentID;
+	string InstrumentID;
 	if (szInstrumentID == nullptr)
 	{
 		InstrumentID = m_strDealInstrument;
@@ -150,7 +150,7 @@ int cwBasicCTAStrategy::GetStrategyPosition(char* szInstrumentID)
 	{
 		InstrumentID = szInstrumentID;
 	}
-	auto it = m_iStrategyPositionMap.find(std::move(InstrumentID));
+	auto it = m_iStrategyPositionMap.find(move(InstrumentID));
 	if (it == m_iStrategyPositionMap.end())
 	{
 		return 0;
@@ -158,9 +158,9 @@ int cwBasicCTAStrategy::GetStrategyPosition(char* szInstrumentID)
 	return it->second;
 }
 
-double cwBasicCTAStrategy::GetEntryPrice(std::string InstrumentID)
+double cwBasicCTAStrategy::GetEntryPrice(string InstrumentID)
 {
-	auto it = m_dEntryPrice.find(std::move(InstrumentID));
+	auto it = m_dEntryPrice.find(move(InstrumentID));
 	if (it != m_dEntryPrice.end())
 	{
 		return it->second;
@@ -168,9 +168,9 @@ double cwBasicCTAStrategy::GetEntryPrice(std::string InstrumentID)
 	return 0.0;
 }
 
-size_t cwBasicCTAStrategy::GetEntryIndex(std::string InstrumentID)
+size_t cwBasicCTAStrategy::GetEntryIndex(string InstrumentID)
 {
-	auto it = m_iEntryIndex.find(std::move(InstrumentID));
+	auto it = m_iEntryIndex.find(move(InstrumentID));
 	if (it != m_iEntryIndex.end())
 	{
 		return it->second;
@@ -178,9 +178,9 @@ size_t cwBasicCTAStrategy::GetEntryIndex(std::string InstrumentID)
 	return 0;
 }
 
-const char * cwBasicCTAStrategy::GetEntryTime(std::string InstrumentID)
+const char * cwBasicCTAStrategy::GetEntryTime(string InstrumentID)
 {
-	auto it = m_strEntryTime.find(std::move(InstrumentID));
+	auto it = m_strEntryTime.find(move(InstrumentID));
 	if (it != m_strEntryTime.end())
 	{
 		return it->second.c_str();

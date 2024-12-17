@@ -3,7 +3,7 @@
 
 #ifndef cwDouble_EQ
 #include <limits>
-#define cwDouble_EQ (std::numeric_limits<double>::epsilon())
+#define cwDouble_EQ (numeric_limits<double>::epsilon())
 #endif // !cwDouble_EQ
 
 #ifndef MAX_PATH
@@ -21,9 +21,9 @@ cwEmptyStrategy::~cwEmptyStrategy()
 {
 }
 
-std::string cwEmptyStrategy::GetStrategyName()
+string cwEmptyStrategy::GetStrategyName()
 {
-	std::string strStrategyName("EmptyStrategy");
+	string strStrategyName("EmptyStrategy");
 	if (m_strStrategyName.size() > 0)
 	{
 		strStrategyName.append("_");
@@ -63,7 +63,7 @@ void cwEmptyStrategy::InitialStrategy(const char * pConfigFilePath)
 		WideCharToMultiByte(CP_ACP, 0, TexeFullPath, -1, exeFullPath, iLength, NULL, NULL);
 
 		m_strConfigFileFullPath = exeFullPath;
-		std::size_t found = m_strConfigFileFullPath.find_last_of("/\\");
+		size_t found = m_strConfigFileFullPath.find_last_of("/\\");
 		m_strConfigFileFullPath = m_strConfigFileFullPath.substr(0, found);
 		m_strConfigFileFullPath.append("\\EmptyStrategy.xml");
 #else
@@ -75,7 +75,7 @@ void cwEmptyStrategy::InitialStrategy(const char * pConfigFilePath)
 		}
 
 		m_strConfigFileFullPath = exeFullPath;
-		std::size_t found = m_strConfigFileFullPath.find_last_of("/\\");
+		size_t found = m_strConfigFileFullPath.find_last_of("/\\");
 		m_strConfigFileFullPath = m_strConfigFileFullPath.substr(0, found);
 		m_strConfigFileFullPath.append("/EmptyStrategy.xml");
 #endif		
@@ -90,7 +90,7 @@ void cwEmptyStrategy::InitialStrategy(const char * pConfigFilePath)
 void cwEmptyStrategy::OnReady()
 {
 
-	std::vector<std::string> SubscribeInstrument;
+	vector<string> SubscribeInstrument;
 
 	for (auto it = m_InstrumentMap.begin(); it != m_InstrumentMap.end(); it++)
 	{

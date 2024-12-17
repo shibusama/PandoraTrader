@@ -31,13 +31,13 @@ public:
 #endif // _MSC_VER
 	struct StrategyParameter
 	{
-		std::string	StrategyID;
+		string	StrategyID;
 
-		std::string StrategyName;
+		string StrategyName;
 
 		bool		bIndex;
 		int			iTimeScale;
-		std::string InstrumentID;
+		string InstrumentID;
 
 		double		dMultiple;
 
@@ -108,15 +108,15 @@ public:
 			memset(ParaList, 0, sizeof(ParaList));
 		}
 	};
-	typedef std::shared_ptr<StrategyParameter>			StrategyParaPtr;
+	typedef shared_ptr<StrategyParameter>			StrategyParaPtr;
 
 	struct TradeParameter
 	{
 		// Instrument
 		bool		Pause;						//暂停程序对该合约的交易
 
-		std::string InstrumentID;				//交易合约
-		std::string	SignalInstrumentID;			//信号里对应的合约名
+		string InstrumentID;				//交易合约
+		string	SignalInstrumentID;			//信号里对应的合约名
 		double		Ratio;						//合约下单比例，
 		bool		Mod;						//下单合约mod，1则向下取整，0则向上去整。
 
@@ -157,15 +157,15 @@ public:
 			InsWaitInterval = copy.InsWaitInterval;
 		}
 	};
-	typedef std::shared_ptr<TradeParameter>				TradeParaPtr;
+	typedef shared_ptr<TradeParameter>				TradeParaPtr;
 
 	struct ManualIntervention
 	{
 		bool Manual;
 
-		std::string StrategyID;
+		string StrategyID;
 
-		std::string SignalID;
+		string SignalID;
 		double			ExpectedPosition;
 
 		ManualIntervention()
@@ -175,13 +175,13 @@ public:
 
 		}
 	};
-	typedef std::shared_ptr<ManualIntervention>			ManualInterventionPtr;
+	typedef shared_ptr<ManualIntervention>			ManualInterventionPtr;
 
 	struct DirectionMask
 	{
-		std::string StrategyID;
+		string StrategyID;
 
-		std::string SignalID;
+		string SignalID;
 
 		double		StrategyInsRatio;			//对于某个策略
 
@@ -196,12 +196,12 @@ public:
 
 		}
 	};
-	typedef std::shared_ptr<DirectionMask>			DirectionMaskPtr;
+	typedef shared_ptr<DirectionMask>			DirectionMaskPtr;
 
 	struct StrategyInstrumentUnion
 	{
-		std::string InstrumentID;		//InstrumentID
-		std::string StrategyName;
+		string InstrumentID;		//InstrumentID
+		string StrategyName;
 
 		bool operator == (const StrategyInstrumentUnion& p) const
 		{
@@ -243,17 +243,17 @@ public:
 	struct CTAStrategyInfo
 	{
 		cwBasicCTAStrategy	*	_pStrategy;
-		std::string				_StrategyID;
+		string				_StrategyID;
 		StrategyParaPtr			_pParameter;
 	};
-	typedef std::shared_ptr<CTAStrategyInfo>					CTAStrategyInfoPtr;
+	typedef shared_ptr<CTAStrategyInfo>					CTAStrategyInfoPtr;
 
 	//struct 
 public:
 	//获取策略版本号
-	virtual std::string  GetStrategyVersion();
+	virtual string  GetStrategyVersion();
 	//表示策略名称
-	virtual std::string  GetStrategyName();
+	virtual string  GetStrategyName();
 
 	//MarketData SPI
 	///行情更新
@@ -274,12 +274,12 @@ public:
 
 
 
-	bool					AddStrategyToPools(std::string strStrategyID, cwBasicCTAStrategy * pCTAStrategy, StrategyParaPtr pPara);
-	void					SetKindle(std::string strStrategyID, bool bIndex, const char* szInstrumentID, int iTimeScale, int HisKindleCount);
+	bool					AddStrategyToPools(string strStrategyID, cwBasicCTAStrategy * pCTAStrategy, StrategyParaPtr pPara);
+	void					SetKindle(string strStrategyID, bool bIndex, const char* szInstrumentID, int iTimeScale, int HisKindleCount);
 
-	double					MergeStrategyPosition(std::string InstrumentID);
+	double					MergeStrategyPosition(string InstrumentID);
 	
-	cwInstrumentDataPtr		GetFirstInstrumentData(std::string ProductID);
+	cwInstrumentDataPtr		GetFirstInstrumentData(string ProductID);
 
 	void					ShowSignalPosition();
 	void					ShowManualInfor();
@@ -287,8 +287,8 @@ public:
 
 	///strategy parameter
 	//策略运行代号
-	std::string				m_strStrategyName;
-	std::string				m_strCurrentUpdateTime;
+	string				m_strStrategyName;
+	string				m_strCurrentUpdateTime;
 
 	//策略是否运行
 	bool					m_bStrategyRun;
@@ -308,49 +308,49 @@ public:
 protected:
 	//配置参数
 	//Key:StrategyID
-	std::unordered_map<std::string, StrategyParaPtr>					m_StrategyParameterMap;
+	unordered_map<string, StrategyParaPtr>					m_StrategyParameterMap;
 	//Key:TradeInstrumentID
-	std::unordered_map<std::string, TradeParaPtr>						m_TradeParameterMap;
+	unordered_map<string, TradeParaPtr>						m_TradeParameterMap;
 
 	//Key:StrategyID  value:ManualIntervention
-	std::map<std::string, ManualInterventionPtr>						m_ManualinterventionMap;	
+	map<string, ManualInterventionPtr>						m_ManualinterventionMap;	
 	//key:StrategyID value:DirectionMask
-	std::map<std::string, DirectionMaskPtr>								m_DirectionMaskMap;			
+	map<string, DirectionMaskPtr>								m_DirectionMaskMap;			
 
 
 	//Strategy pool策略池
 	//key:SignalInstrument, key:TimeScale
-	std::unordered_map<std::string, std::unordered_map<int, std::deque<CTAStrategyInfoPtr>>>		m_InsCTAStrategyList;
+	unordered_map<string, unordered_map<int, deque<CTAStrategyInfoPtr>>>		m_InsCTAStrategyList;
 	//Key:StrategyID
-	std::unordered_map<std::string, CTAStrategyInfoPtr>					m_NameCTAStrategy;
+	unordered_map<string, CTAStrategyInfoPtr>					m_NameCTAStrategy;
 
 	//策略组合 Portfolio
 	//key:
-	//std::unordered_map<std::string, std::deque<CTAStrategyInfoPtr>>		m_PortfolioStrategyList;
+	//unordered_map<string, deque<CTAStrategyInfoPtr>>		m_PortfolioStrategyList;
 
 
 	//key:SignalInstrument, key:StrategyID
-	std::map<std::string, std::map<std::string, double>> m_cwStrategyPositionMap;
+	map<string, map<string, double>> m_cwStrategyPositionMap;
 	void		WriteSignalToFile();
 	void		WriteNetAssetValueToFile();
 
 	//Deal Trade Signal
 	bool		GetParameter(const char * szInstrumentID, 
 		TradeParameter& para, cwPandoraAgentManager::cwAgentDataPtr& pAgent);
-	int			GetExpectedPosition(std::string InstrumentID, TradeParameter& para);
+	int			GetExpectedPosition(string InstrumentID, TradeParameter& para);
 
 
 	//Agent
 	cwPandoraAgentManager											m_PandoraAgentManager;		//代理人管理者，可通过他创建代理人
-	std::map<std::string, cwPandoraAgentManager::cwAgentDataPtr>	m_cwAgentDataMap;			//key Instrument value AgentData
+	map<string, cwPandoraAgentManager::cwAgentDataPtr>	m_cwAgentDataMap;			//key Instrument value AgentData
 
 
 
 	cwStrategyLog													m_StrategyLog;
 
-	std::string														m_strWorkingPath;
+	string														m_strWorkingPath;
 
-	std::string						                                m_strConfigFileFullPath;
+	string						                                m_strConfigFileFullPath;
 	bool					                                        m_bFirstGetConfig = true;
 	time_t					                                        m_tLastestGetConfigTime;
 

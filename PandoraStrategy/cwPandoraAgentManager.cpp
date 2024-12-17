@@ -11,7 +11,7 @@ cwPandoraAgentManager::~cwPandoraAgentManager()
 {
 }
 
-cwPandoraAgentManager::cwAgentDataPtr cwPandoraAgentManager::RegisterAgent(std::string instrumentid, cwPandoraAgentEnum agentEnum)
+cwPandoraAgentManager::cwAgentDataPtr cwPandoraAgentManager::RegisterAgent(string instrumentid, cwPandoraAgentEnum agentEnum)
 {
 	cwAgentDataPtr pPandoraAgentMrg;
 	if (agentEnum >= Enum_Agent_Count)
@@ -19,7 +19,7 @@ cwPandoraAgentManager::cwAgentDataPtr cwPandoraAgentManager::RegisterAgent(std::
 		return pPandoraAgentMrg;
 	}
 
-	cwAgentDataPtr pAgentData = std::make_shared<cwAgentData>();
+	cwAgentDataPtr pAgentData = make_shared<cwAgentData>();
 	if (pAgentData.get() == NULL)
 	{
 		return pPandoraAgentMrg;
@@ -31,7 +31,7 @@ cwPandoraAgentManager::cwAgentDataPtr cwPandoraAgentManager::RegisterAgent(std::
 	{
 	case cwPandoraAgentManager::Enum_Agent_Postion:
 	{
-		pAgentData->pPositionAgent = std::make_shared<cwPandoraPositionAgent>();
+		pAgentData->pPositionAgent = make_shared<cwPandoraPositionAgent>();
 		if (pAgentData->pPositionAgent.get() == NULL)
 		{
 			return pPandoraAgentMrg;
@@ -46,7 +46,7 @@ cwPandoraAgentManager::cwAgentDataPtr cwPandoraAgentManager::RegisterAgent(std::
 		break;
 	}
 
-	auto it = m_cwPandoraAgentDataMap[instrumentid].insert(std::pair<int, cwAgentDataPtr> (pAgentData->AgentID, pAgentData));
+	auto it = m_cwPandoraAgentDataMap[instrumentid].insert(pair<int, cwAgentDataPtr> (pAgentData->AgentID, pAgentData));
 	if (!it.second)
 	{
 		it.first->second = pAgentData;

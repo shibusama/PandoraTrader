@@ -10,7 +10,7 @@ public:
 	cwEmptyStrategy();
 	~cwEmptyStrategy();
 
-	std::string  GetStrategyName();
+	string  GetStrategyName();
 
 	//MarketData SPI
 	///行情更新
@@ -26,14 +26,14 @@ public:
 
 	virtual void OnReady();
 
-	std::string	m_strCurrentUpdateTime;	
+	string	m_strCurrentUpdateTime;	
 
 
 	void InitialStrategy(const char * pConfigFilePath);
 
 	///strategy parameter
 	//策略运行代号
-	std::string m_strStrategyName;		
+	string m_strStrategyName;		
 	//策略是否运行
 	bool		m_bStrategyRun;					
 

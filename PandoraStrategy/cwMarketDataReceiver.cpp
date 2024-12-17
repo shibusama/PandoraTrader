@@ -5,7 +5,7 @@
 
 #ifndef cwDouble_EQ
 #include <limits>
-#define cwDouble_EQ (std::numeric_limits<double>::epsilon())
+#define cwDouble_EQ (numeric_limits<double>::epsilon())
 #endif // !cwDouble_EQ
 
 #ifndef MAX_PATH
@@ -23,9 +23,9 @@ cwMarketDataReceiver::~cwMarketDataReceiver()
 {
 }
 
-std::string cwMarketDataReceiver::GetStrategyName()
+string cwMarketDataReceiver::GetStrategyName()
 {
-	std::string strStrategyName("MarketDataReceiver");
+	string strStrategyName("MarketDataReceiver");
 	if (m_strStrategyName.size() > 0)
 	{
 		strStrategyName.append("_");
@@ -66,7 +66,7 @@ void cwMarketDataReceiver::PriceUpdate(cwMarketDataPtr pPriceData)
 
 	if (m_strCurrentUpdateTime.size() <= 3)
 	{
-		std::cout << pPriceData->InstrumentID << " " << pPriceData->UpdateTime << " UpdateTime Length is Too Small /n";
+		cout << pPriceData->InstrumentID << " " << pPriceData->UpdateTime << " UpdateTime Length is Too Small /n";
 		return;
 	}
 
@@ -135,7 +135,7 @@ void cwMarketDataReceiver::InitialStrategy(const char * pConfigFilePath)
 		WideCharToMultiByte(CP_ACP, 0, TexeFullPath, -1, exeFullPath, iLength, NULL, NULL);
 
 		m_strConfigFileFullPath = exeFullPath;
-		std::size_t found = m_strConfigFileFullPath.find_last_of("/\\");
+		size_t found = m_strConfigFileFullPath.find_last_of("/\\");
 		m_strConfigFileFullPath = m_strConfigFileFullPath.substr(0, found);
 		m_strConfigFileFullPath.append("\\Instrument.xml");
 #else
@@ -147,7 +147,7 @@ void cwMarketDataReceiver::InitialStrategy(const char * pConfigFilePath)
 		}
 
 		m_strConfigFileFullPath = exeFullPath;
-		std::size_t found = m_strConfigFileFullPath.find_last_of("/\\");
+		size_t found = m_strConfigFileFullPath.find_last_of("/\\");
 		m_strConfigFileFullPath = m_strConfigFileFullPath.substr(0, found);
 		m_strConfigFileFullPath.append("/Instrument.xml");
 #endif		
@@ -176,7 +176,7 @@ void cwMarketDataReceiver::OnReady()
 		TiXmlElement *RootElement = new TiXmlElement("Instruments");
 		myDocument->LinkEndChild(RootElement);
 
-		std::string Temp;
+		string Temp;
 
 		for (auto itIns = m_InstrumentMap.begin();
 			itIns != m_InstrumentMap.end(); itIns++)
@@ -225,9 +225,9 @@ void cwMarketDataReceiver::OnReady()
 			PersonElement->SetDoubleAttribute("StrikePrice", itIns->second->StrikePrice);
 
 		}
-		std::string strSaveFile = m_strConfigFileFullPath;
+		string strSaveFile = m_strConfigFileFullPath;
 
-		std::size_t found = strSaveFile.find_last_of("/\\");
+		size_t found = strSaveFile.find_last_of("/\\");
 		strSaveFile = strSaveFile.substr(0, found);
 
 #ifdef _MSC_VER
@@ -243,9 +243,9 @@ void cwMarketDataReceiver::OnReady()
 	//Sleep(5000);
 	//Init HisPrice Data Map
 	{
-		std::string strSaveFile = m_strConfigFileFullPath;
+		string strSaveFile = m_strConfigFileFullPath;
 
-		std::size_t found = strSaveFile.find_last_of("/\\");
+		size_t found = strSaveFile.find_last_of("/\\");
 		strSaveFile = strSaveFile.substr(0, found);
 
 #ifdef _MSC_VER
@@ -291,7 +291,7 @@ void cwMarketDataReceiver::OnReady()
 			TiXmlNode* RootNode = doc.RootElement();
 			if (RootNode != NULL)
 			{
-				std::string DataIndexid, FilePath;
+				string DataIndexid, FilePath;
 				const char * pszTemp = NULL;
 
 				TiXmlNode* ChildNode = RootNode->FirstChild("MDFile");
@@ -340,7 +340,7 @@ void cwMarketDataReceiver::OnReady()
 	}
 
 
-	std::vector<std::string> SubscribeInstrument;
+	vector<string> SubscribeInstrument;
 
 	for (auto it = m_InstrumentMap.begin(); it != m_InstrumentMap.end(); it++)
 	{

@@ -1,32 +1,30 @@
 #include "inDay.h"
 #include "SqlliteHelp.h"
+using namespace std;
+namespace MyTrade {
+
+	// 创建数据库连接
+	sqlite3* Class1::cnn = SqlliteHelp::OpenDatabase("D:/sqllite/tmp.db");
+	sqlite3* Class1::cnnSys = SqlliteHelp::OpenDatabase("D:/sqllite/tmp.db");
+
+	map<mainCtrKeys, mainCtrValues>* Class1::MainInf = new map<mainCtrKeys, mainCtrValues>;
+	map<string, vector<barFuture>>* Class1::barFlow = new map<string, vector<barFuture>>;
+
+	map<string, vector<barFuture>>* Class1::barFlowCur = new map<string, vector<barFuture>>;
+	map<string, double>* Class1::factorDictCur = new map<string, double>;
+	map<string, string>* Class1::codeTractCur = new map<string, string>;
+	map<string, futInfMng>* Class1::futInfDict = new map<string, futInfMng>;
+
+	map<string, vector<double>>* Class1::queueBar = new map<string, vector<double>>;
+	map<string, vector<double>>* Class1::retBar = new map<string, vector<double>>;
+
+	map<string, catePortInf>* Class1::spePos = new map<string, catePortInf>;
+	map<string, paraMng>* Class1::verDictCur = new map<string, paraMng>;
+	map<string, int>* Class1::countLimitCur = new map<string, int>;
+
+	vector<string>* Class1::tarCateList = new vector<string>;
+
+	string cursor_str; // 交易当天日期
 
 
-
-using namespace MyTrade;
-
-
-// 创建数据库连接
-sqlite3* cnn = SqlliteHelp::OpenDatabase("D:/sqllite/tmp.db");
-sqlite3* cnnSys = SqlliteHelp::OpenDatabase("D:/sqllite/tmp.db");
-
-std::map<mainCtrKeys, mainCtrValues>* MainInf = new std::map<mainCtrKeys, mainCtrValues>;
-std::map<std::string, std::vector<barFuture>>* barFlow = new std::map<std::string, std::vector<barFuture>>;
-
-std::map<std::string, std::vector<barFuture>>* barFlowCur = new std::map<std::string, std::vector<barFuture>>;
-std::map<std::string, double>* factorDictCur = new std::map<std::string, double>;
-std::map<std::string, std::string>* codeTractCur = new std::map<std::string, std::string>;
-std::map<std::string, futInfMng>* futInfDict = new std::map<std::string, futInfMng>;
-
-std::map<std::string, std::vector<double>>* queueBar = new std::map<std::string, std::vector<double>>;
-std::map<std::string, std::vector<double>>* retBar = new std::map<std::string, std::vector<double>>;
-
-std::map<std::string, catePortInf>* spePos = new std::map<std::string, catePortInf>;
-std::map<std::string, paraMng>* verDictCur = new std::map<std::string, paraMng>;
-std::map<std::string, int>* countLimitCur = new std::map<std::string, int>;
-
-std::vector<std::string>* tarCateList =new std::vector<std::string>;
-
-std::string cursor_str; // 交易当天日期
-
-
+}

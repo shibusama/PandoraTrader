@@ -32,7 +32,7 @@ public:
 	void					SetExpectPosition(int iExpPos = 0);
 
 	int						m_iExpectPosition;
-	std::string				m_strInstrumentID;
+	string				m_strInstrumentID;
 
 	cwBasicStrategy::cwOpenCloseMode OpenCloseMode;			//开平模式
 	int			InsLargeOrderVolume;		//大单量，大于其认为大单
@@ -40,8 +40,8 @@ public:
 	int			InsAskBidGap;				//盘口价差
 
 protected:
-	void					DealExpectedPosition(std::string InstrumentID, int iExpectedMaintain = 0, const char * szCallMsg = NULL);
-	std::string				m_strCurrentUpdateTime;
+	void					DealExpectedPosition(string InstrumentID, int iExpectedMaintain = 0, const char * szCallMsg = NULL);
+	string				m_strCurrentUpdateTime;
 
 };
 

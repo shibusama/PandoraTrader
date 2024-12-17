@@ -165,7 +165,7 @@ void cwPandoraPositionAgent::SetExpectPosition(int iExpPos)
 	}
 }
 
-void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int iExpectedMaintain/*= 0*/, const char * szCallMsg /*= NULL*/)
+void cwPandoraPositionAgent::DealExpectedPosition(string InstrumentID, int iExpectedMaintain/*= 0*/, const char * szCallMsg /*= NULL*/)
 {
 	double dTickSize = GetTickSize(InstrumentID.c_str());
 	if (dTickSize < 0)
@@ -181,12 +181,12 @@ void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int 
 		return;
 	}
 
-	std::map<std::string, cwPositionPtr> CurrentPosMap;
-	std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
+	map<string, cwPositionPtr> CurrentPosMap;
+	map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
 	GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
 
 	int iMaintain = 0, iWaitOrder = 0;
-	std::map<std::string, cwPositionPtr>::iterator PosIt;
+	map<string, cwPositionPtr>::iterator PosIt;
 
 	//Get Instrument Position
 	PosIt = CurrentPosMap.find(InstrumentID);
@@ -202,7 +202,7 @@ void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int 
 	for (auto WaitOrderIt = WaitOrderList.begin();
 		WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 	{
-		if (InstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
+		if (InstrumentID == (string)WaitOrderIt->second->InstrumentID)
 		{
 			if (CW_FTDC_D_Buy == WaitOrderIt->second->Direction)
 			{
@@ -223,7 +223,7 @@ void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int 
 		for (auto WaitOrderIt = WaitOrderList.begin();
 			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
-			if (InstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
+			if (InstrumentID == (string)WaitOrderIt->second->InstrumentID)
 			{
 				CancelOrder(WaitOrderIt->second);
 			}
@@ -243,7 +243,7 @@ void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int 
 				{
 					break;
 				}
-				if (InstrumentID == (std::string)WaitOrderIt->second->InstrumentID
+				if (InstrumentID == (string)WaitOrderIt->second->InstrumentID
 					&& CW_FTDC_D_Sell == WaitOrderIt->second->Direction)
 				{
 					if (iImbalance - WaitOrderIt->second->VolumeTotal >= 0)
@@ -268,7 +268,7 @@ void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int 
 				{
 					break;
 				}
-				if (InstrumentID == (std::string)WaitOrderIt->second->InstrumentID
+				if (InstrumentID == (string)WaitOrderIt->second->InstrumentID
 					&& CW_FTDC_D_Buy == WaitOrderIt->second->Direction)
 				{
 					if (iImbalance + WaitOrderIt->second->VolumeTotal <= 0)
@@ -484,7 +484,7 @@ void cwPandoraPositionAgent::DealExpectedPosition(std::string InstrumentID, int 
 	for (auto WaitOrderIt = WaitOrderList.begin();
 		WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 	{
-		if (InstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
+		if (InstrumentID == (string)WaitOrderIt->second->InstrumentID)
 		{
 			if (CW_FTDC_D_Buy == WaitOrderIt->second->Direction)
 			{

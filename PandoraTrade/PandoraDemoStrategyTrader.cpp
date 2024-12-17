@@ -69,10 +69,10 @@ cwFtdcAppIDType			m_szTdAppID;
 cwFtdcPasswordType		m_szTdAuthCode;
 char					m_szTdDllPath[MAX_PATH];
 
-std::vector<std::string> m_SubscribeInstrument;
+vector<string> m_SubscribeInstrument;
 
-std::string				m_strStrategyConfigFile;
-std::string				m_strHisDataFolder;
+string				m_strStrategyConfigFile;
+string				m_strHisDataFolder;
 
 
 #ifdef WIN32
@@ -94,7 +94,7 @@ bool ReadXmlConfigFile()
 {
 	char exeFullPath[MAX_PATH];
 	memset(exeFullPath, 0, MAX_PATH);
-	std::string strFullPath;
+	string strFullPath;
 #ifdef WIN32
 	WCHAR TexeFullPath[MAX_PATH] = { 0 };
 
@@ -308,7 +308,7 @@ int main()
 		return 0;
 	}
 #endif // WIN32
-	std::string strStrategyName = m_cwStategy.GetStrategyName();
+	string strStrategyName = m_cwStategy.GetStrategyName();
 
 	m_cwShow.AddLog("Welcome To Pandora Trader !!");
 	m_cwShow.AddLog("Powered By PandoraTrader:");
@@ -337,7 +337,7 @@ int main()
 
 
 	//设置mutex 防止一个程序开多个
-	std::string strAppMutexName;
+	string strAppMutexName;
 	strAppMutexName = m_szTdUserID;
 	strAppMutexName.append("_");
 	strAppMutexName += m_cwStategy.GetStrategyName().c_str();
@@ -392,9 +392,9 @@ int main()
 	m_mdCollector.RegisterTradeSPI(dynamic_cast<cwBasicTradeSpi*>(&m_TradeChannel));
 	m_mdCollector.RegisterStrategy(dynamic_cast<cwBasicStrategy*>(&m_cwStategy));
 
-	std::thread m_PriceServerThread = std::thread(PriceServerThread);
+	thread m_PriceServerThread = thread(PriceServerThread);
 
-	std::thread m_TradeServerThread = std::thread(TradeServerThread);
+	thread m_TradeServerThread = thread(TradeServerThread);
 
 
 	int iCnt = 0;

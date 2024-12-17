@@ -22,9 +22,9 @@ class cwChasingRisingStrategy :
 {
 public:
 	//获取策略版本号
-	virtual std::string  GetStrategyVersion();
+	virtual string  GetStrategyVersion();
 	//表示策略名称
-	virtual std::string  GetStrategyName();
+	virtual string  GetStrategyName();
 
 	//MarketData SPI
 	///行情更新
@@ -52,14 +52,14 @@ public:
 
 	///strategy parameter
 	//策略运行代号
-	std::string m_strStrategyName;
+	string m_strStrategyName;
 	//策略是否运行, can be modified by config file
 	bool		m_bStrategyRun;
 	//显示持仓，can be modified by config file
 	bool		m_bShowPosition;
 
-	std::string	m_strCurrentUpdateTime;
-	std::string	m_strExeFolderPath;
+	string	m_strCurrentUpdateTime;
+	string	m_strExeFolderPath;
 
 	struct StrategyParameter
 	{
@@ -73,7 +73,7 @@ public:
 		double		dStep;							//步长
 
 		//Instrument
-		std::string Instrument;				//次主力合约
+		string Instrument;				//次主力合约
 		cwOpenCloseMode OpenCloseMode;		//开平模式
 		int			OpenCancelLimit;			//开仓撤单次数限制
 		int			CloseCancelLimit;		//平仓撤单次数限制
@@ -94,7 +94,7 @@ public:
 
 		}
 	};
-	typedef std::shared_ptr<StrategyParameter>			StrategyParaPtr;
+	typedef shared_ptr<StrategyParameter>			StrategyParaPtr;
 
 	//Strategy Info Update By Strategy
 	struct RunningParameter
@@ -106,7 +106,7 @@ public:
 		double			basePrice;
 		double			dHighPx;
 		double			dLowPx;
-		std::string		strBaseTime;
+		string		strBaseTime;
 		bool			bFirst;
 
 		int				iTradeCnt;
@@ -123,14 +123,14 @@ public:
 		}
 
 	};
-	typedef std::shared_ptr<RunningParameter>			cwRunningParaPtr;
+	typedef shared_ptr<RunningParameter>			cwRunningParaPtr;
 
 
 	StrategyParameter									m_cwStrategyParameter;
 	cwRunningParaPtr									m_cwRunningParaPtr;
 
-	std::map<std::string, StrategyParaPtr>				m_StrategyParameterMap;		//key Instrument value:StrategyParameter
-	std::map<std::string, cwRunningParaPtr>				m_cwRunningParameterMap;	//key Instrument value Running Parameter
+	map<string, StrategyParaPtr>				m_StrategyParameterMap;		//key Instrument value:StrategyParameter
+	map<string, cwRunningParaPtr>				m_cwRunningParameterMap;	//key Instrument value Running Parameter
 
 
 	//Get Strategy Config

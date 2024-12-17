@@ -24,9 +24,9 @@ void cwDualTrust::OnBar(bool bFinished, int iTimeScale, cwBasicKindleStrategy::c
 
 	double hh = 0.0, hc = 0.0, lc = 0.0, ll = 0.0;
 	int iStart = 0, iEnd = pKindleSeries->GetKindleSize() - 1;
-	iStart = (std::max)(iStart, (int)(iEnd - days));
+	iStart = (max)(iStart, (int)(iEnd - days));
 
-	std::deque<cwKindleStickPtr> kindleList;
+	deque<cwKindleStickPtr> kindleList;
 	pKindleSeries->GetKindleSerise(kindleList);
 
 	for (int i = iStart; i < iEnd; i++)
@@ -65,8 +65,8 @@ void cwDualTrust::OnBar(bool bFinished, int iTimeScale, cwBasicKindleStrategy::c
 		}
 	}
 
-	double upper_bound = LastOpen + k1 * (std::max)(hh - lc, hc - ll);
-	double lower_bound = LastOpen - k2 * (std::max)(hh - lc, hc - ll);
+	double upper_bound = LastOpen + k1 * (max)(hh - lc, hc - ll);
+	double lower_bound = LastOpen - k2 * (max)(hh - lc, hc - ll);
 
 	int iPosition = GetStrategyPosition();
 

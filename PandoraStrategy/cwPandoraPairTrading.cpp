@@ -34,12 +34,12 @@ void cwPandoraPairTrading::PriceUpdate(cwMarketDataPtr pPriceData)
 	m_strCurrentUpdateTime = pPriceData->UpdateTime;
 
 	//更新行情数据
-	if (m_MainInstrumentID == (std::string)pPriceData->InstrumentID)
+	if (m_MainInstrumentID == (string)pPriceData->InstrumentID)
 	{
 		m_cwMainMarketData = pPriceData;
 	}
 
-	if (m_SubMainInstrumentID == (std::string)pPriceData->InstrumentID)
+	if (m_SubMainInstrumentID == (string)pPriceData->InstrumentID)
 	{
 		m_cwSubMainMarketData = pPriceData;
 	}
@@ -83,7 +83,7 @@ void cwPandoraPairTrading::OnReady()
 	}
 
 	//订阅行情
-	std::vector<std::string> SubscribeInstrument;
+	vector<string> SubscribeInstrument;
 
 	SubscribeInstrument.push_back(m_MainInstrumentID);
 	SubscribeInstrument.push_back(m_SubMainInstrumentID);
@@ -112,7 +112,7 @@ void cwPandoraPairTrading::DoManualSpread()
 	//获取撤单次数
 	int iSubMainCancelCount = GetInstrumentCancelCount(m_SubMainInstrumentID);
 	//定义需要处理的double精度
-	const double dInsEQ = (double)(std::min)(dMainTickSize, dSubMainTickSize) / 10.0;
+	const double dInsEQ = (double)(min)(dMainTickSize, dSubMainTickSize) / 10.0;
 
 
 	//每个交易时段开收盘一小段时间不交易
@@ -171,13 +171,13 @@ void cwPandoraPairTrading::DoManualSpread()
 
 	if (!bStrategyCanOpen)
 	{
-		std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
+		map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
 		GetActiveOrders(WaitOrderList);
 
 		for (auto WaitOrderIt = WaitOrderList.begin();
 			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
-			if (m_SubMainInstrumentID == (std::string)WaitOrderIt->second->InstrumentID)
+			if (m_SubMainInstrumentID == (string)WaitOrderIt->second->InstrumentID)
 			{
 				CancelOrder(WaitOrderIt->second);
 			}
@@ -185,8 +185,8 @@ void cwPandoraPairTrading::DoManualSpread()
 		return;
 	}
 
-	std::map<std::string, cwPositionPtr> CurrentPosMap;
-	std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
+	map<string, cwPositionPtr> CurrentPosMap;
+	map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
 	GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
 
 	int iMainPosition = 0, iSubMainPosition = 0;
@@ -245,7 +245,7 @@ void cwPandoraPairTrading::DoManualSpread()
 			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
 			bNeedCancel = true;
-			if (m_SubMainInstrumentID == (std::string)WaitOrderIt->second->InstrumentID
+			if (m_SubMainInstrumentID == (string)WaitOrderIt->second->InstrumentID
 				&& CW_FTDC_D_Buy == WaitOrderIt->second->Direction)
 			{
 				if (bNeedCancel
@@ -303,7 +303,7 @@ void cwPandoraPairTrading::DoManualSpread()
 			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
 			bNeedCancel = true;
-			if (m_SubMainInstrumentID == (std::string)WaitOrderIt->second->InstrumentID
+			if (m_SubMainInstrumentID == (string)WaitOrderIt->second->InstrumentID
 				&& CW_FTDC_D_Buy == WaitOrderIt->second->Direction)
 			{
 				if (bNeedCancel
@@ -370,7 +370,7 @@ void cwPandoraPairTrading::DoManualSpread()
 			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
 			bNeedCancel = true;
-			if (m_SubMainInstrumentID == (std::string)WaitOrderIt->second->InstrumentID
+			if (m_SubMainInstrumentID == (string)WaitOrderIt->second->InstrumentID
 				&& CW_FTDC_D_Sell == WaitOrderIt->second->Direction)
 			{
 				if (bNeedCancel
@@ -426,7 +426,7 @@ void cwPandoraPairTrading::DoManualSpread()
 			WaitOrderIt != WaitOrderList.end(); WaitOrderIt++)
 		{
 			bNeedCancel = true;
-			if (m_SubMainInstrumentID == (std::string)WaitOrderIt->second->InstrumentID
+			if (m_SubMainInstrumentID == (string)WaitOrderIt->second->InstrumentID
 				&& CW_FTDC_D_Sell == WaitOrderIt->second->Direction)
 			{
 				if (bNeedCancel

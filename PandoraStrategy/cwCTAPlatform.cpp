@@ -5,7 +5,7 @@
 
 #ifndef cwDouble_EQ
 #include <limits>
-#define cwDouble_EQ (std::numeric_limits<double>::epsilon())
+#define cwDouble_EQ (numeric_limits<double>::epsilon())
 #endif // !cwDouble_EQ
 
 
@@ -25,14 +25,14 @@ cwCTAPlatform::~cwCTAPlatform()
 {
 }
 
-std::string cwCTAPlatform::GetStrategyVersion()
+string cwCTAPlatform::GetStrategyVersion()
 {
 	return "20230926_v1.1";
 }
 
-std::string cwCTAPlatform::GetStrategyName()
+string cwCTAPlatform::GetStrategyName()
 {
-	std::string strStrategyName("cwCTAPlatform");
+	string strStrategyName("cwCTAPlatform");
 	if (m_strStrategyName.size() > 0)
 	{
 		strStrategyName.append("_");
@@ -309,7 +309,7 @@ void cwCTAPlatform::InitialStrategy(const char* pConfigFilePath)
 
 	{
 		int iRet = cwPandoraFs::GetExePath(m_strWorkingPath);
-		std::size_t found = m_strWorkingPath.find_last_of("/\\");
+		size_t found = m_strWorkingPath.find_last_of("/\\");
 		m_strWorkingPath = m_strWorkingPath.substr(0, found);
 
 		if (iRet == 0)
@@ -338,7 +338,7 @@ void cwCTAPlatform::InitialStrategy(const char* pConfigFilePath)
 		WideCharToMultiByte(CP_ACP, 0, TexeFullPath, -1, exeFullPath, iLength, NULL, NULL);
 
 		m_strConfigFileFullPath = exeFullPath;
-		std::size_t found = m_strConfigFileFullPath.find_last_of("/\\");
+		size_t found = m_strConfigFileFullPath.find_last_of("/\\");
 		m_strConfigFileFullPath = m_strConfigFileFullPath.substr(0, found);
 		m_strConfigFileFullPath.append("\\CTAPlatformConfig.xml");
 #else
@@ -350,7 +350,7 @@ void cwCTAPlatform::InitialStrategy(const char* pConfigFilePath)
 		}
 
 		m_strConfigFileFullPath = exeFullPath;
-		std::size_t found = m_strConfigFileFullPath.find_last_of("/\\");
+		size_t found = m_strConfigFileFullPath.find_last_of("/\\");
 		m_strConfigFileFullPath = m_strConfigFileFullPath.substr(0, found);
 		m_strConfigFileFullPath.append("/CTAPlatformConfig.xml");
 #endif		
@@ -432,7 +432,7 @@ void cwCTAPlatform::InitialStrategy(const char* pConfigFilePath)
 		
 	}
 
-	MergeStrategyPosition(std::string());
+	MergeStrategyPosition(string());
 
 	WriteSignalToFile();
 	WriteNetAssetValueToFile();
@@ -466,7 +466,7 @@ bool cwCTAPlatform::IsNearDeliverDateWarning(const char* szInstrumentID)
 int cwCTAPlatform::GetTradingDayRemainWarning(const char* szInstrumentID)
 {
 	auto pProductID = GetProductID(szInstrumentID);
-	return cwPandoraTrader::GetcwTradingDayRemainWarning(pProductID == nullptr ? "" : (std::string)(pProductID));
+	return cwPandoraTrader::GetcwTradingDayRemainWarning(pProductID == nullptr ? "" : (string)(pProductID));
 }
 
 bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDisPlay/*= true*/)
@@ -534,7 +534,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 	{
 		int iTemp;
 		double dbTemp;
-		std::string strTemp;
+		string strTemp;
 
 
 		//Save config file Lastest Changed time
@@ -672,7 +672,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 				}
 
 				ParaPtr.reset(new StrategyParameter());
-				ParaPtr->StrategyName = std::move(strTemp);
+				ParaPtr->StrategyName = move(strTemp);
 
 				TiXmlNode* TempNode = SubChildNode->FirstChild("Kindle");
 				if (TempNode != NULL)
@@ -705,7 +705,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 					ParaPtr->StrategyID.append("_");
 					ParaPtr->StrategyID.append(ParaPtr->InstrumentID);
 					ParaPtr->StrategyID.append("_");
-					ParaPtr->StrategyID.append(std::to_string(ParaPtr->iTimeScale));
+					ParaPtr->StrategyID.append(to_string(ParaPtr->iTimeScale));
 
 
 					if (TIXML_SUCCESS != Element->QueryBoolAttribute("Index", &loadOkay))
@@ -733,7 +733,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 				if (it == m_StrategyParameterMap.end()
 					|| it->second.get() == NULL)
 				{
-					it = m_StrategyParameterMap.insert(std::pair<std::string, StrategyParaPtr>(ParaPtr->StrategyID, ParaPtr)).first;
+					it = m_StrategyParameterMap.insert(pair<string, StrategyParaPtr>(ParaPtr->StrategyID, ParaPtr)).first;
 				}
 				else
 				{
@@ -776,7 +776,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 					for (int i = 1; i < 50; i++)
 					{
 						strTemp = "P";
-						strTemp += std::to_string(i);
+						strTemp += to_string(i);
 
 						if (TIXML_SUCCESS != Element->QueryDoubleAttribute(strTemp.c_str(), &dbTemp))
 						{
@@ -834,7 +834,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 					|| it->second.get() == NULL)
 				{
 					ParaPtr.reset(new TradeParameter());
-					it = m_TradeParameterMap.insert(std::pair<std::string, TradeParaPtr>(strTemp, ParaPtr)).first;
+					it = m_TradeParameterMap.insert(pair<string, TradeParaPtr>(strTemp, ParaPtr)).first;
 				}
 				else
 				{
@@ -1012,7 +1012,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 		if (ChildNode != NULL)
 		{
 			ManualInterventionPtr ParaPtr;
-			std::string				strStrategyID;
+			string				strStrategyID;
 
 			TiXmlNode* SubChildNode = ChildNode->FirstChild("Strategy");
 			while (SubChildNode != NULL)
@@ -1035,7 +1035,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 					|| it->second.get() == NULL)
 				{
 					ParaPtr.reset(new ManualIntervention());
-					it = m_ManualinterventionMap.insert(std::pair<std::string, ManualInterventionPtr>(strStrategyID, ParaPtr)).first;
+					it = m_ManualinterventionMap.insert(pair<string, ManualInterventionPtr>(strStrategyID, ParaPtr)).first;
 				}
 				else
 				{
@@ -1096,7 +1096,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 		if (ChildNode != NULL)
 		{
 			DirectionMaskPtr ParaPtr;
-			std::string				strStrategyID;
+			string				strStrategyID;
 
 			TiXmlNode* SubChildNode = ChildNode->FirstChild("Strategy");
 			while (SubChildNode != NULL)
@@ -1119,7 +1119,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 					|| it->second.get() == NULL)
 				{
 					ParaPtr.reset(new DirectionMask());
-					it = m_DirectionMaskMap.insert(std::pair<std::string, DirectionMaskPtr>(strStrategyID, ParaPtr)).first;
+					it = m_DirectionMaskMap.insert(pair<string, DirectionMaskPtr>(strStrategyID, ParaPtr)).first;
 				}
 				else
 				{
@@ -1209,7 +1209,7 @@ bool cwCTAPlatform::ReadXmlConfigFile(const char * pConfigFilePath, bool bNeedDi
 	return true;
 }
 
-bool cwCTAPlatform::AddStrategyToPools(std::string strStrategyID, cwBasicCTAStrategy * pCTAStrategy, StrategyParaPtr pPara)
+bool cwCTAPlatform::AddStrategyToPools(string strStrategyID, cwBasicCTAStrategy * pCTAStrategy, StrategyParaPtr pPara)
 {
 	CTAStrategyInfoPtr pStrategyInfo(new CTAStrategyInfo());
 
@@ -1217,12 +1217,12 @@ bool cwCTAPlatform::AddStrategyToPools(std::string strStrategyID, cwBasicCTAStra
 	pStrategyInfo->_StrategyID = strStrategyID;
 	pStrategyInfo->_pParameter = pPara;
 
-	auto ret = m_NameCTAStrategy.insert(std::pair<std::string, CTAStrategyInfoPtr>(strStrategyID, pStrategyInfo));
+	auto ret = m_NameCTAStrategy.insert(pair<string, CTAStrategyInfoPtr>(strStrategyID, pStrategyInfo));
 	m_cwShow.AddLog("Add Strategy:%s To Pools", strStrategyID.c_str());
 	return ret.second;
 }
 
-void cwCTAPlatform::SetKindle(std::string strStrategyID, bool bIndex, const char* szInstrumentID, int iTimeScale, int HisKindleCount)
+void cwCTAPlatform::SetKindle(string strStrategyID, bool bIndex, const char* szInstrumentID, int iTimeScale, int HisKindleCount)
 {
 	cwEasyStrategyLog log(m_StrategyLog, "SetKindle");
 
@@ -1303,7 +1303,7 @@ void cwCTAPlatform::SetKindle(std::string strStrategyID, bool bIndex, const char
 	}
 	int iCount = (int)pKindle->GetKindleSize();
 
-	cwKindleStickPtr pTmpKindle  = std::make_shared<cwKindleStick>();
+	cwKindleStickPtr pTmpKindle  = make_shared<cwKindleStick>();
 
 	for (int i = 0; i < iCount; i++)
 	{
@@ -1356,7 +1356,7 @@ void cwCTAPlatform::SetKindle(std::string strStrategyID, bool bIndex, const char
 		pStrategyInfo->_pStrategy->m_cwEvaluator.m_dSharpeRatio);
 }
 
-double cwCTAPlatform::MergeStrategyPosition(std::string InstrumentID)
+double cwCTAPlatform::MergeStrategyPosition(string InstrumentID)
 {
 	double dPosition = 0;
 	if (InstrumentID.size() == 0)
@@ -1409,7 +1409,7 @@ double cwCTAPlatform::MergeStrategyPosition(std::string InstrumentID)
 	return dPosition;
 }
 
-cwInstrumentDataPtr cwCTAPlatform::GetFirstInstrumentData(std::string ProductID)
+cwInstrumentDataPtr cwCTAPlatform::GetFirstInstrumentData(string ProductID)
 {
 	for (auto it = m_InstrumentMap.begin();
 		it != m_InstrumentMap.end(); it++)
@@ -1426,11 +1426,11 @@ cwInstrumentDataPtr cwCTAPlatform::GetFirstInstrumentData(std::string ProductID)
 
 void cwCTAPlatform::WriteSignalToFile()
 {
-	std::ofstream wfile;//写文件流;
+	ofstream wfile;//写文件流;
 
 	cwAUTOMUTEX mt(m_ParameterMutex, true);
 
-	wfile.open("SignalPosition.log", std::ios::trunc);
+	wfile.open("SignalPosition.log", ios::trunc);
 	wfile << m_strCurrentUpdateTime.c_str() << "InstrumentID,StrategyName,Position\n";
 	if (wfile.is_open())
 	{
@@ -1455,7 +1455,7 @@ void cwCTAPlatform::WriteSignalToFile()
 
 		}
 
-		wfile << std::endl;
+		wfile << endl;
 		wfile.close();
 	}
 
@@ -1463,9 +1463,9 @@ void cwCTAPlatform::WriteSignalToFile()
 
 void cwCTAPlatform::WriteNetAssetValueToFile()
 {
-	std::ofstream wfile;//写文件流;
+	ofstream wfile;//写文件流;
 
-	std::map<std::uint64_t, std::unordered_map<std::string, cwBasicCTAStrategy::TimeBalanceDataPtr>> BalanceSeries;
+	map<uint64_t, unordered_map<string, cwBasicCTAStrategy::TimeBalanceDataPtr>> BalanceSeries;
 
 	cwAUTOMUTEX mt(m_ParameterMutex, true);
 
@@ -1473,14 +1473,14 @@ void cwCTAPlatform::WriteNetAssetValueToFile()
 		it != m_NameCTAStrategy.end(); it++)
 	{
 			
-		std::string	strFile = m_strWorkingPath + it->second->_pStrategy->GetStrategyName();
+		string	strFile = m_strWorkingPath + it->second->_pStrategy->GetStrategyName();
 #ifdef WIN32
 		strFile.append("\\");
 #else
 		strFile.append("/");
 #endif
 		strFile += "NetAssetValue.csv";
-		wfile.open(strFile.c_str(), std::ios::trunc);
+		wfile.open(strFile.c_str(), ios::trunc);
 		wfile << m_strCurrentUpdateTime.c_str() << "DateTime,TimeStamp,Balance,MaxFundUsed,NetAsset\n";
 
 		for (auto TBit = it->second->_pStrategy->m_dTimeBalanceDQ.begin();
@@ -1497,20 +1497,20 @@ void cwCTAPlatform::WriteNetAssetValueToFile()
 		wfile.close();
 	}
 
-	std::string	strFile = m_strWorkingPath;
+	string	strFile = m_strWorkingPath;
 
 	strFile += "TotalNetAssetValue.csv";
-	wfile.open(strFile.c_str(), std::ios::trunc);
+	wfile.open(strFile.c_str(), ios::trunc);
 	wfile << m_strCurrentUpdateTime.c_str() << "DateTime,TimeStamp,Balance,MaxFundUsed,NetAsset\n";
 
-	std::map<std::string, cwBasicCTAStrategy::TimeBalanceDataPtr> LastestTBDMap;
+	map<string, cwBasicCTAStrategy::TimeBalanceDataPtr> LastestTBDMap;
 
 	cwNetValueEvaluation netValueEvaluator;
 	for (auto BsIt = BalanceSeries.begin();
 		BsIt != BalanceSeries.end(); BsIt++)
 	{
-		std::string strDateTime;
-		std::uint64_t iTimeStamp;
+		string strDateTime;
+		uint64_t iTimeStamp;
 		double dTotalBalance = 0.0, dTotalFundOccupied = 0.0;
 
 		for (auto it = BsIt->second.begin();
@@ -1615,12 +1615,12 @@ bool cwCTAPlatform::GetParameter(const char * szInstrumentID,
 	return true;
 }
 
-int cwCTAPlatform::GetExpectedPosition(std::string InstrumentID, TradeParameter& cwTradeParameter)
+int cwCTAPlatform::GetExpectedPosition(string InstrumentID, TradeParameter& cwTradeParameter)
 {
 
 	int iExpectedMaintain = 0;
 
-	std::string SignalInstrumentID = cwTradeParameter.SignalInstrumentID;
+	string SignalInstrumentID = cwTradeParameter.SignalInstrumentID;
 	//Get ExpectedMaintain
 	auto StrategySignalPosIt = m_cwStrategyPositionMap.find(SignalInstrumentID);
 	if (StrategySignalPosIt != m_cwStrategyPositionMap.end())

@@ -23,7 +23,7 @@ public:
 #ifdef _MSC_VER
 #pragma region CommenDefine
 #endif // _MSC_VER
-	typedef std::shared_ptr<cwPandoraPositionAgent>		cwPositionAgentPtr;
+	typedef shared_ptr<cwPandoraPositionAgent>		cwPositionAgentPtr;
 
 	enum cwPandoraAgentEnum : int
 	{
@@ -42,16 +42,16 @@ public:
 		cwPandoraAgentEnum			AgentType;			//代理人类型
 		cwPositionAgentPtr			pPositionAgent;		//持仓管理代理人
 	};
-	typedef std::shared_ptr<cwAgentData> cwAgentDataPtr;
+	typedef shared_ptr<cwAgentData> cwAgentDataPtr;
 #ifdef _MSC_VER
 #pragma endregion
 #endif
 
-	cwAgentDataPtr			RegisterAgent(std::string instrumentid, cwPandoraAgentEnum agentEnum);
+	cwAgentDataPtr			RegisterAgent(string instrumentid, cwPandoraAgentEnum agentEnum);
 
 public:
 	//key InstrumentID, key :AgentID value:agentData
-	std::unordered_map<std::string, std::unordered_map<int, cwAgentDataPtr>>		m_cwPandoraAgentDataMap;
+	unordered_map<string, unordered_map<int, cwAgentDataPtr>>		m_cwPandoraAgentDataMap;
 
 };
 

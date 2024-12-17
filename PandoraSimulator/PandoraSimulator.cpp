@@ -49,9 +49,9 @@ cwSimMdSpi				m_mdCollector;
 cwSimTradeSpi			m_TradeChannel;
 cwStrategyDemo			m_Strategy;
 
-std::vector<std::string> m_SubscribeInstrument;
+vector<string> m_SubscribeInstrument;
 
-std::string				m_strStrategyConfigFile;
+string				m_strStrategyConfigFile;
 
 unsigned int PriceServerThread()
 {
@@ -83,7 +83,7 @@ int main()
 {
 	char exeFullPath[MAX_PATH];
 	memset(exeFullPath, 0, MAX_PATH);
-	std::string strFullPath;
+	string strFullPath;
 #ifdef WIN32
 	WCHAR TexeFullPath[MAX_PATH] = { 0 };
 
@@ -129,7 +129,7 @@ int main()
 	m_mdCollector.RegisterTradeSPI(dynamic_cast<cwBasicTradeSpi*>(&m_TradeChannel));
 	m_mdCollector.RegisterStrategy(dynamic_cast<cwBasicStrategy*>(&m_Strategy));
 
-	std::thread m_PriceServerThread = std::thread(PriceServerThread);
+	thread m_PriceServerThread = thread(PriceServerThread);
 
 	while (true)
 	{

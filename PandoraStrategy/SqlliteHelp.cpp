@@ -9,7 +9,7 @@ sqlite3* SqlliteHelp::OpenDatabase(const char* dbFilePath)
 
     // 打开数据库
     if (sqlite3_open(dbFilePath, &db) != SQLITE_OK) {
-        std::cerr << "Error opening database." << std::endl;
+        cerr << "Error opening database." << endl;
         return nullptr;
     }
 
@@ -27,10 +27,10 @@ void SqlliteHelp::CreateTable(sqlite3* db) {
     const char* createTableSQL = "CREATE TABLE IF NOT EXISTS Users (Id INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Age INTEGER);";
 
     if (sqlite3_exec(db, createTableSQL, nullptr, nullptr, nullptr) != SQLITE_OK) {
-        std::cerr << "Error creating table." << std::endl;
+        cerr << "Error creating table." << endl;
     }
     else {
-        std::cout << "Table created or already exists." << std::endl;
+        cout << "Table created or already exists." << endl;
     }
 }
 
@@ -46,10 +46,10 @@ void SqlliteHelp::InsertData(sqlite3* db, const char* name, int age) {
 
         // 执行语句
         if (sqlite3_step(statement) != SQLITE_DONE) {
-            std::cerr << "Error inserting data." << std::endl;
+            cerr << "Error inserting data." << endl;
         }
         else {
-            std::cout << "Data inserted." << std::endl;
+            cout << "Data inserted." << endl;
         }
 
         // 释放资源
@@ -63,13 +63,13 @@ void SqlliteHelp::QueryData(sqlite3* db) {
     sqlite3_stmt* statement;
 
     if (sqlite3_prepare_v2(db, queryDataSQL, -1, &statement, nullptr) == SQLITE_OK) {
-        std::cout << "Id\tName\tAge" << std::endl;
+        cout << "Id\tName\tAge" << endl;
 
         // 遍历结果集
         while (sqlite3_step(statement) == SQLITE_ROW) {
-            std::cout << sqlite3_column_int(statement, 0) << "\t"
+            cout << sqlite3_column_int(statement, 0) << "\t"
                 << sqlite3_column_text(statement, 1) << "\t"
-                << sqlite3_column_int(statement, 2) << std::endl;
+                << sqlite3_column_int(statement, 2) << endl;
         }
 
         // 释放资源
@@ -90,10 +90,10 @@ void SqlliteHelp::UpdateData(sqlite3* db, int id, const char* name, int age) {
 
         // 执行语句
         if (sqlite3_step(statement) != SQLITE_DONE) {
-            std::cerr << "Error updating data." << std::endl;
+            cerr << "Error updating data." << endl;
         }
         else {
-            std::cout << "Data updated." << std::endl;
+            cout << "Data updated." << endl;
         }
 
         // 释放资源
@@ -112,10 +112,10 @@ void SqlliteHelp::DeleteData(sqlite3* db, int id) {
 
         // 执行语句
         if (sqlite3_step(statement) != SQLITE_DONE) {
-            std::cerr << "Error deleting data." << std::endl;
+            cerr << "Error deleting data." << endl;
         }
         else {
-            std::cout << "Data deleted." << std::endl;
+            cout << "Data deleted." << endl;
         }
 
         // 释放资源

@@ -23,7 +23,7 @@ public:
 	cwMarketDataReceiver();
 	~cwMarketDataReceiver();
 
-	std::string  GetStrategyName();
+	string  GetStrategyName();
 
 	//MarketData SPI
 	///行情更新
@@ -44,11 +44,11 @@ public:
 	void InitialStrategy(const char * pConfigFilePath);
 
 
-	std::string	m_strCurrentUpdateTime;
+	string	m_strCurrentUpdateTime;
 
 	///strategy parameter
 	//策略运行代号
-	std::string m_strStrategyName;		
+	string m_strStrategyName;		
 	//策略是否运行
 	bool		m_bStrategyRun;					
 
@@ -56,14 +56,14 @@ public:
 private:
 	cwStrategyLog										m_StrategyLog;
 
-	std::unordered_map<std::string, uint64_t>			m_TotalVolume;
-	std::unordered_map<std::string, double>				m_TotalTurnOver;
+	unordered_map<string, uint64_t>			m_TotalVolume;
+	unordered_map<string, double>				m_TotalTurnOver;
 
-	std::unordered_map<std::string, bool>				m_bHasFirstQuotes;
+	unordered_map<string, bool>				m_bHasFirstQuotes;
 
-	std::map<std::string, std::string>					m_HisMdFileIndex;
+	map<string, string>					m_HisMdFileIndex;
 
-	std::string											m_strCurrentMdFilePath;
-	std::string											m_strdateIndexId;
+	string											m_strCurrentMdFilePath;
+	string											m_strdateIndexId;
 };
 

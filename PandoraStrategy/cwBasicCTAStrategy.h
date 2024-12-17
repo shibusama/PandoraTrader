@@ -75,18 +75,18 @@ public:
 
 	struct TimeBalanceData
 	{
-		std::string		strDateTime;			//时间字符串
-		std::uint64_t	iTimeStamp;				//时间戳
+		string		strDateTime;			//时间字符串
+		uint64_t	iTimeStamp;				//时间戳
 		double			dBalance;				//总盈亏
 		double			dMaxFundOccupied;		//最大资金占用
 		double			dNetAsset;				//净值
 	};
-	typedef std::shared_ptr<TimeBalanceData> TimeBalanceDataPtr;
+	typedef shared_ptr<TimeBalanceData> TimeBalanceDataPtr;
 
 
 	struct EvaluatorTimeSeriesData
 	{
-		std::uint64_t	iTimeStamp;
+		uint64_t	iTimeStamp;
 		double			dNetAsset;					//净值曲线
 		double			dTradingYears;				//累计交易年限（自然日计算）
 		double          dIRR;						//年化复利
@@ -118,23 +118,23 @@ public:
 	void		 SetStrategyPosition(int iPosition, char * szInstrumentID = nullptr);
 	int			 GetStrategyPosition(char* szInstrumentID = nullptr);
 
-	double		 GetEntryPrice(std::string InstrumentID);
-	size_t		 GetEntryIndex(std::string InstrumentID);
-	const char * GetEntryTime(std::string InstrumentID);
+	double		 GetEntryPrice(string InstrumentID);
+	size_t		 GetEntryIndex(string InstrumentID);
+	const char * GetEntryTime(string InstrumentID);
 
-	std::unordered_map<std::string,int>			m_iStrategyPositionMap;
+	unordered_map<string,int>			m_iStrategyPositionMap;
 
 	cwCTAParaField			m_StrategyPara;
-	std::string				m_strDealInstrument;
+	string				m_strDealInstrument;
 
 	cwInstrumentDataPtr		m_pInstrument;
 	//
 	void					_PreOnBar(bool bFinished, int iTimeScale, cwBasicKindleStrategy::cwKindleSeriesPtr pKindleSeries);
 	void                    UpdateEvaluator(double dCurrentMoneyUsed, double dCurrentTotalProfit,
-											std::string str_time, std::uint64_t timeStamp, double dExpectedRet);
+											string str_time, uint64_t timeStamp, double dExpectedRet);
 
 protected:
-	std::string				m_strStrategyName;
+	string				m_strStrategyName;
 
 #ifdef CW_NEED_STRATEGY_LOG
 public:
@@ -145,21 +145,21 @@ private:
 	cwStrategyLog			m_StrategyTradeListLog;
 
 	//
-	std::unordered_map<std::string, double>			m_dEntryPrice;
-	std::unordered_map<std::string, size_t>			m_iEntryIndex;
-	std::unordered_map<std::string, std::string>	m_strEntryTime;
+	unordered_map<string, double>			m_dEntryPrice;
+	unordered_map<string, size_t>			m_iEntryIndex;
+	unordered_map<string, string>	m_strEntryTime;
 public:
 	double					m_dLastPrice;			//当前价格
 	size_t					m_iLastIndex;			//当前k线数
-	std::string				m_strLastUpdateTime;	//当前行情时间
+	string				m_strLastUpdateTime;	//当前行情时间
 
 	//用于记录策略净值变化
 	cwSettlement									m_cwSettlement;
-	std::deque<TimeBalanceDataPtr>					m_dTimeBalanceDQ;//采用push back方法增加元素
+	deque<TimeBalanceDataPtr>					m_dTimeBalanceDQ;//采用push back方法增加元素
 	
 
 	//策略评价器
 	cwNetValueEvaluation                            m_cwEvaluator;
-	std::deque< EvaluatorTimeSeriesData>            m_dEvaluatorDQ;//策略评价数据记录
+	deque< EvaluatorTimeSeriesData>            m_dEvaluatorDQ;//策略评价数据记录
 };
 
