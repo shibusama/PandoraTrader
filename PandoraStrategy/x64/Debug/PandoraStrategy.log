@@ -1,12 +1,1451 @@
-﻿  cwCTAPlatform.cpp
+﻿  cwBasicCTAStrategy.cpp
+  cwChasingRisingStrategy.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(78,11): error C3646: “strDateTime”: 未知重写说明符
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(78,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,56): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(121,25): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(122,25): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(123,28): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,52): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(128,12): error C3646: “m_strDealInstrument”: 未知重写说明符
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(128,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(134,12): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(137,12): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(137,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,47): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,47): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,46): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(154,12): error C3646: “m_strLastUpdateTime”: 未知重写说明符
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(154,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,48): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,59): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(116,49): error C2065: “m_strStrategyName”: 未声明的标识符
+  (编译源文件“cwBasicCTAStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(6,4): error C2614: “cwBasicCTAStrategy”: 非法的成员初始化:“m_strStrategyName”不是基或成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(26,2): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(43,81): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(46,3): error C2065: “TimeBalanceDataPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(46,22): error C2146: 语法错误: 缺少“;”(在标识符“tbdPtr”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(46,22): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(46,31): error C2065: “make_shared”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(46,43): error C2275: “cwBasicCTAStrategy::TimeBalanceData”: 应为表达式而不是类型
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(46,60): error C2059: 语法错误:“)”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(47,3): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(47,25): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(48,3): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(49,3): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(50,3): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(51,3): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(53,3): error C2065: “m_dTimeBalanceDQ”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(53,30): error C2065: “tbdPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(58,96): error C2061: 语法错误: 标识符“string”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(60,41): error C2065: “timeStamp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(82,2): error C2065: “m_dEvaluatorDQ”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(87,2): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(87,9): error C2146: 语法错误: 缺少“;”(在标识符“InstrumentID”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(87,9): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(90,3): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(90,18): error C2065: “m_strDealInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(94,3): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(96,13): error C2065: “m_iStrategyPositionMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(96,43): error C2065: “pair”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(96,48): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(96,56): error C2062: 意外的类型“int” 
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(97,6): error C3536: “ret”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(101,4): error C2065: “m_dEntryPrice”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(101,18): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(102,4): error C2065: “m_iEntryIndex”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(102,18): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(103,4): error C2065: “m_strEntryTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(103,19): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(103,35): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(105,31): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(117,31): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(122,5): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(122,27): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(128,4): error C2065: “m_dEntryPrice”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(128,18): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(129,4): error C2065: “m_iEntryIndex”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(129,18): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(130,4): error C2065: “m_strEntryTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(130,19): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(130,35): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(133,30): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(139,3): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(139,25): error C2065: “m_strLastUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(144,2): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(144,9): error C2146: 语法错误: 缺少“;”(在标识符“InstrumentID”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(144,9): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(147,3): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(147,18): error C2065: “m_strDealInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(151,3): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(153,12): error C2065: “m_iStrategyPositionMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(153,45): error C2065: “InstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(153,40): error C3861: “move”: 找不到标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(154,6): error C3536: “it”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(154,12): error C2065: “m_iStrategyPositionMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(161,28): error C2761: “double cwBasicCTAStrategy::GetEntryPrice(void)”: 不允许重新声明成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(161,42): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(161,49): error C2146: 语法错误: 缺少“)”(在标识符“InstrumentID”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(162,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(162,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(171,28): error C2761: “size_t cwBasicCTAStrategy::GetEntryIndex(void)”: 不允许重新声明成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(171,42): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(171,49): error C2146: 语法错误: 缺少“)”(在标识符“InstrumentID”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(172,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(172,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(181,34): error C2761: “const char *cwBasicCTAStrategy::GetEntryTime(void)”: 不允许重新声明成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(181,47): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(181,54): error C2146: 语法错误: 缺少“)”(在标识符“InstrumentID”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(182,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(182,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.cpp(182,1): error C1003: 错误计数超过 100；正在停止编译
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(25,18): error C3646: “GetStrategyVersion”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(25,37): error C2059: 语法错误:“)”
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(25,38): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(27,18): error C3646: “GetStrategyName”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(27,34): error C2059: 语法错误:“)”
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(27,35): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(55,9): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(55,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(61,9): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(61,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(62,9): error C3646: “m_strExeFolderPath”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(62,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(76,10): error C3646: “Instrument”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(76,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(97,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(97,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(97,57): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(109,11): error C3646: “strBaseTime”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(109,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(126,20): error C2059: 语法错误:“<”
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(126,57): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(130,27): error C3646: “m_cwRunningParaPtr”: 未知重写说明符
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(130,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(132,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(132,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(132,56): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(133,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(133,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(133,58): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwChasingRisingStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(6,33): error C2143: 语法错误: 缺少“;”(在“cwBasicStrategy::GetStrategyVersion”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(6,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(6,33): error C2509: “GetStrategyVersion”: 成员函数没有在“cwChasingRisingStrategy”中声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(20,7):
+      参见“cwChasingRisingStrategy”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(12,33): error C2143: 语法错误: 缺少“;”(在“cwBasicStrategy::GetStrategyName”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(12,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(12,1): error C2086: “int string”: 重定义
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(6,1):
+      参见“string”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(12,33): error C2509: “GetStrategyName”: 成员函数没有在“cwChasingRisingStrategy”中声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.h(20,7):
+      参见“cwChasingRisingStrategy”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(30,2): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(43,2): error C2065: “m_cwRunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(69,2): error C2065: “m_cwRunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(76,2): error C2065: “vector”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(76,17): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(78,17): error C2065: “m_StrategyParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(79,3): error C3536: “it”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(79,9): error C2065: “m_StrategyParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(81,3): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(84,17): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(108,2): error C2065: “m_strExeFolderPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(109,17): error C2065: “m_strExeFolderPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(110,2): error C2065: “m_strExeFolderPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(110,23): error C2065: “m_strExeFolderPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(127,29): error C2065: “m_strExeFolderPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(256,3): error C2065: “m_strStrategyName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(261,10): error C2146: 语法错误: 缺少“;”(在标识符“strTemp”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(261,10): error C2065: “strTemp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(263,3): error C2065: “StrategyParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(263,19): error C2146: 语法错误: 缺少“;”(在标识符“ParaPtr”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(263,19): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(264,3): error C2065: “cwRunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(264,20): error C2146: 语法错误: 缺少“;”(在标识符“RunningParaPtr”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(264,20): error C2065: “RunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(265,3): error C2065: “map”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(265,15): error C2065: “StrategyParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(265,33): error C2039: "iterator": 不是 "`global namespace'" 的成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(265,33): error C2065: “iterator”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(265,42): error C2146: 语法错误: 缺少“;”(在标识符“it”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(265,42): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(283,6): error C2065: “strTemp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(289,5): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(289,10): error C2065: “m_StrategyParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(289,38): error C2065: “strTemp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(290,9): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(290,15): error C2065: “m_StrategyParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(291,9): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(293,6): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(294,6): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(294,11): error C2065: “m_StrategyParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(294,41): error C2065: “pair”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(294,54): error C2065: “StrategyParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(294,71): error C2065: “strTemp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(294,80): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(296,6): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(296,19): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(300,6): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(300,16): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(303,5): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(303,27): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(306,23): error C2065: “m_cwRunningParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(306,52): error C2065: “strTemp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(307,10): error C3536: “RunningIt”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(307,23): error C2065: “m_cwRunningParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(310,7): error C2065: “RunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(311,19): error C2065: “m_cwRunningParameterMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(311,50): error C2065: “pair”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(311,63): error C2065: “cwRunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(311,81): error C2065: “strTemp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(311,90): error C2065: “RunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(313,27): error C2065: “RunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(318,7): error C2065: “RunningParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(324,24): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(329,9): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(329,28): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(331,76): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(331,100): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(332,7): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(337,6): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(342,19): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(347,9): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(347,28): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(349,74): error C2065: “it”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(349,98): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(350,7): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(355,6): error C2065: “ParaPtr”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwChasingRisingStrategy.cpp(355,6): error C1003: 错误计数超过 100；正在停止编译
+  cwCTAPlatform.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(78,11): error C3646: “strDateTime”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(78,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,56): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(121,25): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(122,25): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(123,28): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,52): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(128,12): error C3646: “m_strDealInstrument”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(128,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(134,12): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(137,12): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(137,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,47): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,47): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,46): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(154,12): error C3646: “m_strLastUpdateTime”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(154,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,48): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,59): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(116,49): error C2065: “m_strStrategyName”: 未声明的标识符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,12): error C3646: “m_strInstrumentID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(43,32): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,12): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,64): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(43,24): error C3646: “pPositionAgent”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(43,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(45,20): error C2059: 语法错误:“<”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(45,48): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,19): error C3646: “RegisterAgent”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,32): error C2059: 语法错误:“(”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,83): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,84): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(34,10): error C3646: “StrategyID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(34,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(36,10): error C3646: “StrategyName”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(36,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(40,10): error C3646: “InstrumentID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(40,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(111,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(111,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(111,57): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(118,10): error C3646: “InstrumentID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(118,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(119,10): error C3646: “SignalInstrumentID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(119,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(160,20): error C2059: 语法错误:“<”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(160,52): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(166,10): error C3646: “StrategyID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(166,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(168,10): error C3646: “SignalID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(168,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(178,20): error C2059: 语法错误:“<”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(178,64): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(182,10): error C3646: “StrategyID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(182,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(184,10): error C3646: “SignalID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(184,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(199,20): error C2059: 语法错误:“<”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(199,54): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(203,10): error C3646: “InstrumentID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(203,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(204,10): error C3646: “StrategyName”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(204,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(246,13): error C3646: “_StrategyID”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(246,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(247,21): error C3646: “_pParameter”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(247,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(249,20): error C2059: 语法错误:“<”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(249,60): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(254,18): error C3646: “GetStrategyVersion”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(254,37): error C2059: 语法错误:“)”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(254,38): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(256,18): error C3646: “GetStrategyName”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(256,34): error C2059: 语法错误:“)”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(256,35): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(277,30): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(278,21): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(280,35): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(282,46): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(290,12): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(290,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(291,12): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(291,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(311,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(311,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(311,67): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(313,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(313,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(313,62): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(316,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(316,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(316,65): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(318,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(318,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(318,57): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(323,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(323,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(323,92): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(325,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(325,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(325,65): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(333,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(333,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(333,58): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(339,48): error C2039: "cwAgentDataPtr": 不是 "cwPandoraAgentManager" 的成员
+  (编译源文件“cwCTAPlatform.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(16,7):
+      参见“cwPandoraAgentManager”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(339,48): error C2061: 语法错误: 标识符“cwAgentDataPtr”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(340,28): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(345,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(345,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(345,37): error C2039: "cwAgentDataPtr": 不是 "cwPandoraAgentManager" 的成员
+  (编译源文件“cwCTAPlatform.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(16,7):
+      参见“cwPandoraAgentManager”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(345,69): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(351,22): error C3646: “m_strWorkingPath”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(351,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(353,46): error C3646: “m_strConfigFileFullPath”: 未知重写说明符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(353,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(147,4): error C2065: “InstrumentID”: 未声明的标识符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(147,24): error C2039: "InstrumentID": 不是 "cwCTAPlatform::TradeParameter" 的成员
+  (编译源文件“cwCTAPlatform.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(113,9):
+      参见“cwCTAPlatform::TradeParameter”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(148,4): error C2065: “SignalInstrumentID”: 未声明的标识符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(148,30): error C2039: "SignalInstrumentID": 不是 "cwCTAPlatform::TradeParameter" 的成员
+  (编译源文件“cwCTAPlatform.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(113,9):
+      参见“cwCTAPlatform::TradeParameter”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(208,8): error C2065: “InstrumentID”: 未声明的标识符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(208,26): error C2039: "InstrumentID": 不是 "cwCTAPlatform::StrategyInstrumentUnion" 的成员
+  (编译源文件“cwCTAPlatform.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(201,9):
+      参见“cwCTAPlatform::StrategyInstrumentUnion”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(209,8): error C2065: “StrategyName”: 未声明的标识符
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(209,26): error C2039: "StrategyName": 不是 "cwCTAPlatform::StrategyInstrumentUnion" 的成员
+  (编译源文件“cwCTAPlatform.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(201,9):
+      参见“cwCTAPlatform::StrategyInstrumentUnion”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwCTAPlatform.h(209,26): error C1003: 错误计数超过 100；正在停止编译
+  (编译源文件“cwCTAPlatform.cpp”)
+  
+  cwDualTrust.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(78,11): error C3646: “strDateTime”: 未知重写说明符
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(78,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(84,56): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(121,25): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(122,25): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(123,28): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(125,52): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(128,12): error C3646: “m_strDealInstrument”: 未知重写说明符
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(128,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(134,12): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(137,12): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(137,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(148,47): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(149,47): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(150,46): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(154,12): error C3646: “m_strLastUpdateTime”: 未知重写说明符
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(154,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(158,48): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(163,59): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwBasicCTAStrategy.h(116,49): error C2065: “m_strStrategyName”: 未声明的标识符
+  (编译源文件“cwDualTrust.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(26,23): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(27,12): error C2065: “max”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(29,2): error C2065: “deque”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(29,8): error C2275: “cwKindleStickPtr”: 应为表达式而不是类型
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(29,26): error C2065: “kindleList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(30,33): error C2065: “kindleList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(34,29): error C2065: “kindleList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(68,40): error C2065: “max”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwDualTrust.cpp(69,40): error C2065: “max”: 未声明的标识符
+  cwEmptyStrategy.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(13,10): error C3646: “GetStrategyName”: 未知重写说明符
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(13,25): error C2059: 语法错误:“(”
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(13,27): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(29,9): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(29,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(36,9): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(36,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwEmptyStrategy.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(24,25): error C2143: 语法错误: 缺少“;”(在“cwBasicStrategy::GetStrategyName”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(24,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(24,25): error C2509: “GetStrategyName”: 成员函数没有在“cwEmptyStrategy”中声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.h(6,7):
+      参见“cwEmptyStrategy”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(41,2): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(93,2): error C2065: “vector”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(93,17): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(97,3): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(99,7): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwEmptyStrategy.cpp(103,4): error C2065: “SubscribeInstrument”: 未声明的标识符
+  cwMarketDataReceiver.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(26,10): error C3646: “GetStrategyName”: 未知重写说明符
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(26,25): error C2059: 语法错误:“(”
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(26,27): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(47,9): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(47,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(51,9): error C3646: “m_strStrategyName”: 未知重写说明符
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(51,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(59,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(59,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(59,49): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(60,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(60,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(60,50): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(62,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(62,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(62,50): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(64,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(64,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(64,42): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(66,19): error C3646: “m_strCurrentMdFilePath”: 未知重写说明符
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(66,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(67,19): error C3646: “m_strdateIndexId”: 未知重写说明符
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(67,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwMarketDataReceiver.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(26,30): error C2143: 语法错误: 缺少“;”(在“cwBasicStrategy::GetStrategyName”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(26,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(26,30): error C2509: “GetStrategyName”: 成员函数没有在“cwMarketDataReceiver”中声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.h(19,7):
+      参见“cwMarketDataReceiver”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(43,2): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(52,13): error C2065: “m_TotalVolume”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(53,7): error C3536: “it”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(53,13): error C2065: “m_TotalVolume”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(60,13): error C2065: “m_TotalTurnOver”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(61,7): error C3536: “it”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(61,13): error C2065: “m_TotalTurnOver”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(67,6): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(69,3): error C2065: “cout”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(73,19): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(111,2): error C2065: “m_TotalVolume”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(112,2): error C2065: “m_TotalTurnOver”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(160,2): error C2065: “m_strCurrentMdFilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(179,10): error C2146: 语法错误: 缺少“;”(在标识符“Temp”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(179,10): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(194,4): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(195,48): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(195,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(195,19):
+      尝试匹配参数列表“(const char [13])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(201,4): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(202,44): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(202,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(202,19):
+      尝试匹配参数列表“(const char [9])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(203,4): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(204,47): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(204,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(204,19):
+      尝试匹配参数列表“(const char [12])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(209,4): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(210,48): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(210,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(210,19):
+      尝试匹配参数列表“(const char [13])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(211,4): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(212,58): error C2065: “Temp”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(212,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(212,19):
+      尝试匹配参数列表“(const char [23])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(228,10): error C2146: 语法错误: 缺少“;”(在标识符“strSaveFile”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(228,10): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(230,18): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(231,3): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(231,17): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(234,3): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(240,24): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(246,10): error C2146: 语法错误: 缺少“;”(在标识符“strSaveFile”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(246,10): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(248,18): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(249,3): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(249,17): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(252,3): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(257,3): error C2065: “m_strdateIndexId”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(260,4): error C2065: “m_strdateIndexId”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(264,4): error C2065: “m_strdateIndexId”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(267,21): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(285,46): error C2065: “m_strdateIndexId”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(285,18): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(285,18):
+      尝试匹配参数列表“(const char [12])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(286,43): error C2065: “m_strCurrentMdFilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(286,18): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(286,18):
+      尝试匹配参数列表“(const char [9])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(287,25): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(294,12): error C2146: 语法错误: 缺少“;”(在标识符“DataIndexid”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(294,12): error C2065: “DataIndexid”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(294,25): error C2065: “FilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(304,7): error C2065: “DataIndexid”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(312,6): error C2065: “FilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(315,7): error C2065: “FilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(323,6): error C2065: “m_HisMdFileIndex”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(323,23): error C2065: “DataIndexid”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(323,38): error C2065: “FilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(331,47): error C2065: “m_strdateIndexId”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(331,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(331,19):
+      尝试匹配参数列表“(const char [12])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(332,44): error C2065: “m_strCurrentMdFilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(332,19): error C2661: “TiXmlElement::SetAttribute”: 没有重载函数接受 1 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(332,19):
+      尝试匹配参数列表“(const char [9])”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(334,18): error C2065: “strSaveFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(336,5): error C2065: “m_HisMdFileIndex”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(336,22): error C2065: “m_strdateIndexId”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(336,42): error C2065: “m_strCurrentMdFilePath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(343,2): error C2065: “vector”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(343,17): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(351,4): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(354,7): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(356,19): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(358,4): error C2065: “SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwMarketDataReceiver.cpp(362,17): error C2065: “SubscribeInstrument”: 未声明的标识符
   cwPandoraAgentManager.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,12): error C3646: “m_strInstrumentID”: 未知重写说明符
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(43,32): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,12): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,64): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(43,24): error C3646: “pPositionAgent”: 未知重写说明符
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(43,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(45,20): error C2059: 语法错误:“<”
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(45,48): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,19): error C3646: “RegisterAgent”: 未知重写说明符
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,32): error C2059: 语法错误:“(”
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,83): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,84): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraAgentManager.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(14,24): error C2039: "cwAgentDataPtr": 不是 "cwPandoraAgentManager" 的成员
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(16,7):
+      参见“cwPandoraAgentManager”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(14,62): error C2143: 语法错误: 缺少“;”(在“cwAgentManager::RegisterAgent”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(14,24): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(14,62): error C2761: “int cwAgentManager::RegisterAgent(std::string,cwBasicAgent *,bool)”: 不允许重新声明成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(14,76): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(14,83): error C2146: 语法错误: 缺少“)”(在标识符“instrumentid”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(15,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.cpp(15,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
   cwPandoraPairTrading.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,12): error C3646: “m_strInstrumentID”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(43,32): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,12): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,20): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,10): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(26,64): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(43,24): error C3646: “pPositionAgent”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(43,3): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(45,20): error C2059: 语法错误:“<”
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(45,48): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,19): error C3646: “RegisterAgent”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,32): error C2059: 语法错误:“(”
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(50,83): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,15): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(54,84): error C2238: 意外的标记位于“;”之前
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(49,13): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(49,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(52,13): error C3646: “m_MainInstrumentID”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(52,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(53,13): error C3646: “m_SubMainInstrumentID”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(53,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(76,25): error C2039: "cwAgentDataPtr": 不是 "cwPandoraAgentManager" 的成员
+  (编译源文件“cwPandoraPairTrading.cpp”)
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraAgentManager.h(16,7):
+      参见“cwPandoraAgentManager”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(76,40): error C3646: “m_pPositionAgent”: 未知重写说明符
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.h(76,25): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPairTrading.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(7,2): error C2065: “m_MainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(8,2): error C2065: “m_SubMainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(34,2): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(37,6): error C2065: “m_MainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(37,29): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(37,36): error C2146: 语法错误: 缺少“)”(在标识符“pPriceData”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(37,60): error C2059: 语法错误:“)”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(39,34): error C2059: 语法错误:“;”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(42,2): error C2059: 语法错误:“if”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(43,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(43,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(48,2): error C2059: 语法错误:“if”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(50,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(50,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(55,2): error C2059: 语法错误:“if”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(56,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(56,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(60,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(62,2): error C2059: 语法错误:“if”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(64,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(64,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(68,1): error C2059: 语法错误:“}”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(68,1): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(71,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(71,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(101,37): error C2065: “m_MainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(106,40): error C2065: “m_SubMainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(113,53): error C2065: “m_SubMainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(115,33): error C2065: “min”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(115,15): error C2737: “dInsEQ”: 必须初始化 const 对象
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(123,33): error C2065: “m_SubMainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(123,64): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(123,15): error C2660: “cwBasicStrategy::GetTradeTimeSpace”: 函数不接受 4 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\Interface\include\cwBasicStrategy.h(156,9):
+      参见“cwBasicStrategy::GetTradeTimeSpace”的声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(123,15):
+      尝试匹配参数列表“()”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(174,3): error C2065: “map”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(174,7): error C2275: “ActiveEasyKey”: 应为表达式而不是类型
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(174,37): error C2065: “WaitOrderList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(174,25): error C2275: “cwOrderPtr”: 应为表达式而不是类型
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(175,19): error C2065: “WaitOrderList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(177,27): error C2065: “WaitOrderList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(178,4): error C3536: “WaitOrderIt”: 初始化之前无法使用
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(178,19): error C2065: “WaitOrderList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(180,8): error C2065: “m_SubMainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(180,34): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(180,41): error C2146: 语法错误: 缺少“)”(在标识符“WaitOrderIt”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(180,74): error C2059: 语法错误:“)”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(182,37): error C2059: 语法错误:“;”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(188,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(188,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(188,5): error C2059: 语法错误:“<”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(189,5): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(189,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(189,2): error C2086: “int map”: 重定义
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(188,2):
+      参见“map”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(189,5): error C2059: 语法错误:“<”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(190,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(190,30): error C2065: “CurrentPosMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(190,45): error C2065: “WaitOrderList”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(190,29): error C2440: “初始化”: 无法从“initializer list”转换为“int”
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(190,29):
+      初始值设定项包含过多元素
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(193,15): error C2065: “CurrentPosMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(193,34): error C2065: “m_MainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(194,2): error C2059: 语法错误:“if”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(195,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(195,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(198,2): error C2059: 语法错误:“else”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(199,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(199,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(203,2): error C3927: "->": 非函数声明符后不允许尾随返回类型
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(203,5): error C3484: 语法错误: 返回类型前应为“->”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(203,6): error C3613: “->”后缺少返回类型(假定为“int”)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(203,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(203,2): error C2365: “log”: 重定义；以前的定义是“函数”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(203,6): error C2146: 语法错误: 缺少“;”(在标识符“AddLog”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(205,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(205,2): error C2371: “PosIt”: 重定义；不同的基类型
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(193,7):
+      参见“PosIt”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(205,10): error C2065: “CurrentPosMap”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(205,29): error C2065: “m_SubMainInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(206,2): error C2059: 语法错误:“if”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(207,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(207,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(210,2): error C2059: 语法错误:“else”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(211,2): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(211,2): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,2): error C3927: "->": 非函数声明符后不允许尾随返回类型
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,5): error C3484: 语法错误: 返回类型前应为“->”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,6): error C3613: “->”后缺少返回类型(假定为“int”)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,2): error C2365: “log”: 重定义；以前的定义是“函数”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,6): error C2146: 语法错误: 缺少“;”(在标识符“AddLog”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPairTrading.cpp(215,6): error C1003: 错误计数超过 100；正在停止编译
   cwPandoraPositionAgent.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,12): error C3646: “m_strInstrumentID”: 未知重写说明符
+  (编译源文件“cwPandoraPositionAgent.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(35,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPositionAgent.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(43,32): error C2061: 语法错误: 标识符“string”
+  (编译源文件“cwPandoraPositionAgent.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,12): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwPandoraPositionAgent.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.h(44,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwPandoraPositionAgent.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(26,2): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(33,59): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(33,15): error C2660: “cwBasicAgent::GetTradeTimeSpace”: 函数不接受 4 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\Interface\include\cwBasicAgent.h(75,8):
+      参见“cwBasicAgent::GetTradeTimeSpace”的声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(33,15):
+      尝试匹配参数列表“(cwFtdcInstrumentIDType, cwProductTradeTime::cwTradeTimeSpace, int, int)”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(60,25): error C2065: “m_strInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(72,33): error C2065: “m_strInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(72,60): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(72,15): error C2660: “cwBasicAgent::GetTradeTimeSpace”: 函数不接受 4 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\Interface\include\cwBasicAgent.h(75,8):
+      参见“cwBasicAgent::GetTradeTimeSpace”的声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(72,15):
+      尝试匹配参数列表“()”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(99,25): error C2065: “m_strInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(111,33): error C2065: “m_strInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(111,60): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(111,15): error C2660: “cwBasicAgent::GetTradeTimeSpace”: 函数不接受 4 个参数
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\Interface\include\cwBasicAgent.h(75,8):
+      参见“cwBasicAgent::GetTradeTimeSpace”的声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(111,15):
+      尝试匹配参数列表“()”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(138,25): error C2065: “m_strInstrumentID”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(168,30): error C2761: “void cwPandoraPositionAgent::DealExpectedPosition(void)”: 不允许重新声明成员
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(168,51): error C2065: “string”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(168,58): error C2146: 语法错误: 缺少“)”(在标识符“InstrumentID”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(169,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwPandoraPositionAgent.cpp(169,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
   cwStrategyDemo.cpp
-  inday.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(25,9): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“cwStrategyDemo.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(25,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“cwStrategyDemo.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.cpp(24,2): error C2065: “m_strCurrentUpdateTime”: 未声明的标识符
+  Strformatdate.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Strformatdate.cpp(12,23): error C2084: 函数“std::string Strformatdate::getCurrentDateString(void)”已有主体
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Strformatdate.h(13,19):
+      参见“Strformatdate::getCurrentDateString”的前一个定义
+  
+  Class1.cpp
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(235,21): error C2429: 语言功能 "结构化绑定" 需要编译器标志 "/std:c++17"
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(12,19): error C1075: “{”: 未找到匹配令牌
+  SqlliteHelp.cpp
   正在生成代码...
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(17,51): error C2059: 语法错误:“;”
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(18,55): error C2059: 语法错误:“;”
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(19,51): error C2059: 语法错误:“;”
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(21,59): error C2059: 语法错误:“;”
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\inday.cpp(22,53): error C2059: 语法错误:“;”

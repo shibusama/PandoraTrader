@@ -92,8 +92,8 @@ namespace MyTrade {
 				string ver = reinterpret_cast<const char*>(sqlite3_column_text(stmt2, 2));
 				int Rs = stoi(ver.substr(0, ver.find('-')));
 				int Rl = stoi(ver.substr(ver.find('-') + 1));
-				//verDictCur->insert({ contract,{Fac, ver, "minute", Rs, Rl } });
-				(*verDictCur)[contract] = { Fac, ver, "minute", Rs, Rl };
+				verDictCur->insert({ contract,{Fac, ver, "minute", Rs, Rl } });
+				//(*verDictCur)[contract] = { Fac, ver, "minute", Rs, Rl };
 			}
 		}
 		sqlite3_finalize(stmt2);
@@ -146,22 +146,19 @@ namespace MyTrade {
 		sqlite3_finalize(stmt4);
 
 		// g.codeTarctCur = 目标交易合约
-		map<string, string> codeTractCur;
 		for (const auto& sr : *MainInf) {
 			if (sr.first.date == cursor_str) {
-				codeTractCur[sr.first.contract] = sr.second.code;
+				(*codeTractCur)[sr.first.contract] = sr.second.code;
 			}
 		}
 		// g.factorDictCur = 因子数据
-		map<string, double> factorDictCur;
 		for (const auto& sr : *MainInf) {
 			if (sr.first.date == cursor_str) {
-				factorDictCur[sr.second.code] = sr.second.accfactor;
+				(*factorDictCur)[sr.second.code] = sr.second.accfactor;
 			}
 		}
 		// g.barFlow
 		// 加载历史分钟数据 >>>>>
-		map<string, list<barFuture>> barFlow;
 		for (const string& date : tradeDate) {
 			map<string, mainCtrValues> tmp;
 			for (const auto& sr : (*MainInf)) {
@@ -194,11 +191,11 @@ namespace MyTrade {
 									reinterpret_cast<const char*>(sqlite3_column_text(stmt5, 2)),
 									stoi(reinterpret_cast<const char*>(sqlite3_column_text(stmt5, 3))),
 									stod(reinterpret_cast<const char*>(sqlite3_column_text(stmt5, 4))) };
-					if (barFlow.count(contract) > 0) {
-						barFlow[contract].push_back(bf);
+					if ((*barFlow).count(contract) > 0) {
+						(*barFlow)[contract].push_back(bf);
 					}
 					else {
-						barFlow[contract] = list<barFuture>{ bf };
+						(*barFlow)[contract] = vector<barFuture>{ bf };
 					}
 				}
 			}
@@ -207,21 +204,45 @@ namespace MyTrade {
 			cout << "### " << date << " over >>>" << endl;
 		}
 		// g.queueBar = 对刚加载的历史分钟数据复权处理 <期货换月会跳价，所以需要复权使得数据连续>
-		std::map<std::string, std::vector<double>> queueBar;
-		for (const auto& [contract, barList] : barFlow) {
-			std::vector<barFuture> queueCtr(barList.begin(), barList.end());
-			std::sort(queueCtr.begin(), queueCtr.end(), [](const barFuture& a, const barFuture& b) {
+		//queueBar
+		for (const auto& pair : *barFlow) {
+			vector<barFuture> queueCtr(pair.second.begin(), pair.second.end());
+			sort(queueCtr.begin(), queueCtr.end(), [](const barFuture& a, const barFuture& b) {
 				if (a.tradingday == b.tradingday) {
 					return a.timestamp < b.timestamp;
 				}
 				return a.tradingday < b.tradingday;
 				});
-			std::vector<double> tmpQueueBar;
+			vector<double> tmpQueueBar;
 			for (const barFuture& x : queueCtr) {
-				mainCtrKeys key = { calendar[x.tradingday], contract };
-				tmpQueueBar.push_back(x.price / MainInf[key].accfactor);
+				mainCtrKeys key = { calendar[x.tradingday], pair.first };
+				tmpQueueBar.push_back(x.price / (*MainInf)[key].accfactor);
 			}
-			queueBar[contract] = tmpQueueBar;
+			(*queueBar)[pair.first] = tmpQueueBar;
 		}
+		// g.retBar = 对复权后的价格数据转为收益率数据
+		map<string, vector<double>> retBar;
+		for (const auto& pair : (*queueBar)) {
+			vector<double> tmpRetBar;
+			tmpRetBar.push_back(0);
+			for (size_t i = 1; i < pair.second.size(); ++i) {
+				tmpRetBar.push_back(pair.second[i] / pair.second[i - 1] - 1);
+			}
+			retBar[pair.first] = tmpRetBar;
+		}
+
+		// countLimt = 更具前一天的收盘价计算当天交易每个合约对应的数量
+		for (const auto& pair : (*verDictCur)) {
+			int comboMultiple = 2;  // 组合策略做几倍杠杆
+			double numLimit = comboMultiple * 1000000 / 20 / (*barFlow).at(pair.first).back().price / (*futInfDict).at(pair.first).multiple;  // 策略杠杆数，1000000 为策略基本资金单位， 20为目前覆盖品种的近似值， 收盘价格，保证金乘数
+			(*countLimitCur)[pair.first] = (numLimit >= 1) ? static_cast<int>(numLimit) : 1;  // 整数 取舍一下
+		}
+
+		// g.barFlowCur  = 创建新的用来收录当天的行情数据
+		for (const auto& pair : (*factorDictCur)) {
+			string contract = regex_replace(pair.first, regex("\\d"), "");
+			(*barFlowCur)[contract] = vector<barFuture>();
+		}
+
 	}
 

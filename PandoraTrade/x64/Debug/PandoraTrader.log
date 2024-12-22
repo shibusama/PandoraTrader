@@ -1,2 +1,71 @@
 ﻿  PandoraDemoStrategyTrader.cpp
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(302,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(25,9): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
+  (编译源文件“PandoraDemoStrategyTrader.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(25,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+  (编译源文件“PandoraDemoStrategyTrader.cpp”)
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(72,7): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(72,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(72,7): error C2059: 语法错误:“<”
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(74,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(74,11): error C2146: 语法错误: 缺少“;”(在标识符“m_strStrategyConfigFile”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(75,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(75,1): error C2086: “int string”: 重定义
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(74,1):
+      参见“string”的声明
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(75,11): error C2146: 语法错误: 缺少“;”(在标识符“m_strHisDataFolder”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(97,9): error C2146: 语法错误: 缺少“;”(在标识符“strFullPath”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(97,9): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(116,2): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(117,2): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(117,16): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(117,38): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(120,2): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(125,50): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(127,20): error C2065: “strFullPath”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(178,6): error C2065: “m_SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(184,3): error C2065: “m_strStrategyConfigFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(192,5): error C2065: “m_strStrategyConfigFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(196,3): error C2065: “m_strHisDataFolder”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(204,5): error C2065: “m_strHisDataFolder”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(232,36): error C2065: “m_SubscribeInstrument”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(311,9): error C2146: 语法错误: 缺少“;”(在标识符“strStrategyName”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(311,9): error C2065: “strStrategyName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(340,9): error C2146: 语法错误: 缺少“;”(在标识符“strAppMutexName”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(340,9): error C2065: “strAppMutexName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(341,2): error C2065: “strAppMutexName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(342,2): error C2065: “strAppMutexName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(343,2): error C2065: “strAppMutexName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(346,53): error C2065: “strAppMutexName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(346,22): error C2660: “MultiByteToWideChar”: 函数不接受 5 个参数
+      D:\Windows Kits\10\Include\10.0.22621.0\um\stringapiset.h(120,1):
+      参见“MultiByteToWideChar”的声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(346,22):
+      尝试匹配参数列表“(int, int, int, int, int)”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(349,35): error C2065: “strAppMutexName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(349,4): error C2660: “MultiByteToWideChar”: 函数不接受 5 个参数
+      D:\Windows Kits\10\Include\10.0.22621.0\um\stringapiset.h(120,1):
+      参见“MultiByteToWideChar”的声明
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(349,4):
+      尝试匹配参数列表“(int, int, int, LPWSTR, int)”时
+  
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(375,6): error C2065: “m_strHisDataFolder”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(377,51): error C2065: “m_strHisDataFolder”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(380,6): error C2065: “m_strStrategyConfigFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(386,31): error C2065: “m_strStrategyConfigFile”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(395,2): error C2065: “thread”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(395,9): error C2146: 语法错误: 缺少“;”(在标识符“m_PriceServerThread”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(395,9): error C2065: “m_PriceServerThread”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(395,31): error C3861: “thread”: 找不到标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(397,2): error C2065: “thread”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(397,9): error C2146: 语法错误: 缺少“;”(在标识符“m_TradeServerThread”的前面)
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(397,9): error C2065: “m_TradeServerThread”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(397,31): error C3861: “thread”: 找不到标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(410,20): error C2065: “strStrategyName”: 未声明的标识符
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(418,18): error C2039: "m_strCurrentUpdateTime": 不是 "cwStrategyDemo" 的成员
+      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(5,7):
+      参见“cwStrategyDemo”的声明
+  
