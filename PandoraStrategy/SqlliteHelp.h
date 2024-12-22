@@ -17,7 +17,7 @@ public:
 		void InsertData(sqlite3* db, const char* name, int age);
 
 		// 查询数据
-		void QueryData(sqlite3* db);
+		void QueryData(sqlite3* db, const char*);
 
 		// 更新数据
 		void UpdateData(sqlite3* db, int id, const char* name, int age);

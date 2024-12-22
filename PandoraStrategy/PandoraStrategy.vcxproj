@@ -134,7 +134,7 @@
     <ClCompile Include="cwPandoraPositionAgent.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
     <ClCompile Include="Strformatdate.cpp" />
-    <ClCompile Include="inday.cpp" />
+    <ClCompile Include="Class1.cpp" />
     <ClCompile Include="SqlliteHelp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +149,7 @@
     <ClInclude Include="cwPandoraPositionAgent.h" />
     <ClInclude Include="cwStrategyDemo.h" />
     <ClInclude Include="Strformatdate.h" />
-    <ClInclude Include="inDay.h" />
+    <ClInclude Include="Class1.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="SqlliteHelp.h" />
   </ItemGroup>

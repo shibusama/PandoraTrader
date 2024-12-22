@@ -51,7 +51,7 @@
     <ClCompile Include="SqlliteHelp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="inday.cpp">
+    <ClCompile Include="Class1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Strformatdate.cpp">
@@ -98,7 +98,7 @@
     <ClInclude Include="Strformatdate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inDay.h">
+    <ClInclude Include="Class1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

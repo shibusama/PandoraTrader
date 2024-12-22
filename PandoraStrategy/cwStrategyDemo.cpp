@@ -1,6 +1,6 @@
 #include "cwStrategyDemo.h"
 #include "SqlliteHelp.h"
-#include "inDay.h"
+#include "Class1.h"
 
 using namespace MyTrade;
 

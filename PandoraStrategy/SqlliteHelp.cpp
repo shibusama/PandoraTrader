@@ -1,6 +1,7 @@
 #include "SqlliteHelp.h"
 #include <iostream>
 #include "sqlite3.h"
+using namespace std;
 
 // 创建数据库连接
 sqlite3* SqlliteHelp::OpenDatabase(const char* dbFilePath)
@@ -58,8 +59,7 @@ void SqlliteHelp::InsertData(sqlite3* db, const char* name, int age) {
 }
 
 // 查询数据
-void SqlliteHelp::QueryData(sqlite3* db) {
-    const char* queryDataSQL = "SELECT * FROM Users;";
+void SqlliteHelp::QueryData(sqlite3* db, const char* queryDataSQL) {
     sqlite3_stmt* statement;
 
     if (sqlite3_prepare_v2(db, queryDataSQL, -1, &statement, nullptr) == SQLITE_OK) {
