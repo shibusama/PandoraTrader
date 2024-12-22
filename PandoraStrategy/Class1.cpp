@@ -243,6 +243,9 @@ namespace MyTrade {
 			string contract = regex_replace(pair.first, regex("\\d"), "");
 			(*barFlowCur)[contract] = vector<barFuture>();
 		}
+		// 关闭数据库连接
+		sqlite3_close(cnnSys);
+		sqlite3_close(cnn);
 
 	}
 
