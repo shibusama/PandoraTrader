@@ -7,6 +7,8 @@
 #include <string>
 #include <map>
 #include <regex>
+#include <cmath>
+#include <exception>
 
 using namespace std;
 namespace MyTrade {
@@ -313,3 +315,65 @@ namespace MyTrade {
 		//cout << chrono::system_clock::now() << " - >>>" << endl;
 	}
 
+	/*STRATEGY PART*/
+	vector<cwOrderPtr> Class1::StrategyTick(unordered_map<string, cwMarketDataPtr> code2data/*数据*/) {
+		// 当前策略设计的逻辑是对每个品种都进行单独的测试管理, 只是在仓位设置上进行等权重的去分配,所以每个品种的交易信号都应该单独做计算 
+		vector<cwOrderPtr> ordersTar;
+		cout << " start " << "StrategyTick " << std::endl;
+		for (const std::string& contract : (*tarCateList)) {
+			try {
+				cout << "##  " << contract << endl;
+				const cwMarketDataPtr& barBook = code2data.at((*codeTractCur).at(contract));
+
+				vector<double> retBarSubsetLong;
+				vector<double> retBarSubsetShort;
+
+				// 计算 stdLong
+				auto startIndexLong = max(0, static_cast<int>((*retBar)[contract].size()) - (*verDictCur)[contract].Rl);
+				for (size_t i = startIndexLong; i < std::min(retBar[contract].size(), static_cast<size_t>(startIndexLong + verDictCur[contract])); ++i) {
+					retBarSubsetLong.push_back(retBar[contract][i]);
+				}
+				double stdLong = SampleStd(retBarSubsetLong);
+
+				// 计算 stdShort
+				auto startIndexShort = std::max(0, static_cast<int>(retBar[contract].size()) - verDictCur[contract]);
+				for (size_t i = startIndexShort; i < std::min(retBar[contract].size(), static_cast<size_t>(startIndexShort + verDictCur[contract])); ++i) {
+					retBarSubsetShort.push_back(retBar[contract][i]);
+				}
+				double stdShort = SampleStd(retBarSubsetShort);
+
+
+				long posV = (spePos.count(codeTractCur[contract]) > 0) ? spePos[codeTractCur[contract]] : 0;
+				long posC = posV;
+				long posO = countLimitCur[contract] - posC;
+
+				std::cout << "    " << contract << " = PosC " << posC << " - PosO " << posO << "   Fac = " << verDictCur[contract] << " >>>" << std::endl;
+
+				// Spe Sta 0903 <可开仓位小于 0 代表已经开有多余的头寸，需要额外平仓处理， 特殊情况>
+				if (posO < 0) {
+					auto orders = StrategyPosSpeC(contract, barBook, posO);
+					ordersTar.insert(ordersTar.end(), orders.begin(), orders.end());
+					continue;
+				}
+
+				// trader 
+				if (posC > 0) {
+					auto orders = StrategyPosClose(contract, barBook, stdLong, stdShort);
+					ordersTar.insert(ordersTar.end(), orders.begin(), orders.end());
+				}
+
+				if (posO > 0) {
+					auto orders = StrategyPosOpen(contract, barBook, stdLong, stdShort);
+					ordersTar.insert(ordersTar.end(), orders.begin(), orders.end());
+				}
+			}
+			catch (const std::exception& ex) {
+				std::cout << "ERROR " << contract << " ------------" << std::endl;
+				std::cout << ex.what() << std::endl;
+			}
+		}
+	
+	
+	
+	
+	}
