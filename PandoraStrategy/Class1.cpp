@@ -249,3 +249,67 @@ namespace MyTrade {
 
 	}
 
+	void Class1::UpdateFlow(unordered_map<string, cwMarketDataPtr> code2data, unordered_map<string, PositionFieldPtr> curPos){
+		// 记录最新持仓状况（方向，数量，成本价格，开仓成本，数量）
+		(*spePos).clear();
+		for (const auto& pair : curPos) {
+			string codeDR = pair.first;
+			PositionFieldPtr positionField = pair.second;
+
+			if (positionField->TodayPosition != 0) {
+				catePortInf cateInf;
+				cateInf.direction = positionField->PosiDirection; //持仓方向
+				cateInf.volume = positionField->TodayPosition;//持仓数量
+				cateInf.openCost = positionField->OpenCost;//开仓成本
+				string instrumentIDWithoutDigits = regex_replace(positionField->InstrumentID, regex("\\d"), "");
+				if ((*futInfDict).count(instrumentIDWithoutDigits) > 0) {
+					cateInf.costPrice = (positionField->OpenCost / positionField->TodayPosition / (*futInfDict)[instrumentIDWithoutDigits].multiple);
+				}
+				else {
+					cout << "Error: No multiple information for " << positionField->InstrumentID << endl;
+					continue;
+				}
+				if (cateInf.direction == "Long") {
+					cateInf.amount = cateInf.volume;
+				}
+				else {
+					cateInf.amount = -1 * cateInf.volume;
+				}
+				(*spePos)[positionField->InstrumentID] = cateInf;
+			}
+		}
+			// 用 code2data 最新的切片行情数据更新 barFlowCur & queueBar & retBar 
+		for (const auto& pair : (*factorDictCur)) {
+			string code = pair.first;
+			double factor = pair.second;
+			if (code2data.count(code) > 0) {
+				std::string contract = std::regex_replace(code, std::regex("\\d"), "");
+				(*barFlowCur)[contract].push_back(barFuture{
+					code2data[code]->InstrumentID,
+					code2data[code]->TradingDay,
+					code2data[code]->UpdateTime,
+					code2data[code]->Volume,
+					code2data[code]->LastPrice,
+					});
+				// g.queueBar/g.retBar -> update
+				double curPrice = code2data[code]->LastPrice;
+				(*queueBar)[contract].push_back(curPrice / factor);
+				if ((*queueBar)[contract].size() >= 2) {
+					(*retBar)[contract].push_back((curPrice / factor) / (*queueBar)[contract][(*queueBar)[contract].size() - 2] - 1);
+				}
+				else {
+					(*retBar)[contract].push_back(0); // 处理数据不足的情况，例如添加默认值或不添加数据
+				}
+				if ((*queueBar)[contract].size() > 1) {
+					(*queueBar)[contract].erase((*queueBar)[contract].begin());
+					(*retBar)[contract].erase((*retBar)[contract].begin());
+				}
+			}
+			else {
+				cout << "MISS " << code << " Info >>> " << endl;
+			}
+		}
+		// 需要录入的 code 不存在则会报错,  "注意休市时间是没有行情数据的"
+		//cout << chrono::system_clock::now() << " - >>>" << endl;
+	}
+

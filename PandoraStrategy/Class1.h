@@ -44,7 +44,7 @@ namespace MyTrade {
         string code;
         string tradingday;
         string timestamp;
-        int volume;
+        int64_t volume;
         double price;
     };
 
@@ -118,7 +118,7 @@ namespace MyTrade {
 
         static void UpdateBarData();// 加载历史信息
 
-        static void UpdateFlow(unordered_map<string, cwMarketDataPtr> code2data, unordered_map<string, cwMarketDataPtr> curPos);// 记录最新持仓状况（方向，数量，成本价格，开仓成本，数量）
+        static void UpdateFlow(unordered_map<string, cwMarketDataPtr> code2data, unordered_map<string, PositionFieldPtr> curPos);// 记录最新持仓状况（方向，数量，成本价格，开仓成本，数量）
 
         static vector<cwOrderPtr> StrategyTick(unordered_map<string, cwMarketDataPtr> code2data/*数据*/);
 
