@@ -112,9 +112,9 @@ namespace MyTrade {
 
         static string cursor_str; // 交易当天日期
 
-        static double ArithmeticMean(double arr[], int size); //计算简单算数平均值
+        static double ArithmeticMean(const vector<double>& arr); //计算简单算数平均值
 
-        static double SampleStd(double arr[], int size); //计算样本标准差
+        static double SampleStd(const vector<double>& arr); //计算样本标准差
 
         static void UpdateBarData();// 加载历史信息
 

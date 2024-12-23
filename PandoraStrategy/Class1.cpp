@@ -36,25 +36,24 @@ namespace MyTrade {
 
 	string cursor_str = Strformatdate::getCurrentDateString(); // 交易当天日期
 
-	double Class1::ArithmeticMean(double arr[], int size) {//计算简单算数平均值
-		double result = 0;
-		// 遍历数组中的每个元素
-		for (int i = 0; i < size; ++i) {
-			result += arr[i];
+	double Class1::ArithmeticMean(const vector<double>& arr) {//计算简单算数平均值
+		if (arr.empty()) {
+			return 0.0;
 		}
-		// 计算平均值
-		return result / size;
+		double sum = 0.0;
+		for (const double num : arr) {
+			sum += num;
+		}
+		return sum / static_cast<double>(arr.size());
 	}
 
-	double Class1::SampleStd(double arr[], int size) {
-		double mean = ArithmeticMean(arr, size);
-		double result = 0;
-		// 遍历数组，计算每个元素与平均值差值的平方，并累加到 result 中
-		for (int i = 0; i < size; ++i) {
-			result += pow((arr[i] - mean), 2);
+	double Class1::SampleStd(const vector<double>& arr) {
+		double mean = ArithmeticMean(arr);
+		double result = 0.0;
+		for (const double num : arr) {
+			result += pow(num - mean, 2);
 		}
-		// 计算样本标准差
-		return sqrt((result / (size - 1)));
+		return sqrt(result / (static_cast<double>(arr.size()) - 1));
 	}
 
 	/*INIT DAILY DATA*/
@@ -251,7 +250,7 @@ namespace MyTrade {
 
 	}
 
-	void Class1::UpdateFlow(unordered_map<string, cwMarketDataPtr> code2data, unordered_map<string, PositionFieldPtr> curPos){
+	void Class1::UpdateFlow(unordered_map<string, cwMarketDataPtr> code2data, unordered_map<string, PositionFieldPtr> curPos) {
 		// 记录最新持仓状况（方向，数量，成本价格，开仓成本，数量）
 		(*spePos).clear();
 		for (const auto& pair : curPos) {
@@ -280,12 +279,12 @@ namespace MyTrade {
 				(*spePos)[positionField->InstrumentID] = cateInf;
 			}
 		}
-			// 用 code2data 最新的切片行情数据更新 barFlowCur & queueBar & retBar 
+		// 用 code2data 最新的切片行情数据更新 barFlowCur & queueBar & retBar 
 		for (const auto& pair : (*factorDictCur)) {
 			string code = pair.first;
 			double factor = pair.second;
 			if (code2data.count(code) > 0) {
-				std::string contract = std::regex_replace(code, std::regex("\\d"), "");
+				string contract = regex_replace(code, regex("\\d"), "");
 				(*barFlowCur)[contract].push_back(barFuture{
 					code2data[code]->InstrumentID,
 					code2data[code]->TradingDay,
@@ -319,8 +318,8 @@ namespace MyTrade {
 	vector<cwOrderPtr> Class1::StrategyTick(unordered_map<string, cwMarketDataPtr> code2data/*数据*/) {
 		// 当前策略设计的逻辑是对每个品种都进行单独的测试管理, 只是在仓位设置上进行等权重的去分配,所以每个品种的交易信号都应该单独做计算 
 		vector<cwOrderPtr> ordersTar;
-		cout << " start " << "StrategyTick " << std::endl;
-		for (const std::string& contract : (*tarCateList)) {
+		cout << " start " << "StrategyTick " << endl;
+		for (const string& contract : (*tarCateList)) {
 			try {
 				cout << "##  " << contract << endl;
 				const cwMarketDataPtr& barBook = code2data.at((*codeTractCur).at(contract));
@@ -330,24 +329,24 @@ namespace MyTrade {
 
 				// 计算 stdLong
 				auto startIndexLong = max(0, static_cast<int>((*retBar)[contract].size()) - (*verDictCur)[contract].Rl);
-				for (size_t i = startIndexLong; i < std::min(retBar[contract].size(), static_cast<size_t>(startIndexLong + verDictCur[contract])); ++i) {
-					retBarSubsetLong.push_back(retBar[contract][i]);
+				for (size_t i = startIndexLong; i < min((*retBar)[contract].size(), static_cast<size_t>(startIndexLong + (*verDictCur)[contract].Rl)); ++i) {
+					retBarSubsetLong.push_back((*retBar)[contract][i]);
 				}
 				double stdLong = SampleStd(retBarSubsetLong);
 
 				// 计算 stdShort
-				auto startIndexShort = std::max(0, static_cast<int>(retBar[contract].size()) - verDictCur[contract]);
-				for (size_t i = startIndexShort; i < std::min(retBar[contract].size(), static_cast<size_t>(startIndexShort + verDictCur[contract])); ++i) {
-					retBarSubsetShort.push_back(retBar[contract][i]);
+				auto startIndexShort = max(0, static_cast<int>((*retBar)[contract].size()) - (*verDictCur)[contract].Rs);
+				for (size_t i = startIndexShort; i < min((*retBar)[contract].size(), static_cast<size_t>(startIndexShort + (*verDictCur)[contract].Rs)); ++i) {
+					retBarSubsetShort.push_back((*retBar)[contract][i]);
 				}
 				double stdShort = SampleStd(retBarSubsetShort);
 
+				// 对于每个品种直接设置 单组合固定的张数
+				long posV = ((*spePos).count((*codeTractCur)[contract]) > 0) ? (*spePos)[(*codeTractCur)[contract]].volume : 0;
+				long posC = posV; // 可平仓组合
+				long posO = (*countLimitCur)[contract] - posC; // 可开仓组合  
 
-				long posV = (spePos.count(codeTractCur[contract]) > 0) ? spePos[codeTractCur[contract]] : 0;
-				long posC = posV;
-				long posO = countLimitCur[contract] - posC;
-
-				std::cout << "    " << contract << " = PosC " << posC << " - PosO " << posO << "   Fac = " << verDictCur[contract] << " >>>" << std::endl;
+				cout << "    " << contract << " = PosC " << posC << " - PosO " << posO << "   Fac = " << (*verDictCur)[contract].Fac << " >>>" << endl;
 
 				// Spe Sta 0903 <可开仓位小于 0 代表已经开有多余的头寸，需要额外平仓处理， 特殊情况>
 				if (posO < 0) {
@@ -372,8 +371,8 @@ namespace MyTrade {
 				std::cout << ex.what() << std::endl;
 			}
 		}
-	
-	
-	
-	
+
+
+
+
 	}
