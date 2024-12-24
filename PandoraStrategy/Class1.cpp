@@ -376,24 +376,25 @@ namespace MyTrade {
 
 	vector<cwOrderPtr> Class1::StrategyPosOpen(string contract, cwMarketDataPtr barBook, double stdLong, double stdShort) {
 		// 开仓交易 条件
+
 		vector<cwOrderPtr> orders;
 		if ((*queueBar)[contract].back() < (*queueBar)[contract][(*queueBar).size() - (*verDictCur)[contract].Rs] && stdShort > stdLong) {
 			int tarVolume = (*countLimitCur)[contract];
-			std::string key = (*codeTractCur)[contract] + "=" + Strformatdate::getCurrentDateString(); // 假设存在函数 getCurrentTimeString 获取当前时间的字符串表示
+			string key = (*codeTractCur)[contract] + "=" + Strformatdate::getCurrentDateString(); // 假设存在函数 getCurrentTimeString 获取当前时间的字符串表示
 			(*spePos)[key] = catePortInf{ "Long",{},barBook->LastPrice,{},tarVolume };
+			char DireSlc = (*verDictCur)[contract].Fac == "Mom_std_bar_re_dym" ? '0' : '1'; // 假设 0 表示 Buy，1 表示 Sell
 
-			int DireSlc = (*verDictCur)[contract].Fac == "Mom_std_bar_re_dym" ? 0 : 1; // 假设 0 表示 Buy，1 表示 Sell
-
-			CThostFtdcOrderField order;
-			order.InstrumentID = codeTractCur[contract].code;
-			order.Direction = DireSlc;
-			order.CombOffsetFlag = "Open";
-			order.VolumeTotalOriginal = tarVolume;
-			order.LimitPrice = barBook.LastPrice;
+			//cwOrderPtr order;
+			cwOrderPtr order = make_shared<ORDERFIELD>();
+			strcpy(order->InstrumentID, (*codeTractCur)[contract].c_str());
+			order->Direction = DireSlc;
+			strcpy(order->CombOffsetFlag, "open");
+			order->VolumeTotalOriginal = tarVolume;
+			order->LimitPrice = (*barBook).LastPrice;
 			orders.push_back(order);
 		}
-		else if (queueBar.back() > queueBar[queueBar.size() - 500] && stdShort > stdLong) {
-			int tarVolume = countLimitCur[contract].limit;
+		else if ((*queueBar)[contract].back() > (*queueBar)[contract][(*queueBar).size() - 500] && stdShort > stdLong) {
+			int tarVolume = (*countLimitCur)[contract];
 			std::string key = codeTractCur[contract].code + "=" + getCurrentTimeString();
 			spePos[key] = catePortInf{ "Short", barBook.LastPrice, tarVolume };
 
