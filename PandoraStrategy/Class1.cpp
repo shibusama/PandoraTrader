@@ -374,9 +374,8 @@ namespace MyTrade {
 		return ordersTar;
 	}
 
+	// 开仓交易 条件
 	vector<cwOrderPtr> Class1::StrategyPosOpen(string contract, cwMarketDataPtr barBook, double stdLong, double stdShort) {
-		// 开仓交易 条件
-
 		vector<cwOrderPtr> orders;
 		if ((*queueBar)[contract].back() < (*queueBar)[contract][(*queueBar).size() - (*verDictCur)[contract].Rs] && stdShort > stdLong) {
 			int tarVolume = (*countLimitCur)[contract];
@@ -395,20 +394,63 @@ namespace MyTrade {
 		}
 		else if ((*queueBar)[contract].back() > (*queueBar)[contract][(*queueBar).size() - 500] && stdShort > stdLong) {
 			int tarVolume = (*countLimitCur)[contract];
-			std::string key = codeTractCur[contract].code + "=" + getCurrentTimeString();
-			spePos[key] = catePortInf{ "Short", barBook.LastPrice, tarVolume };
+			string key = (*codeTractCur)[contract] + "=" + Strformatdate::getCurrentDateString();
+			(*spePos)[key] = catePortInf{ "Short",{}, barBook->LastPrice, {},tarVolume };
+			char DireSlc = (*verDictCur)[contract].Fac == "Mom_std_bar_re_dym" ? '1' : '0';
 
-			int DireSlc = verDictCur[contract].Fac == "Mom_std_bar_re_dym" ? 1 : 0;
-
-			CThostFtdcOrderField order;
-			order.InstrumentID = codeTractCur[contract].code;
-			order.Direction = DireSlc;
-			order.CombOffsetFlag = "Open";
-			order.VolumeTotalOriginal = tarVolume;
-			order.LimitPrice = barBook.LastPrice;
+			cwOrderPtr order = make_shared<ORDERFIELD>();
+			strcpy(order->InstrumentID, (*codeTractCur)[contract].c_str());
+			order->Direction = DireSlc;
+			strcpy(order->CombOffsetFlag, "open");
+			order->VolumeTotalOriginal = tarVolume;
+			order->LimitPrice = (*barBook).LastPrice;
 			orders.push_back(order);
 		}
 		return orders;
+	}
 
+	// 平仓交易 条件
+	vector<cwOrderPtr> Class1::StrategyPosClose(string contract, cwMarketDataPtr barBook, double stdLong, double stdShort){
+		vector<cwOrderPtr> orders;
+		string code = (*codeTractCur)[contract];// 当前持仓代码
+		string dire = (*spePos)[code].direction; // 当前持仓方向
+		auto DireREFunc = [](const string& x) -> string {
+			if (x == "Long") {
+				return "Short";
+			}
+			else if (x == "Short") {
+				return "Long";
+			}
+			else {
+				return "Miss";
+			}
+			};
+		string FacDirection = (*verDictCur)[contract].Fac == "Mom_std_bar_re_dym" ? dire : DireREFunc(dire);//根据策略类型调整交易方向Fac
+		//Fac方向 =买 && （最新价格 > 短期价格 || 短期波动率<=长期波动率）
+		if (FacDirection == "Long" && ((*queueBar)[contract].back() > (*queueBar)[contract][(*queueBar)[contract].size() - (*verDictCur)[contract].Rs] || stdShort <= stdLong)) {
+			int tarVolume = (*spePos)[code].volume;
+			(*spePos).erase(code);
 
+			char DireSlc = (*verDictCur)[contract].Fac == "Mom_std_bar_re_dym" ? '1' : '0';  // 假设 1 表示 Sell，0 表示 Buy
+			cwOrderPtr order = make_shared<ORDERFIELD>();
+			strcpy(order->InstrumentID, (*codeTractCur)[contract].c_str());
+			order->Direction = DireSlc;
+			strcpy(order->CombOffsetFlag, "Close");
+			order->VolumeTotalOriginal = tarVolume;
+			order->LimitPrice = (*barBook).LastPrice;
+			orders.push_back(order);
+		}
+		else if (FacDirection == "Short" && ((*queueBar)[contract].back() < (*queueBar)[contract][(*queueBar)[contract].size() - (*verDictCur)[contract].Rs] || stdShort <= stdLong)) {
+			int tarVolume = (*spePos)[code].volume;
+			(*spePos).erase(code);
+			char DireSlc = (*verDictCur)[contract].Fac == "Mom_std_bar_re_dym" ? '0' : '1';  // 假设 1 表示 Sell，0 表示 Buy
+			cwOrderPtr order = make_shared<ORDERFIELD>();
+			strcpy(order->InstrumentID, (*codeTractCur)[contract].c_str());
+			order->Direction = DireSlc;
+			strcpy(order->CombOffsetFlag, "Close");
+			order->VolumeTotalOriginal = tarVolume;
+			order->LimitPrice = (*barBook).LastPrice;
+			orders.push_back(order);
+		}
+		return orders;
 	}
