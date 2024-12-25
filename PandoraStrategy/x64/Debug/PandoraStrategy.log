@@ -1445,7 +1445,6 @@ D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Strformatdat
       参见“Strformatdate::getCurrentDateString”的前一个定义
   
   Class1.cpp
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(235,21): error C2429: 语言功能 "结构化绑定" 需要编译器标志 "/std:c++17"
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(12,19): error C1075: “{”: 未找到匹配令牌
+D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(15,19): error C1075: “{”: 未找到匹配令牌
   SqlliteHelp.cpp
   正在生成代码...

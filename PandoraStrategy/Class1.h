@@ -128,7 +128,7 @@ namespace MyTrade {
 
         static vector<cwOrderPtr> StrategyPosSpeC(string contract, cwMarketDataPtr barBook, long posO);
 
-        static vector<cwOrderPtr> HandBar(unordered_map<string, cwMarketDataPtr> code2data/*昨仓数据*/, unordered_map<string, cwPositionPtr> curPos);
+        static vector<cwOrderPtr> HandBar(unordered_map<string, cwMarketDataPtr> code2data/*昨仓数据*/, unordered_map<string, PositionFieldPtr> curPos);
 
         static void StoreBaseData(); // 后续可以弄的交易日志，不影响策略 
 	};

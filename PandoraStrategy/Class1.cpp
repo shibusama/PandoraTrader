@@ -411,7 +411,7 @@ namespace MyTrade {
 	}
 
 	// 平仓交易 条件
-	vector<cwOrderPtr> Class1::StrategyPosClose(string contract, cwMarketDataPtr barBook, double stdLong, double stdShort){
+	vector<cwOrderPtr> Class1::StrategyPosClose(string contract, cwMarketDataPtr barBook, double stdLong, double stdShort) {
 		vector<cwOrderPtr> orders;
 		string code = (*codeTractCur)[contract];// 当前持仓代码
 		string dire = (*spePos)[code].direction; // 当前持仓方向
@@ -461,7 +461,7 @@ namespace MyTrade {
 		vector<cwOrderPtr> orders;
 		int tarVolume = abs(static_cast<int>(posO));
 		string dire = (*spePos)[(*codeTractCur)[contract]].direction;
-		char DireSlc = (spePos[codeTractCur[contract]].direction == "Long") ? '1' : '0';  // 假设 1 表示 Sell，0 表示 Buy
+		char DireSlc = ((*spePos)[(*codeTractCur)[contract]].direction == "Long") ? '1' : '0';  // 假设 1 表示 Sell，0 表示 Buy
 		cwOrderPtr order = make_shared<ORDERFIELD>();
 		strcpy(order->InstrumentID, (*codeTractCur)[contract].c_str());
 		order->Direction = DireSlc;
@@ -472,3 +472,122 @@ namespace MyTrade {
 		return orders;
 	}
 
+	vector<cwOrderPtr> Class1::HandBar(unordered_map<string, cwMarketDataPtr> code2data/*昨仓数据*/, unordered_map<string, PositionFieldPtr> curPos) {
+		auto sTime = std::chrono::system_clock::now();
+		std::vector<std::string> ff;
+		for (const auto& pair : (*codeTractCur)) {
+			string key = pair.first;
+			string value = pair.second;
+			auto it = find((*tarCateList).begin(), (*tarCateList).end(), key);
+			if (it != (*tarCateList).end()) {
+				ff.push_back(value);
+			}
+		}
+		while (true) {
+			bool allContained = true;
+			for (const auto& code : ff) {
+				if (code2data.count(code) == 0) {
+					allContained = false;
+					break;
+				}
+			}
+			if (allContained) break;
+			cout << "Sleep for 10 seconds.";
+			this_thread::sleep_for(chrono::seconds(10));
+			cout << string(5, ' ') << "Count " << code2data.size() << ";";
+			cout << endl;
+			auto span = std::chrono::system_clock::now() - sTime;
+			auto ss = std::chrono::duration_cast<std::chrono::seconds>(span).count();
+			if (ss > 59) {
+				return vector<cwOrderPtr>();
+			}
+		}
+		UpdateFlow(code2data, curPos);
+		cout << " --- " << "updateFLow --------------------" << endl;
+
+		vector<cwOrderPtr> ordersTar = StrategyTick(code2data);
+		cout << " +++ " << ordersTar.size() << endl;
+
+		int i = 0;
+		for (size_t i = 0; i < ordersTar.size(); ++i) {
+			cwOrderPtr ord = make_shared<ORDERFIELD>(ordersTar[i]);
+
+			/* cwOrderPtr ord = ordersTar[i];*/
+			if (ord->Direction == 0) {  // 假设 0 表示 Buy
+				std::string instrument = regex_replace(ord->InstrumentID, std::regex("\\d"), "");
+				(*ord).LimitPrice += (*futInfDict)[instrument].ticksize * 2;
+			}
+			else if ((*ord).Direction == 1) {  // 假设 1 表示 Sell
+				string instrument = regex_replace((*ord).InstrumentID, std::regex("\\d"), "");
+				(*ord).LimitPrice -= (*futInfDict)[instrument].ticksize * 2;
+			}
+
+
+			try {
+				if (code2data.count((*ord).InstrumentID) > 0) {
+					(*ord).LimitPrice = min((*ord).LimitPrice, code2data[((*ord).InstrumentID)]->UpperLimitPrice);
+					(*ord).LimitPrice = max((*ord).LimitPrice, code2data[((*ord).InstrumentID)]->LowerLimitPrice);
+				}
+				else {
+					std::cout << "###### Miss " << (*ord).InstrumentID << " LimitPrice >>>>>>>>>>>>>>>" << std::endl;
+				}
+			}
+			catch (const std::exception& e) {
+				std::cout << "###### Miss " << (*ord).InstrumentID << " LimitPrice >>>>>>>>>>>>>>>" << std::endl;
+			}
+
+
+			try {
+				if ((*ord).CombOffsetFlag == "Open") {
+					if (code2data.count((*ord).InstrumentID) > 0) {
+						double upperLower = 0.85 * code2data.at((*ord).InstrumentID)->UpperLimitPrice + 0.15 * code2data.at((*ord).InstrumentID)->LowerLimitPrice;
+						double lowerUpper = 0.15 * code2data.at((*ord).InstrumentID)->UpperLimitPrice + 0.85 * code2data.at((*ord).InstrumentID)->LowerLimitPrice;
+
+
+						if ((*ord).LimitPrice > upperLower && (*ord).Direction == 1) {
+							ord = cwOrderPtr();
+						}
+						else if ((*ord).LimitPrice < lowerUpper && (*ord).Direction == 0) {
+							ord = cwOrderPtr();
+						}
+					}
+				}
+			}
+			catch (const std::exception& e) {
+				std::cout << "###### Miss2 " << (*ord).InstrumentID << " LimitPrice >>>>>>>>>>>>>>>" << std::endl;
+			}
+			// 由于使用范围 for 循环，这里不需要使用索引更新，修改直接生效
+		}
+		return ordersTar;
+	}
+
+	void Class1::StoreBaseData() {
+		// 后续可以弄的交易日志，不影响策略 
+
+		// 根据当前日期选择写入的数据库 his
+		std::string cursor_str = "20241225"; // 假设 cursor_str 已经定义
+		std::string dbPath = "his" + cursor_str.substr(0, 4) + ".db";
+		sqlite3* cnnBar = SqlliteHelp::OpenDatabase(dbPath.c_str());
+
+		std::string createTableCmd = "CREATE TABLE bf" + cursor_str + " (code TEXT, exchange TEXT, tradingday TEXT, timestamp TEXT, volume BIGINT, turnover FLOAT,"
+			" openprice FLOAT, highprice FLOAT,  lowprice FLOAT,  closeprice FLOAT);";
+		SQLiteCommand cmd(cnnBar->get());
+		cmd.setCommandText(createTableCmd);
+		cmd.executeNonQuery();
+
+
+		// 也是一条一条的写入? 只写入主力数据
+		for (const auto& contractPair : *barFlowCur) {
+			const std::string& contract = contractPair.first;
+			const std::vector<barFuture>& barSlcVec = contractPair.second;
+			for (const barFuture& barSlc : barSlcVec) {
+				std::string insertCmd = "INSERT INTO bf" + cursor_str + " (code, actionday, tradingday, timestamp, volume, closeprice) "
+					"VALUES ('" + barSlc.code + "', '" + barSlc.tradingday + "', '" + barSlc.tradingday + "', 'DEFULT_TEST', "
+					+ std::to_string(barSlc.volume) + ", " + std::to_string(barSlc.price) + ");";
+				cmd.setCommandText(insertCmd);
+				cmd.executeNonQuery();
+			}
+		}
+		// 当天成交的 order 要以什么样的形式进行记录?
+	}
+}
