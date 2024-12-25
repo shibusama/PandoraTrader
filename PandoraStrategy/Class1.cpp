@@ -9,6 +9,7 @@
 #include <regex>
 #include <cmath>
 #include <exception>
+#include <chrono>
 
 using namespace std;
 namespace MyTrade {
@@ -454,3 +455,20 @@ namespace MyTrade {
 		}
 		return orders;
 	}
+
+	// 特殊平仓处理方式
+	vector<cwOrderPtr> Class1::StrategyPosSpeC(string contract, cwMarketDataPtr barBook, long posO) {
+		vector<cwOrderPtr> orders;
+		int tarVolume = abs(static_cast<int>(posO));
+		string dire = (*spePos)[(*codeTractCur)[contract]].direction;
+		char DireSlc = (spePos[codeTractCur[contract]].direction == "Long") ? '1' : '0';  // 假设 1 表示 Sell，0 表示 Buy
+		cwOrderPtr order = make_shared<ORDERFIELD>();
+		strcpy(order->InstrumentID, (*codeTractCur)[contract].c_str());
+		order->Direction = DireSlc;
+		strcpy(order->CombOffsetFlag, "Close");
+		order->VolumeTotalOriginal = tarVolume;
+		order->LimitPrice = (*barBook).LastPrice;
+		orders.push_back(order);
+		return orders;
+	}
+
