@@ -13,7 +13,7 @@
 #pragma once
 #include "cwBasicAgent.h"
 #include "cwBasicStrategy.h"
-
+using namespace std;
 class cwPandoraPositionAgent :
 	public cwBasicAgent
 {

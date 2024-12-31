@@ -57,6 +57,9 @@
     <ClCompile Include="Strformatdate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CTPseInday.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cwEmptyStrategy.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Class1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTPseInday.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

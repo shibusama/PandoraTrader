@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CTPseInday.cpp" />
     <ClCompile Include="cwBasicCTAStrategy.cpp" />
     <ClCompile Include="cwChasingRisingStrategy.cpp" />
     <ClCompile Include="cwCTAPlatform.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="SqlliteHelp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CTPseInday.h" />
     <ClInclude Include="cwBasicCTAStrategy.h" />
     <ClInclude Include="cwChasingRisingStrategy.h" />
     <ClInclude Include="cwCTAPlatform.h" />

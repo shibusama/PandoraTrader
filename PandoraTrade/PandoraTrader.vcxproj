@@ -175,7 +175,9 @@ copy "..\Interface\CTPTradeApi64\*.dll" "$(SolutionDir)$(Platform)\$(Configurati
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PandoraDemoStrategyTrader.cpp" />
+    <ClCompile Include="PandoraDemoStrategyTrader.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp20</LanguageStandard>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="PandoraTraderConfig.xml">

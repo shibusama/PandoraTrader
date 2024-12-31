@@ -69,6 +69,8 @@ cwFtdcAppIDType			m_szTdAppID;
 cwFtdcPasswordType		m_szTdAuthCode;
 char					m_szTdDllPath[MAX_PATH];
 
+using namespace std;
+
 vector<string> m_SubscribeInstrument;
 
 string				m_strStrategyConfigFile;

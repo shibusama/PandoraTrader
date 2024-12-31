@@ -1,0 +1,10 @@
+LocalTime,Type,Symbol,ClientOrderID,ExchangeOrderID,ExchangeTradeID/UserProductInfo,Price/YdPosition,OrigionVolume/Position,TradedVolume/TdPosition,Side,OpenClose,OrderType,InsertTime,CancelTime,Status,Text
+20241231_16:09:56,MSG,,,,,,,,,,,,,,Authenticate:正确
+20241231_16:09:57,MSG,,,,,,,,,,,,,,212893 Login:正确
+20241231_16:10:00,RP,hc2501,N/A,N/A,N/A,1,1,0,L,History,N/A,N/A,N/A,N/A,N/A
+20241231_16:10:30,IO,FG501,2153,,,1199.000000,1,0,B,Open,Limit,N/A,N/A,N/A,CancelCount:0
+20241231_16:10:30,IO,SA501,4193,,,1365.000000,1,0,B,Open,Limit,N/A,N/A,N/A,CancelCount:0
+20241231_16:10:30,UO,FG501,2153,,Pandora,1199.000000,1,0,B,Open,Limit,16:10:30,,未知,报单已提交
+20241231_16:10:30,UO,FG501,2153,         149,Pandora,1199.000000,1,0,B,Open,Limit,16:10:30,,未成交(队),未成交
+20241231_16:10:30,UO,SA501,4193,,Pandora,1365.000000,1,0,B,Open,Limit,16:10:30,,未知,报单已提交
+20241231_16:10:30,UO,SA501,4193,         150,Pandora,1365.000000,1,0,B,Open,Limit,16:10:30,,未成交(队),未成交

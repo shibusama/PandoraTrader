@@ -16,7 +16,7 @@
 
 #pragma once
 #include "cwBasicKindleStrategy.h"
-
+using namespace std;
 class cwChasingRisingStrategy :
     public cwBasicKindleStrategy
 {

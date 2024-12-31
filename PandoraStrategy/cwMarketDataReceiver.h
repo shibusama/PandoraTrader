@@ -15,7 +15,7 @@
 #include "cwStrategyLog.h"
 #include <iostream>
 #include "tinyxml.h"
-
+using namespace std;
 class cwMarketDataReceiver :
 	public cwBasicKindleStrategy
 {

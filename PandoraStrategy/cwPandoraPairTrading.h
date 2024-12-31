@@ -16,7 +16,7 @@
 #include "cwStrategyLog.h"
 #include "cwBasicCout.h"
 #include "cwPandoraAgentManager.h"
-
+using namespace std;
 class cwPandoraPairTrading :
 	public cwBasicKindleStrategy
 {

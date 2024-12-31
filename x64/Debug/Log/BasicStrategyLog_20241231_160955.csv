@@ -1,0 +1,12 @@
+20241231_16:10:30,MSG,EasyInputOrder Begin! 
+20241231_16:10:30,MSG,FG501, vol:1, P:1199.00, OpenClose: CloseTodayThenYd(0)  OrderType:Limit
+20241231_16:10:30,MSG,FG501, Pos: S,Total:0,Today:0
+20241231_16:10:30,IO,FG501, Ref:2153, P:1199.00, V:1 B OpenClose:open 
+20241231_16:10:30,MSG,EasyInputOrder End!  
+
+20241231_16:10:30,MSG,EasyInputOrder Begin! 
+20241231_16:10:30,MSG,SA501, vol:1, P:1365.00, OpenClose: CloseTodayThenYd(0)  OrderType:Limit
+20241231_16:10:30,MSG,SA501, Pos: S,Total:0,Today:0
+20241231_16:10:30,IO,SA501, Ref:4193, P:1365.00, V:1 B OpenClose:open 
+20241231_16:10:30,MSG,EasyInputOrder End!  
+

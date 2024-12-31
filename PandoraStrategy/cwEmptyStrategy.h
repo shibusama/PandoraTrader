@@ -2,7 +2,7 @@
 #include <fstream>
 #include "cwBasicKindleStrategy.h"
 #include <iostream>
-
+using namespace std;
 class cwEmptyStrategy :
 	public cwBasicKindleStrategy
 {

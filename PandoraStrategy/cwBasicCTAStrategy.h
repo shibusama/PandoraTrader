@@ -5,7 +5,7 @@
 #include "cwNetValueEvaluation.h"
 
 //#define CW_NEED_STRATEGY_LOG
-
+using namespace std;
 class cwBasicCTAStrategy
 {
 	//
