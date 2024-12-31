@@ -10,6 +10,6 @@ using namespace std;
 class Strformatdate {
 
 public:
-    static string getCurrentDateString() {
-   }
+    static string getCurrentDateString();
+
 };

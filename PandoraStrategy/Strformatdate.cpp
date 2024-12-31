@@ -1,10 +1,10 @@
 #pragma once
-#include <iostream>
-#include <ctime>
-#include <sstream>
-#include <string>
+//#include <iostream>
+//#include <ctime>
+//#include <sstream>
+//#include <string>
 #include "Strformatdate.h"
-#pragma warning(disable:4996)
+//#pragma warning(disable:4996)
 
 using namespace std;
 

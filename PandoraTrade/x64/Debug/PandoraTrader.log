@@ -1,11 +1,5 @@
-﻿  PandoraDemoStrategyTrader.cpp
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(25,9): error C3646: “m_strCurrentUpdateTime”: 未知重写说明符
-  (编译源文件“PandoraDemoStrategyTrader.cpp”)
-  
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(25,2): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-  (编译源文件“PandoraDemoStrategyTrader.cpp”)
-  
-D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraTrade\PandoraDemoStrategyTrader.cpp(420,18): error C2039: "m_strCurrentUpdateTime": 不是 "cwStrategyDemo" 的成员
-      D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\cwStrategyDemo.h(5,7):
-      参见“cwStrategyDemo”的声明
-  
+﻿  PandoraTrader.vcxproj -> D:\Users\13191\Source\Repos\shibusama\PandoraTrader\x64\Debug\PandoraTrader.exe
+  请在PandoraTraderConfig.xml配置账户等信息！
+  ..\Interface\CTPTradeApi64\thostmduserapi_se.dll
+  ..\Interface\CTPTradeApi64\thosttraderapi_se.dll
+  已复制         2 个文件。
