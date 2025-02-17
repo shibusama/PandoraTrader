@@ -21,7 +21,7 @@
 #ifdef EMPTYSTRATEGY
 #include "cwEmptyStrategy.h"
 #else
-#include "cwStrategyDemo.h"
+#include "CTPseInday.h"
 #endif
 #include "tinyxml.h"
 #include "cwBasicCout.h"
@@ -49,7 +49,7 @@ cwFtdTradeSpi			m_TradeChannel;
 #ifdef EMPTYSTRATEGY
 cwEmptyStrategy			m_cwStategy;
 #else
-cwStrategyDemo			m_cwStategy;
+CTPseInday			m_cwStategy;
 #endif
 
 cwBasicCout				m_cwShow;

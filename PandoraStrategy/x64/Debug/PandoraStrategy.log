@@ -1,5 +1,4 @@
-﻿  Strformatdate.cpp
-  Class1.cpp
+﻿  Class1.cpp
 D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(535,33): warning C4101: “e”: 未引用的局部变量
 D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(556,33): warning C4101: “e”: 未引用的局部变量
 D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(574,3): error C2065: “SQLiteCommand”: 未声明的标识符
@@ -13,4 +12,3 @@ D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(5
 D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(576,3): error C2065: “cmd”: 未声明的标识符
 D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(587,5): error C2065: “cmd”: 未声明的标识符
 D:\Users\13191\source\repos\shibusama\PandoraTrader\PandoraStrategy\Class1.cpp(588,5): error C2065: “cmd”: 未声明的标识符
-  正在生成代码...
