@@ -22,32 +22,32 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B3B810B5-370E-4A47-ACF9-3BC14481DC94}</ProjectGuid>
     <RootNamespace>PandoraStrategy</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -104,6 +104,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../Interface/include/;../Interface/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,28 +124,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cwBasicCTAStrategy.cpp" />
-    <ClCompile Include="cwChasingRisingStrategy.cpp" />
-    <ClCompile Include="cwCTAPlatform.cpp" />
-    <ClCompile Include="cwDualTrust.cpp" />
-    <ClCompile Include="cwEmptyStrategy.cpp" />
-    <ClCompile Include="cwMarketDataReceiver.cpp" />
-    <ClCompile Include="cwPandoraAgentManager.cpp" />
-    <ClCompile Include="cwPandoraPairTrading.cpp" />
-    <ClCompile Include="cwPandoraPositionAgent.cpp" />
+    <ClCompile Include="cwIndayStrategy.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
+    <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cwBasicCTAStrategy.h" />
-    <ClInclude Include="cwChasingRisingStrategy.h" />
-    <ClInclude Include="cwCTAPlatform.h" />
-    <ClInclude Include="cwDualTrust.h" />
-    <ClInclude Include="cwEmptyStrategy.h" />
-    <ClInclude Include="cwMarketDataReceiver.h" />
-    <ClInclude Include="cwPandoraAgentManager.h" />
-    <ClInclude Include="cwPandoraPairTrading.h" />
-    <ClInclude Include="cwPandoraPositionAgent.h" />
+    <ClInclude Include="cwIndayStrategy.h" />
     <ClInclude Include="cwStrategyDemo.h" />
+    <ClInclude Include="MyStructs.h" />
+    <ClInclude Include="sqlLiteHelp.hpp" />
+    <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="CTAPlatformConfig.xml" />
