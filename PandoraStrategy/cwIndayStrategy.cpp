@@ -420,13 +420,13 @@ void cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionP
 
 void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered_map<std::string, orderInfo>& cwOrderInfo)
 {
-	// 计算 stdShort
-	std::vector<double> retBarSubsetShort(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rs), comBarInfo.retBar[pPriceData->InstrumentID].end());
-	double stdShort = SampleStd(retBarSubsetShort);
-
 	// 计算 stdLong
 	std::vector<double> retBarSubsetLong(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rl), comBarInfo.retBar[pPriceData->InstrumentID].end());
 	double stdLong = SampleStd(retBarSubsetLong);
+
+	// 计算 stdShort
+	std::vector<double> retBarSubsetShort(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rs), comBarInfo.retBar[pPriceData->InstrumentID].end());
+	double stdShort = SampleStd(retBarSubsetShort);
 
 	// 最新价格 < 短期价格 && 短期波动率 > 长期波动率
 	auto& barQueue = comBarInfo.queueBar[pPriceData->InstrumentID];
@@ -464,37 +464,26 @@ void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered
 
 void cwIndayStrategy::StrategyPosClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos, std::unordered_map<std::string, orderInfo>& cwOrderInfo)
 {
-	// 计算标准差
+	// 计算 stdLong
+	std::vector<double> retBarSubsetLong(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rl), comBarInfo.retBar[pPriceData->InstrumentID].end());
+	double stdLong = SampleStd(retBarSubsetLong);
 	// 计算 stdShort
 	std::vector<double> retBarSubsetShort(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rs), comBarInfo.retBar[pPriceData->InstrumentID].end());
 	double stdShort = SampleStd(retBarSubsetShort);
 
-	// 计算 stdLong
-	std::vector<double> retBarSubsetLong(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rs), comBarInfo.retBar[pPriceData->InstrumentID].end());
-	double stdLong = SampleStd(retBarSubsetLong);
+	std::string code = pPriceData->InstrumentID;  // 当前持仓代码
+	std::string dire = GetPositionDirection(pPos);  // 当前持仓方向
+
+	auto DireREFunc = [](const std::string& x) -> std::string {
+		if (x == "Long") return "Short";
+		if (x == "Short") return "Long";
+		return "Miss";
+		};
+	std::string FacDirection = (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym") ? dire : DireREFunc(dire);
+
+
 	auto& barQueue = comBarInfo.queueBar[pPriceData->InstrumentID];
 	size_t rs = tarFutInfo[pPriceData->InstrumentID].Rs;
-	std::string FacDirection;
-	if (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym")
-	{
-		if (pPos->LongPosition->PosiDirection == CW_FTDC_D_Buy) {
-			std::string FacDirection = "Long";
-		}
-		else if (pPos->ShortPosition->PosiDirection == CW_FTDC_D_Sell)
-		{
-			std::string FacDirection = "Short";
-		}
-	}
-	else
-	{
-		if (pPos->LongPosition->PosiDirection == CW_FTDC_D_Buy) {
-			std::string FacDirection = "Short";
-		}
-		else if (pPos->ShortPosition->PosiDirection == CW_FTDC_D_Sell)
-		{
-			std::string FacDirection = "Long";
-		}
-	}
 
 	//Fac方向 =买 && （最新价格 > 短期价格 || 短期波动率<=长期波动率）
 	if (FacDirection == "Long" && (barQueue.back() > barQueue[barQueue.size() - rs] || stdShort <= stdLong)) {
@@ -534,3 +523,16 @@ bool cwIndayStrategy::IsPendingOrder(std::string instrumentID)
 	}
 	return false;
 }
+
+std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
+{
+	if (!pPos) return "other";
+
+	bool hasLong = pPos->LongPosition && pPos->LongPosition->PosiDirection == CW_FTDC_D_Buy;
+	bool hasShort = pPos->ShortPosition && pPos->ShortPosition->PosiDirection == CW_FTDC_D_Sell;
+
+	if (hasLong && !hasShort) return "Long";
+	if (!hasLong && hasShort) return "Short";
+	return "other";
+}
+

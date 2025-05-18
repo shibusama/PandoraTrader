@@ -39,4 +39,6 @@ public:
 	void StrategyPosClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos, std::unordered_map<std::string, orderInfo>& cwOrderInfo);
 
 	bool IsPendingOrder(std::string instrumentID);
+
+	std::string GetPositionDirection(cwPositionPtr pPos);
 };
