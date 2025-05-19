@@ -242,7 +242,6 @@ void cwIndayStrategy::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwIndayStrategy::OnReady()
 {
-
 	AutoCloseAllPositionsLoop();
 	UpdateBarData();
 
@@ -324,7 +323,7 @@ void cwIndayStrategy::UpdateBarData() {
 void cwIndayStrategy::AutoCloseAllPositionsLoop() {
 	std::map<std::string, cwPositionPtr> CurrentPosMap; //定义map，用于保存持仓信息 
 	std::map<std::string, int> pendingRetryCounter;     // 合约 -> 活跃挂单保留轮数
-	std::map<std::string, bool> instrumentCloseFlag;    // 是否触发收盘平仓
+	std::map<std::string, bool> instrumentCloseFlag;    // 是否触发平仓
 
 	GetPositions(CurrentPosMap);
 	for (auto& [id, pos] : CurrentPosMap) { instrumentCloseFlag[id] = false; }
@@ -342,8 +341,8 @@ void cwIndayStrategy::AutoCloseAllPositionsLoop() {
 				auto md = GetLastestMarketData(id);
 				if (!md) { std::cout << "[" << id << "] 无有效行情数据，跳过。" << std::endl; continue; }
 
-				bool noLong = pos->LongPosition->TotalPosition == 0;
-				bool noShort = pos->ShortPosition->TotalPosition == 0;
+				bool noLong = pos->LongPosition->YdPosition == 0;
+				bool noShort = pos->ShortPosition->YdPosition == 0;
 				bool noOrder = !IsPendingOrder(id);
 
 				// 情况 1: 无持仓 + 无挂单 => 清仓完毕
@@ -502,3 +501,101 @@ std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
 	return "other";
 }
 
+// 平仓函数：根据当前持仓自动判断方向，平多/平空，支持5秒未成交撤单重挂
+void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID)
+{
+	cwPositionPtr pPos = nullptr;
+	std::map<cwActiveOrderKey, cwOrderPtr> waitOrderList;
+
+	// 获取当前持仓和挂单
+	bool ok = GetPositionsAndActiveOrders(instrumentID, pPos, waitOrderList);
+	if (!ok || !pPos)
+	{
+		std::cout << "[平仓] 无法获取持仓或未持仓: " << instrumentID << std::endl;
+		return;
+	}
+
+	auto md = GetLastestMarketData(instrumentID.c_str());
+	if (!md)
+	{
+		std::cout << "[平仓] 无法获取最新行情: " << instrumentID << std::endl;
+		return;
+	}
+
+	// 定义 lambda 封装挂单、等待、撤单重挂逻辑
+	auto try_close = [&](int volume, double price, int direction) {
+		// direction: 1=buy平空, -1=sell平多
+		int actualVol = direction * volume;
+
+		auto orders = EasyInputMultiOrder(
+			instrumentID.c_str(),
+			actualVol,
+			price,
+			cwOpenCloseMode::CloseTodayThenYd,
+			cwInsertOrderType::cwInsertLimitOrder
+		);
+
+		for (auto& order : orders)
+		{
+			// 记录挂单时间
+			std::string ref = order->OrderRef;
+			//std::string strRef(orderRef);
+
+			auto start = std::chrono::steady_clock::now();
+
+			// 等待5秒（可换成更细致的挂单状态检测机制）
+			while (true)
+			{
+				std::this_thread::sleep_for(std::chrono::milliseconds(200)); // 非阻塞建议用状态机实现
+
+				std::map<cwActiveOrderKey, cwOrderPtr> newWaitList;
+				GetPositionsAndActiveOrders(instrumentID, pPos, newWaitList);
+
+				// 是否订单已经不在挂单列表（说明已成交或被撤）
+				bool found = false;
+				for (const auto& kv : newWaitList)
+				{
+					if (kv.second->OrderRef == ref)
+					{
+						found = true;
+						break;
+					}
+				}
+
+				auto now = std::chrono::steady_clock::now();
+				auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
+
+				if (!found)
+				{
+					std::cout << "[平仓] 订单已完成或撤单: " << ref << std::endl;
+					break;
+				}
+				else if (elapsed >= 5)
+				{
+					// 订单超时未成交，尝试撤单并重新挂单
+					std::cout << "[平仓] 订单超时未成交，撤单重挂: " << ref << std::endl;
+					CancelOrder(order);  // 你的框架里应该有撤单接口
+					break;
+				}
+			}
+		}
+		};
+
+	// 平多
+	if (pPos->LongPosition && pPos->LongPosition->TotalPosition > 0)
+	{
+		int vol = pPos->LongPosition->TotalPosition;
+		double price = md->BidPrice1;
+		std::cout << "[平仓] 平多: " << instrumentID << " 手数: " << vol << std::endl;
+		try_close(vol, price, -1);
+	}
+
+	// 平空
+	if (pPos->ShortPosition && pPos->ShortPosition->TotalPosition > 0)
+	{
+		int vol = pPos->ShortPosition->TotalPosition;
+		double price = md->AskPrice1;
+		std::cout << "[平仓] 平空: " << instrumentID << " 手数: " << vol << std::endl;
+		try_close(vol, price, 1);
+	}
+}

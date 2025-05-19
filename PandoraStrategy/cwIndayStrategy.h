@@ -41,4 +41,7 @@ public:
 	bool IsPendingOrder(std::string instrumentID);
 
 	std::string GetPositionDirection(cwPositionPtr pPos);
+
+	void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID);	
+
 };
