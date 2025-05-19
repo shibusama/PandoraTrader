@@ -7,3 +7,5 @@
 /PandoraTrade/x64/Debug
 /PandoraStrategy/x64/Debug
 /.vs/PandoraTrader
+/.vs
+/out/build/x64-Debug
