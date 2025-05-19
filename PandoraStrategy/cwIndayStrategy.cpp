@@ -325,9 +325,10 @@ void cwIndayStrategy::UpdateBarData() {
 }
 
 void cwIndayStrategy::AutoCloseAllPositionsLoop() {
-	std::map<std::string, cwPositionPtr> CurrentPosMap; //定义map，用于保存持仓信息 
-	std::map<std::string, int> pendingRetryCounter;     // 合约 -> 活跃挂单保留轮数
-	std::map<std::string, bool> instrumentCloseFlag;    // 是否触发平仓
+	std::map<std::string, cwPositionPtr> CurrentPosMap;   // 合约 -> 仓位信息
+	std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList; // 合约 -> 订单信息
+	std::map<std::string, int> pendingRetryCounter;       // 合约 -> 挂撤单次数
+	std::map<std::string, bool> instrumentCloseFlag;      // 合约 -> 是否触发平仓
 
 	GetPositions(CurrentPosMap);
 	for (auto& [id, pos] : CurrentPosMap) { instrumentCloseFlag[id] = false; }
