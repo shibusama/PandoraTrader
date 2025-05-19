@@ -43,6 +43,8 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 	auto [hour, minute, second] = IsTradingTime();
 
+	auto& InstrumentID = pPriceData->InstrumentID;
+
 	if (IsNormalTradingTime(hour, minute)) {
 		std::string instrument = pPriceData->InstrumentID;
 
@@ -97,55 +99,55 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 		}
 	}
 
-	if (IsClosingTime(hour, minute) && !instrumentCloseFlag[pPriceData->InstrumentID])
+	if (IsClosingTime(hour, minute) && !instrumentCloseFlag[InstrumentID])
 	{
 		int now = GetCurrentTimeInSeconds();
 
-		if (lastCloseAttemptTime[pPriceData->InstrumentID] == 0 || now - lastCloseAttemptTime[pPriceData->InstrumentID] >= 5)
+		if (lastCloseAttemptTime[InstrumentID] == 0 || now - lastCloseAttemptTime[InstrumentID] >= 5)
 		{
-			lastCloseAttemptTime[pPriceData->InstrumentID] = now;                       // 更新尝试时间
+			lastCloseAttemptTime[InstrumentID] = now;                       // 更新尝试时间
 
 			cwPositionPtr pPos = nullptr;
 
-			GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
+			GetPositionsAndActiveOrders(InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
 
 			bool hasPos = (pPos && (pPos->LongPosition->TotalPosition > 0 || pPos->ShortPosition->TotalPosition > 0));
-			bool hasOrder = IsPendingOrder(pPriceData->InstrumentID);
+			bool hasOrder = IsPendingOrder(InstrumentID);
 
 			// 情况 1：无持仓 + 无挂单 => 清仓完毕
 			if (!hasPos && !hasOrder)
 			{
-				std::cout << "[" << pPriceData->InstrumentID << "] 持仓清空完毕。" << std::endl;
-				instrumentCloseFlag[pPriceData->InstrumentID] = true;
-				closeAttemptCount.erase(pPriceData->InstrumentID);
+				std::cout << "[" << InstrumentID << "] 持仓清空完毕。" << std::endl;
+				instrumentCloseFlag[InstrumentID] = true;
+				closeAttemptCount.erase(InstrumentID);
 				return;
 			}
 			// 情况 2：有持仓 + 无挂单 => 初次挂清仓单
 			else if (hasPos && !hasOrder)
 			{
 				TryAggressiveClose(pPriceData, pPos);
-				std::cout << "[" << pPriceData->InstrumentID << "] 清仓指令已发送。" << std::endl;
+				std::cout << "[" << InstrumentID << "] 清仓指令已发送。" << std::endl;
 				return;
 			}
 			// 情况 3：有挂单 或 有持仓 => 撤单 + 重新挂清仓单
 			else
 			{
-				if (++closeAttemptCount[pPriceData->InstrumentID] > 3) {
-					std::cout << "[" << pPriceData->InstrumentID << "] 超过最大等待次数，可能仍有未清仓持仓，请人工检查。" << std::endl;
-					instrumentCloseFlag[pPriceData->InstrumentID] = true;
+				if (++closeAttemptCount[InstrumentID] > 3) {
+					std::cout << "[" << InstrumentID << "] 超过最大等待次数，可能仍有未清仓持仓，请人工检查。" << std::endl;
+					instrumentCloseFlag[InstrumentID] = true;
 					return;
 				}
 				else
 				{
 					for (auto& [key, order] : WaitOrderList) {
-						if (key.InstrumentID == pPriceData->InstrumentID) {
+						if (key.InstrumentID == InstrumentID) {
 							CancelOrder(order);
 						}
 					}
-					std::cout << "[" << pPriceData->InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
+					std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
 					if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-					int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == pPriceData->InstrumentID; });
-					std::cout << "[" << pPriceData->InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
+					int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
+					std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
 				}
 			}
 		}
@@ -403,17 +405,18 @@ void cwIndayStrategy::UpdateCtx(cwMarketDataPtr pPriceData)
 
 void cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos)
 {
-	double aggressiveBid = pPriceData->BidPrice1 + GetTickSize(pPriceData->InstrumentID);
-	double aggressiveAsk = pPriceData->AskPrice1 - GetTickSize(pPriceData->InstrumentID);
+	auto& InstrumentID = pPriceData->InstrumentID;
+	double aggressiveBid = pPriceData->BidPrice1 + GetTickSize(InstrumentID);
+	double aggressiveAsk = pPriceData->AskPrice1 - GetTickSize(InstrumentID);
 	if (pPos->LongPosition->TotalPosition > 0 && aggressiveBid > 1e-6)
 	{
-		EasyInputMultiOrder(pPriceData->InstrumentID, -pPos->LongPosition->TotalPosition, aggressiveBid);
-		std::cout << "[" << pPriceData->InstrumentID << "] 平多仓 -> 数量: " << pPos->LongPosition->TotalPosition << ", 价格: " << aggressiveBid << std::endl;
+		EasyInputMultiOrder(InstrumentID, -pPos->LongPosition->TotalPosition, aggressiveBid);
+		std::cout << "[" << InstrumentID << "] 平多仓 -> 数量: " << pPos->LongPosition->TotalPosition << ", 价格: " << aggressiveBid << std::endl;
 	}// 重新挂 Bid
 	if (pPos->ShortPosition->TotalPosition > 0 && aggressiveAsk > 1e-6)
 	{
-		EasyInputMultiOrder(pPriceData->InstrumentID, pPos->ShortPosition->TotalPosition, aggressiveAsk);
-		std::cout << "[" << pPriceData->InstrumentID << "] 平空仓 -> 数量: " << pPos->ShortPosition->TotalPosition << ", 价格: " << aggressiveAsk << std::endl;
+		EasyInputMultiOrder(InstrumentID, pPos->ShortPosition->TotalPosition, aggressiveAsk);
+		std::cout << "[" << InstrumentID << "] 平空仓 -> 数量: " << pPos->ShortPosition->TotalPosition << ", 价格: " << aggressiveAsk << std::endl;
 	}// 重新挂 Ask
 }
 
