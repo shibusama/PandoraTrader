@@ -45,15 +45,17 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 	auto& InstrumentID = pPriceData->InstrumentID;
 
-	if (IsNormalTradingTime(hour, minute)) {
-		std::string instrument = pPriceData->InstrumentID;
+	std::string productID(GetProductID(pPriceData->InstrumentID));
 
-		auto it = cwOrderInfo.find(instrument);
+	if (IsNormalTradingTime(hour, minute)) {
+		
+		auto it = cwOrderInfo.find(productID);
 		if (it == cwOrderInfo.end()) return; // 没有信号
 
 		orderInfo& info = it->second;
 
 		cwPositionPtr pPos = nullptr;
+
 		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
 
 		bool hasOrder = IsPendingOrder(pPriceData->InstrumentID);
@@ -67,8 +69,8 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 			bool result = (info.volume == pPos->LongPosition->TodayPosition) ? true : (info.volume == pPos->ShortPosition->TodayPosition) ? true : false;
 
 			if (result) {
-				cwOrderInfo.erase(instrument);
-				closeAttemptCount.erase(instrument);
+				cwOrderInfo.erase(productID);
+				closeAttemptCount.erase(pPriceData->InstrumentID);
 			}
 			else {
 				if (!hasOrder) {
@@ -158,7 +160,7 @@ void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicK
 	if (pPriceData.get() == NULL) { return; }
 
 	auto [hour, minute, second] = IsTradingTime();
-
+	
 	if (IsNormalTradingTime(hour, minute))
 	{
 		UpdateCtx(pPriceData);
@@ -249,7 +251,7 @@ void cwIndayStrategy::OnReady()
 
 	for (auto& futInfMng : tarFutInfo)
 	{
-		SubcribeKindle(futInfMng.first.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
+		SubcribeKindle(futInfMng.second.code.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
 	};
 }
 
@@ -388,19 +390,21 @@ void cwIndayStrategy::AutoCloseAllPositionsLoop() {
 
 void cwIndayStrategy::UpdateCtx(cwMarketDataPtr pPriceData)
 {
+	std::string productID(GetProductID(pPriceData->InstrumentID));
+
 	//barFolw更新
-	comBarInfo.barFlow[pPriceData->InstrumentID].push_back(pPriceData->LastPrice);
+	comBarInfo.barFlow[productID].push_back(pPriceData->LastPrice);
 	//queueBar更新
 
-	comBarInfo.queueBar[pPriceData->InstrumentID].push_back(pPriceData->LastPrice / tarFutInfo[pPriceData->InstrumentID].accfactor);
+	comBarInfo.queueBar[productID].push_back(pPriceData->LastPrice / tarFutInfo[productID].accfactor);
 	//ret更新
-	double last = comBarInfo.queueBar[pPriceData->InstrumentID][comBarInfo.queueBar[pPriceData->InstrumentID].size() - 1];
-	double secondLast = comBarInfo.queueBar[pPriceData->InstrumentID][comBarInfo.queueBar[pPriceData->InstrumentID].size() - 2];
-	comBarInfo.retBar[pPriceData->InstrumentID].push_back(last / secondLast - 1);
+	double last = comBarInfo.queueBar[productID][comBarInfo.queueBar[productID].size() - 1];
+	double secondLast = comBarInfo.queueBar[productID][comBarInfo.queueBar[productID].size() - 2];
+	comBarInfo.retBar[productID].push_back(last / secondLast - 1);
 	//删除首位元素
-	comBarInfo.barFlow[pPriceData->InstrumentID].pop_front();
-	comBarInfo.queueBar[pPriceData->InstrumentID].pop_front();
-	comBarInfo.retBar[pPriceData->InstrumentID].pop_front();
+	comBarInfo.barFlow[productID].pop_front();
+	comBarInfo.queueBar[productID].pop_front();
+	comBarInfo.retBar[productID].pop_front();
 }
 
 void cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos)
