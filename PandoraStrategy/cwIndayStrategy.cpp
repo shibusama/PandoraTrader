@@ -340,7 +340,7 @@ void cwIndayStrategy::AutoCloseAllPositionsLoop() {
 			{
 				if (instrumentCloseFlag[id]) continue;
 				auto md = GetLastestMarketData(id);
-				if (!md) { std::cout << "[" << id << "] 无有效行情数据，跳过。" << std::endl;continue; }
+				if (!md) { std::cout << "[" << id << "] 无有效行情数据，跳过。" << std::endl; continue; }
 
 				bool noLong = pos->LongPosition->TotalPosition == 0;
 				bool noShort = pos->ShortPosition->TotalPosition == 0;
@@ -428,35 +428,18 @@ void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered
 	std::vector<double> retBarSubsetShort(std::prev(comBarInfo.retBar[pPriceData->InstrumentID].end(), tarFutInfo[pPriceData->InstrumentID].Rs), comBarInfo.retBar[pPriceData->InstrumentID].end());
 	double stdShort = SampleStd(retBarSubsetShort);
 
-	// 最新价格 < 短期价格 && 短期波动率 > 长期波动率
 	auto& barQueue = comBarInfo.queueBar[pPriceData->InstrumentID];
-	if (barQueue.back() < barQueue[barQueue.size() - tarFutInfo[pPriceData->InstrumentID].Rs] && stdShort > stdLong)
-	{
-		int tarVolume = countLimitCur[pPriceData->InstrumentID];
-		if (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym")
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = countLimitCur[pPriceData->InstrumentID];
-		}
-		else
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = -countLimitCur[pPriceData->InstrumentID];
-		}
-		cwOrderInfo[pPriceData->InstrumentID].szInstrumentID = pPriceData->InstrumentID;
-		cwOrderInfo[pPriceData->InstrumentID].price = comBarInfo.barFlow[pPriceData->InstrumentID].back();
 
-	}
+	// 最新价格 < 短期价格 && 短期波动率 > 长期波动率
+	bool cond1 = (barQueue.back() < barQueue[barQueue.size() - tarFutInfo[pPriceData->InstrumentID].Rs] && stdShort > stdLong);
 	// 最新价格 > 短期价格 && 短期波动率 > 长期波动率
-	else if (barQueue.back() > barQueue[barQueue.size() - 500] && stdShort > stdLong)
-	{
-		int tarVolume = countLimitCur[pPriceData->InstrumentID];
-		if (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym")
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = countLimitCur[pPriceData->InstrumentID];
-		}
-		else
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = -countLimitCur[pPriceData->InstrumentID];
-		}
+	bool cond2 = (barQueue.back() > barQueue[barQueue.size() - 500] && stdShort > stdLong);
+
+	if (cond1 || cond2) {
+		int baseVolume = countLimitCur[pPriceData->InstrumentID];
+		bool isMom = (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym");
+
+		cwOrderInfo[pPriceData->InstrumentID].volume = isMom ? baseVolume : -baseVolume;
 		cwOrderInfo[pPriceData->InstrumentID].szInstrumentID = pPriceData->InstrumentID;
 		cwOrderInfo[pPriceData->InstrumentID].price = comBarInfo.barFlow[pPriceData->InstrumentID].back();
 	}
@@ -474,11 +457,7 @@ void cwIndayStrategy::StrategyPosClose(cwMarketDataPtr pPriceData, cwPositionPtr
 	std::string code = pPriceData->InstrumentID;  // 当前持仓代码
 	std::string dire = GetPositionDirection(pPos);  // 当前持仓方向
 
-	auto DireREFunc = [](const std::string& x) -> std::string {
-		if (x == "Long") return "Short";
-		if (x == "Short") return "Long";
-		return "Miss";
-		};
+	auto DireREFunc = [](const std::string& x) -> std::string {if (x == "Long") return "Short"; if (x == "Short") return "Long"; return "Miss"; };
 	std::string FacDirection = (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym") ? dire : DireREFunc(dire);
 
 
@@ -486,29 +465,15 @@ void cwIndayStrategy::StrategyPosClose(cwMarketDataPtr pPriceData, cwPositionPtr
 	size_t rs = tarFutInfo[pPriceData->InstrumentID].Rs;
 
 	//Fac方向 =买 && （最新价格 > 短期价格 || 短期波动率<=长期波动率）
-	if (FacDirection == "Long" && (barQueue.back() > barQueue[barQueue.size() - rs] || stdShort <= stdLong)) {
-		if (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym")
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = countLimitCur[pPriceData->InstrumentID];
-		}
-		else
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = -countLimitCur[pPriceData->InstrumentID];
-		}
-		cwOrderInfo[pPriceData->InstrumentID].szInstrumentID = pPriceData->InstrumentID;
-		cwOrderInfo[pPriceData->InstrumentID].price = comBarInfo.barFlow[pPriceData->InstrumentID].back();
-	}
+	bool shouldOpenLong = FacDirection == "Long" && (barQueue.back() > barQueue[barQueue.size() - rs] || stdShort <= stdLong);
 	//Fac方向 =卖 && （最新价格 < 短期价格 || 短期波动率<=长期波动率）
-	else if (FacDirection == "Short" && (barQueue.back() < barQueue[barQueue.size() - rs] || stdShort <= stdLong))
-	{
-		if (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym")
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = countLimitCur[pPriceData->InstrumentID];
-		}
-		else
-		{
-			cwOrderInfo[pPriceData->InstrumentID].volume = -countLimitCur[pPriceData->InstrumentID];
-		}
+	bool shouldOpenShort = FacDirection == "Short" && (barQueue.back() < barQueue[barQueue.size() - rs] || stdShort <= stdLong);
+
+	if (shouldOpenLong || shouldOpenShort) {
+		int volSign = (tarFutInfo[pPriceData->InstrumentID].Fac == "Mom_std_bar_re_dym") ? 1 : -1;
+		int baseVolume = countLimitCur[pPriceData->InstrumentID];
+
+		cwOrderInfo[pPriceData->InstrumentID].volume = volSign * baseVolume;
 		cwOrderInfo[pPriceData->InstrumentID].szInstrumentID = pPriceData->InstrumentID;
 		cwOrderInfo[pPriceData->InstrumentID].price = comBarInfo.barFlow[pPriceData->InstrumentID].back();
 	}
