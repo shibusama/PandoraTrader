@@ -42,6 +42,6 @@ public:
 
 	std::string GetPositionDirection(cwPositionPtr pPos);
 
-	void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID);	
+	//void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID);	
 
 };

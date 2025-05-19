@@ -509,7 +509,7 @@ std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
 }
 
 // 平仓函数：根据当前持仓自动判断方向，平多/平空，支持5秒未成交撤单重挂
-void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID)
+void CloseAllPositionWithRetry(const std::string& instrumentID)
 {
 	cwPositionPtr pPos = nullptr;
 	std::map<cwActiveOrderKey, cwOrderPtr> waitOrderList;
