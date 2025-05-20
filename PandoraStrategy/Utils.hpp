@@ -106,3 +106,13 @@ inline bool AllInstrumentClosed(const std::map<std::string, bool>& instrumentClo
 	}
 	return true;
 }
+
+bool IsPendingOrder(std::string instrumentID, std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList)
+{
+	for (auto& [key, order] : WaitOrderList) {
+		if (key.InstrumentID == instrumentID) {
+			return true;
+		}
+	}
+	return false;
+}

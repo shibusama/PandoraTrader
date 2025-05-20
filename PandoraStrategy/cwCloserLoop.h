@@ -1,6 +1,4 @@
 #pragma once
-#pragma once
-
 #include <map>
 #include <string>
 //#include "cwContext.h" // 保留，含 cwPositionPtr, cwOrderPtr 等定义

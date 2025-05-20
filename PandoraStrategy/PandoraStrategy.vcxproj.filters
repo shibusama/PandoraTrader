@@ -30,6 +30,9 @@
     <ClCompile Include="cwCloserLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cwInstrumentCloser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cwStrategyDemo.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cwCloserLoop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cwInstrumentCloser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
