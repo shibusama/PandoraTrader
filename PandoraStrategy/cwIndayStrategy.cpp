@@ -155,6 +155,13 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 			}
 		}
 	}
+
+	//cwInstrumentCloser closer(this, "rb2409");
+	//closer.RunOnce(hour, minute, second);
+	//if (closer.IsFinished()) {
+	//	// done
+	//}
+
 }
 
 void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicKindleStrategy::cwKindleSeriesPtr pKindleSeries) {
