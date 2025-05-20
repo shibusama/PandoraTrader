@@ -15,6 +15,7 @@
 #include "sqlite3.h"
 #include "utils.hpp"
 #include "sqlLiteHelp.hpp"
+#include "cwCloserLoop.h"
 
 static std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
 static barInfo comBarInfo;                          // barINfo
@@ -246,7 +247,10 @@ void cwIndayStrategy::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwIndayStrategy::OnReady()
 {
-	AutoCloseAllPositionsLoop();
+	cwCloserLoop closer(this);
+
+	closer.Run();
+
 	UpdateBarData();
 
 	for (auto& futInfMng : tarFutInfo)
