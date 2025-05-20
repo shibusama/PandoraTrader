@@ -106,6 +106,3 @@ inline bool AllInstrumentClosed(const std::map<std::string, bool>& instrumentClo
 	}
 	return true;
 }
-
-
-
