@@ -127,6 +127,7 @@
     <ClCompile Include="cwCloserLoop.cpp" />
     <ClCompile Include="cwIndayStrategy.cpp" />
     <ClCompile Include="cwInstrumentCloser.cpp" />
+    <ClCompile Include="cwSignalOrderExecutor.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
     <ClCompile Include="sqlite3.c" />
   </ItemGroup>
@@ -134,6 +135,7 @@
     <ClInclude Include="cwCloserLoop.h" />
     <ClInclude Include="cwIndayStrategy.h" />
     <ClInclude Include="cwInstrumentCloser.h" />
+    <ClInclude Include="cwSignalOrderExecutor.h" />
     <ClInclude Include="cwStrategyDemo.h" />
     <ClInclude Include="MyStructs.h" />
     <ClInclude Include="sqlLiteHelp.hpp" />

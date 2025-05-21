@@ -44,11 +44,9 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 	auto [hour, minute, second] = IsTradingTime();
 	auto& InstrumentID = pPriceData->InstrumentID;
-	std::string productID(GetProductID(pPriceData->InstrumentID));
+	std::string productID(GetProductID(InstrumentID));
 
-	if (IsNormalTradingTime(hour, minute)) {
-
-		if (cwOrderInfo.find(productID) == cwOrderInfo.end()) return; // 没有信号
+	if (IsNormalTradingTime(hour, minute) && !(cwOrderInfo.find(productID) == cwOrderInfo.end())) {
 
 		orderInfo& info = cwOrderInfo[productID];
 		cwPositionPtr pPos = nullptr;
@@ -77,7 +75,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 					std::cout << "[" << InstrumentID << "] 超过最大次数，还未挂上单子，请人工检查。" << std::endl;
 					return;
 				}
-				for (auto& [key, order] : WaitOrderList) 
+				for (auto& [key, order] : WaitOrderList)
 				{
 					if (key.InstrumentID == InstrumentID) {
 						CancelOrder(order);
