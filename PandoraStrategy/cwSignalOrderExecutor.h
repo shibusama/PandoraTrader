@@ -26,6 +26,6 @@ private:
     std::map<std::string, int> closeAttemptCount;
 
     // 外部依赖（建议通过构造传入或改为静态依赖）
-    std::map<std::string, orderInfo>& cwOrderInfo;
-    std::map<cwActiveOrderKey, cwOrderPtr>& WaitOrderList;
+    static std::map<std::string, orderInfo>& cwOrderInfo;
+    static std::map<cwActiveOrderKey, cwOrderPtr>& WaitOrderList;
 };
