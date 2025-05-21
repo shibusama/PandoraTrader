@@ -44,4 +44,12 @@ public:
 
 	//void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID);	
 
+	cwOrderPtr SafeLimitOrder(
+		const char* instrumentID,
+		int volume,                        // >0买 <0卖
+		double rawPrice,                  // 原始价格（策略计算的目标价格）
+		double slipTick = 1.0            // 滑价 tick 数，默认滑 1 tick
+	);
+
+
 };
