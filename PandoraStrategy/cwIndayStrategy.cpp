@@ -43,62 +43,52 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 	if (pPriceData.get() == NULL) { return; }
 
 	auto [hour, minute, second] = IsTradingTime();
-
 	auto& InstrumentID = pPriceData->InstrumentID;
-
 	std::string productID(GetProductID(pPriceData->InstrumentID));
 
 	if (IsNormalTradingTime(hour, minute)) {
 
-		auto it = cwOrderInfo.find(productID);
-		if (it == cwOrderInfo.end()) return; // 没有信号
+		if (cwOrderInfo.find(productID) == cwOrderInfo.end()) return; // 没有信号
 
-		orderInfo& info = it->second;
-
+		orderInfo& info = cwOrderInfo[productID];
 		cwPositionPtr pPos = nullptr;
-
-		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
-
-		bool hasOrder = IsPendingOrder(pPriceData->InstrumentID);
+		GetPositionsAndActiveOrders(InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
 
 		int now = GetCurrentTimeInSeconds();
+		bool hasOrder = IsPendingOrder(InstrumentID);
 
-		if (lastCloseAttemptTime[pPriceData->InstrumentID] == 0 || now - lastCloseAttemptTime[pPriceData->InstrumentID] >= 5) //挂单超时撤单判断是单一的：5秒设置根据合约活跃度动态调整时间；或者基于盘口价差判断是否撤单更具优势。
+		if (lastCloseAttemptTime[InstrumentID] == 0 || now - lastCloseAttemptTime[InstrumentID] >= 5) //挂单超时撤单判断是单一的：5秒设置根据合约活跃度动态调整时间；或者基于盘口价差判断是否撤单更具优势。
 		{
-			lastCloseAttemptTime[pPriceData->InstrumentID] = now;
+			lastCloseAttemptTime[InstrumentID] = now;
 
 			bool result = (info.volume == pPos->LongPosition->TodayPosition) ? true : (info.volume == pPos->ShortPosition->TodayPosition) ? true : false;
 
 			if (result) {
 				cwOrderInfo.erase(productID);
-				closeAttemptCount.erase(pPriceData->InstrumentID);
+				closeAttemptCount.erase(InstrumentID);
+				return;
 			}
-			else {
-				if (!hasOrder) {
-					EasyInputOrder(info.szInstrumentID.c_str(), info.volume, info.price);
-					//cwOrderInfo.erase(instrument); //这个好像不能在这里erase
+			if (!hasOrder) {
+				EasyInputOrder(info.szInstrumentID.c_str(), info.volume, info.price);
+			}
+			else if (hasOrder)
+			{
+				if (++closeAttemptCount[InstrumentID] > 3) {
+					std::cout << "[" << InstrumentID << "] 超过最大次数，还未挂上单子，请人工检查。" << std::endl;
 					return;
 				}
-				else if (hasOrder)
+				for (auto& [key, order] : WaitOrderList) 
 				{
-					if (++closeAttemptCount[pPriceData->InstrumentID] > 3) {
-						std::cout << "[" << pPriceData->InstrumentID << "] 超过最大次数，还未挂上单子，请人工检查。" << std::endl;
-						return;
-					}
-					else
-					{
-						for (auto& [key, order] : WaitOrderList) {
-							if (key.InstrumentID == pPriceData->InstrumentID) {
-								CancelOrder(order);
-							}
-						}
-						std::cout << "[" << pPriceData->InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
-						if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-						int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == pPriceData->InstrumentID; });
-						std::cout << "[" << pPriceData->InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
+					if (key.InstrumentID == InstrumentID) {
+						CancelOrder(order);
 					}
 				}
+				std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
+				if (pPos) { TryAggressiveClose(pPriceData, pPos); }
+				int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
+				std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
 			}
+
 		}
 	}
 
@@ -520,7 +510,7 @@ std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
 	return "other";
 }
 
-cwOrderPtr cwIndayStrategy::SafeLimitOrder(const char* instrumentID, int volume, double rawPrice, double slipTick) 
+cwOrderPtr cwIndayStrategy::SafeLimitOrder(const char* instrumentID, int volume, double rawPrice, double slipTick)
 {
 	auto md = GetLastestMarketData(instrumentID);
 	if (!md) {
