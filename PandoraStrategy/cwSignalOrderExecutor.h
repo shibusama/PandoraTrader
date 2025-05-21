@@ -9,7 +9,7 @@
 #include "Utils.hpp"
 
 class cwSignalOrderExecutor {
-    cwSignalOrderExecutor(cwBasicKindleStrategy* context);
+    cwSignalOrderExecutor(cwBasicKindleStrategy* context, const std::string& instrumentID);
 public:
     void OnPriceUpdate(cwMarketDataPtr pPriceData);
 
@@ -21,11 +21,12 @@ private:
     void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
 
     cwBasicKindleStrategy* ctx;
+    std::string instrumentID;
 
     std::map<std::string, int> lastCloseAttemptTime;
     std::map<std::string, int> closeAttemptCount;
 
     // 外部依赖（建议通过构造传入或改为静态依赖）
-    static std::map<std::string, orderInfo>& cwOrderInfo;
-    static std::map<cwActiveOrderKey, cwOrderPtr>& WaitOrderList;
+    std::map<std::string, orderInfo>& cwOrderInfo; //这里有引用成员，所以必须设定初始值****************很重要
+    std::map<cwActiveOrderKey, cwOrderPtr>& WaitOrderList;
 };
