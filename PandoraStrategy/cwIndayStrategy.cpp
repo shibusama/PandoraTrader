@@ -17,9 +17,9 @@
 #include "sqlLiteHelp.hpp"
 #include "cwCloserLoop.h"
 
-static std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
-static barInfo comBarInfo;                          // barINfo
-static std::map<std::string, int> countLimitCur;    // 合约对应交易数量
+//static std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
+//static barInfo comBarInfo;                          // barINfo
+//static std::map<std::string, int> countLimitCur;    // 合约对应交易数量
 
 //清仓所需全局变量
 static std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;           // 挂单列表（全局）
@@ -242,22 +242,30 @@ void cwIndayStrategy::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwIndayStrategy::OnReady()
 {
-	cwCloserLoop closer(this);
+	// 每 1 秒触发一次，不绑定具体合约
+	SetTimer(1, 60000);
 
-	closer.Run();
+	//cwCloserLoop closer(this);
+
+	//closer.Run();
 
 	UpdateBarData();
 
-	for (auto& futInfMng : tarFutInfo)
-	{
-		SubcribeKindle(futInfMng.second.code.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
-	};
+	//for (auto& futInfMng : tarFutInfo)
+	//{
+	//	SubcribeKindle(futInfMng.second.code.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
+	//};
+	std::cout << "dd" << std::endl;
 
-	// 每 1 秒触发一次，不绑定具体合约
-	SetTimer(1, 1000);
+	for (auto& futInfMng : tarFutInfo) {
+		std::cout << futInfMng.first << std::endl;
+	}
+
+	//// 每 1 秒触发一次，不绑定具体合约
+	//SetTimer(1, 1000);
 
 	// 每 2 秒触发一次，绑定某个合约
-	SetTimer(2, 2000, "au2508");
+	//SetTimer(2, 2000, "au2508");
 }
 
 void cwIndayStrategy::UpdateBarData() {
@@ -567,12 +575,13 @@ void cwIndayStrategy::OnStrategyTimer(int iTimerId, const char* szInstrumentID)
 {
 	if (iTimerId == 1)
 	{
-		std::map<std::string, cwPositionPtr> m_PositionMap = m_TradeChannel.GetPosition();
-		if (!m_PositionMap.empty())
+		std::map<std::string, cwPositionPtr> PositionMap;
+		GetPositions(PositionMap);	///key OrderRef
+		if (!PositionMap.empty())
 		{
 			m_cwShow.AddLog("%-12s %-10s %-8s %-12s %-12s %-14s %-10s",
 				"InstrumentID", "Direction", "Volume", "OpenPriceAvg", "MktProfit", "ExchangeMargin", "OpenCost");
-			for (const auto& [instrumentID, pos] : m_PositionMap)
+			for (const auto& [instrumentID, pos] : PositionMap)
 			{
 				if (pos->LongPosition->TotalPosition > 0)
 				{

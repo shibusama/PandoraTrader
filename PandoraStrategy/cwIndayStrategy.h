@@ -51,7 +51,10 @@ public:
 		double slipTick = 1.0            // 滑价 tick 数，默认滑 1 tick
 	);
 
-	void OnStrategyTimer(int iTimerId, const char* szInstrumentID);
+	virtual void OnStrategyTimer(int iTimerId, const char* szInstrumentID);
 
-
+private:
+	std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
+	barInfo comBarInfo;                          // barINfo
+	std::map<std::string, int> countLimitCur;    // 合约对应交易数量
 };
