@@ -9,7 +9,7 @@
 #include "Utils.hpp"
 
 class cwSignalOrderExecutor {
-    cwSignalOrderExecutor(cwBasicKindleStrategy* context, const std::string& instrumentID);
+    cwSignalOrderExecutor(cwBasicKindleStrategy* context, std::map<std::string, orderInfo>& cwOrderInfo, std::map<cwActiveOrderKey, cwOrderPtr>& WaitOrderList);
 public:
     void OnPriceUpdate(cwMarketDataPtr pPriceData);
 
@@ -21,7 +21,6 @@ private:
     void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
 
     cwBasicKindleStrategy* ctx;
-    std::string instrumentID;
 
     std::map<std::string, int> lastCloseAttemptTime;
     std::map<std::string, int> closeAttemptCount;

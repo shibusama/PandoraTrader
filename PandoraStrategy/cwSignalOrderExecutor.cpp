@@ -1,7 +1,7 @@
 #include "cwSignalOrderExecutor.h"
 
-cwSignalOrderExecutor::cwSignalOrderExecutor(cwBasicKindleStrategy* context, const std::string& instrumentID)
-	:ctx(context), instrumentID(instrumentID) {
+cwSignalOrderExecutor::cwSignalOrderExecutor(cwBasicKindleStrategy* context, std::map<std::string, orderInfo>& cwOrderInfo, std::map<cwActiveOrderKey, cwOrderPtr>& WaitOrderList)
+	:ctx(context), cwOrderInfo(cwOrderInfo), WaitOrderList(WaitOrderList) {
 }
 
 void cwSignalOrderExecutor::OnPriceUpdate(cwMarketDataPtr pPriceData) {
