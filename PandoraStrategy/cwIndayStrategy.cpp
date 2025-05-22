@@ -252,6 +252,12 @@ void cwIndayStrategy::OnReady()
 	{
 		SubcribeKindle(futInfMng.second.code.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
 	};
+
+	// 每 1 秒触发一次，不绑定具体合约
+	SetTimer(1, 1000);
+
+	// 每 2 秒触发一次，绑定某个合约
+	SetTimer(2, 2000, "au2508");
 }
 
 void cwIndayStrategy::UpdateBarData() {
@@ -555,4 +561,16 @@ cwOrderPtr cwIndayStrategy::SafeLimitOrder(const char* instrumentID, int volume,
 	m_cwShow.AddLog("[SafeLimitOrder] Order sent: {} volume={} price={} (raw={})", instrumentID, volume, safePrice, rawPrice);
 
 	return order;
+}
+
+void cwIndayStrategy::OnStrategyTimer(int iTimerId, const char* szInstrumentID)
+{
+	if (iTimerId == 1)
+	{
+		printf("[定时器1] 每秒触发，当前时间: %s\n", m_strCurrentUpdateTime);
+	}
+	else if (iTimerId == 2)
+	{
+		printf("[定时器2] 每2秒触发，合约: %s\n", szInstrumentID);
+	}
 }

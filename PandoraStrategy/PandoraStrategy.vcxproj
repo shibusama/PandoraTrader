@@ -130,6 +130,8 @@
     <ClCompile Include="cwSignalOrderExecutor.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
     <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="cwTimer.cpp" />
+    <ClCompile Include="cwTimerManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cwCloserLoop.h" />
@@ -137,9 +139,11 @@
     <ClInclude Include="cwInstrumentCloser.h" />
     <ClInclude Include="cwSignalOrderExecutor.h" />
     <ClInclude Include="cwStrategyDemo.h" />
+    <ClInclude Include="cwTimer.h" />
     <ClInclude Include="MyStructs.h" />
     <ClInclude Include="sqlLiteHelp.hpp" />
     <ClInclude Include="Utils.hpp" />
+    <ClInclude Include="cwTimerManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="CTAPlatformConfig.xml" />

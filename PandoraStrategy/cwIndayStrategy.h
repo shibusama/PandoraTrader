@@ -51,5 +51,7 @@ public:
 		double slipTick = 1.0            // »¬¼Û tick Êý£¬Ä¬ÈÏ»¬ 1 tick
 	);
 
+	void OnStrategyTimer(int iTimerId, const char* szInstrumentID);
+
 
 };
