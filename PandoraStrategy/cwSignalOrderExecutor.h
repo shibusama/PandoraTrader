@@ -15,7 +15,6 @@ public:
 
 private:
     bool IsNormalTradingTime(int hour, int minute);
-    void TryClose(const std::string& instrumentID, cwMarketDataPtr pPriceData, orderInfo& info);
     bool IsAllClosed(cwPositionPtr pPos, int targetVol);
     void CancelExistingOrders(const std::string& instrumentID);
     void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
