@@ -567,7 +567,31 @@ void cwIndayStrategy::OnStrategyTimer(int iTimerId, const char* szInstrumentID)
 {
 	if (iTimerId == 1)
 	{
-		printf("[定时器1] 每秒触发，当前时间: %s\n", m_strCurrentUpdateTime);
+		std::map<std::string, cwPositionPtr> m_PositionMap = m_TradeChannel.GetPosition();
+		if (!m_PositionMap.empty())
+		{
+			m_cwShow.AddLog("%-12s %-10s %-8s %-12s %-12s %-14s %-10s",
+				"InstrumentID", "Direction", "Volume", "OpenPriceAvg", "MktProfit", "ExchangeMargin", "OpenCost");
+			for (const auto& [instrumentID, pos] : m_PositionMap)
+			{
+				if (pos->LongPosition->TotalPosition > 0)
+				{
+					auto& p = pos->LongPosition;
+					m_cwShow.AddLog("%-12s %-10s %-8d %-12.1f %-12.1f %-14.1f %-10.1f",
+						instrumentID.c_str(), "Long",
+						p->TotalPosition, p->AveragePosPrice,
+						p->PositionProfit, p->ExchangeMargin, p->OpenCost);
+				}
+				if (pos->ShortPosition->TotalPosition > 0)
+				{
+					auto& p = pos->ShortPosition;
+					m_cwShow.AddLog("%-12s %-10s %-8d %-12.1f %-12.1f %-14.1f %-10.1f",
+						instrumentID.c_str(), "Short",
+						p->TotalPosition, p->AveragePosPrice,
+						p->PositionProfit, p->ExchangeMargin, p->OpenCost);
+				}
+			}
+		}
 	}
 	else if (iTimerId == 2)
 	{
