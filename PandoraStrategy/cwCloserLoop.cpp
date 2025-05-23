@@ -11,7 +11,7 @@ void cwCloserLoop::Run() {
     const int maxLoop = 3;
 
     while (!IsAllDone() && loopCount++ < maxLoop) {
-        strategy->GetPositionsAndActiveOrders(CurrentPosMap, closerWaitOrderList);
+        strategy->GetPositionsAndActiveOrders(closerCurrentPosMap, closerWaitOrderList);
 
         for (auto& [id, state] : instrumentStates) {
             if (state.isDone()) continue;
@@ -25,10 +25,10 @@ void cwCloserLoop::Run() {
 }
 
 void cwCloserLoop::UpdatePositions() {
-    CurrentPosMap.clear();
-    strategy->GetPositions(CurrentPosMap);
+    closerCurrentPosMap.clear();
+    strategy->GetPositions(closerCurrentPosMap);
 
-    for (auto& [id, pos] : CurrentPosMap) {
+    for (auto& [id, pos] : closerCurrentPosMap) {
         instrumentStates[id] = CloserInstrumentState{ pos, CloseState::Waiting, 0 };
     }
 }
@@ -109,4 +109,53 @@ bool cwCloserLoop::IsPendingOrder(std::string instrumentID)
         }
     }
     return false;
+}
+
+cwOrderPtr cwCloserLoop::SafeLimitOrder(const char* instrumentID, int volume, double rawPrice, double slipTick)
+{
+    auto md = strategy->GetLastestMarketData(instrumentID);
+    if (!md) {
+        m_cwShow.AddLog("[SafeLimitOrder] No market data for {}", instrumentID);
+        return nullptr;
+    }
+
+    double upLimit = md->UpperLimitPrice;
+    double lowLimit = md->LowerLimitPrice;
+    double tickSize = strategy->GetTickSize(instrumentID);
+    if (tickSize <= 0) {
+        m_cwShow.AddLog("[SafeLimitOrder] Invalid tick size for {}", instrumentID);
+        return nullptr;
+    }
+
+    // 滑价保护
+    double safePrice = rawPrice;
+    double slip = slipTick * tickSize;
+
+    if (volume > 0) { // 买
+        if (rawPrice >= upLimit) {
+            safePrice = upLimit - slip;
+            safePrice = (((safePrice) > (lowLimit + tickSize)) ? (safePrice) : (lowLimit + tickSize)); // 防止越界
+        }
+    }
+    else if (volume < 0) { // 卖
+        if (rawPrice <= lowLimit) {
+            safePrice = lowLimit + slip;
+            safePrice = (((safePrice) < (upLimit - tickSize)) ? (safePrice) : (upLimit - tickSize)); // 防止越界
+        }
+    }
+    else {
+        m_cwShow.AddLog("[SafeLimitOrder] Volume = 0, no order sent.");
+        return nullptr;
+    }
+
+    // 最终下单
+    cwOrderPtr order = strategy->EasyInputOrder(
+        instrumentID,
+        volume,
+        safePrice
+    );
+
+    m_cwShow.AddLog("[SafeLimitOrder] Order sent: {} volume={} price={} (raw={})", instrumentID, volume, safePrice, rawPrice);
+
+    return order;
 }

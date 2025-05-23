@@ -246,6 +246,13 @@ void cwIndayStrategy::OnReady()
 
 	std::cout << "dd" << std::endl;
 
+	auto md = GetLastestMarketData("au2506");
+
+	std::cout << md->LastPrice << std::endl;
+
+
+	//GetPositions(CurrentPosMap):
+
 	cwCloserLoop closer(this);
 
 	closer.Run();
