@@ -243,11 +243,13 @@ void cwIndayStrategy::OnOrderCanceled(cwOrderPtr pOrder)
 void cwIndayStrategy::OnReady()
 {
 	// 每 1 秒触发一次，不绑定具体合约
-	SetTimer(1, 60000);
+	//SetTimer(1, 60000);
 
-	//cwCloserLoop closer(this);
+	std::cout << "dd" << std::endl;
 
-	//closer.Run();
+	cwCloserLoop closer(this);
+
+	closer.Run();
 
 	UpdateBarData();
 

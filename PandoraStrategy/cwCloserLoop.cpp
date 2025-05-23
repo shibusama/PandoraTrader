@@ -8,7 +8,7 @@ void cwCloserLoop::Run() {
     UpdatePositions();
 
     int loopCount = 0;
-    const int maxLoop = 60;
+    const int maxLoop = 3;
 
     while (!IsAllDone() && loopCount++ < maxLoop) {
         strategy->GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
