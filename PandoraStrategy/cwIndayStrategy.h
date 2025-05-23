@@ -57,4 +57,5 @@ private:
 	std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
 	barInfo comBarInfo;                          // barINfo
 	std::map<std::string, int> countLimitCur;    // 合约对应交易数量
+	std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;           // 挂单列表（全局）
 };
