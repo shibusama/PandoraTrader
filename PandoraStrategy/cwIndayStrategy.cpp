@@ -22,7 +22,6 @@
 //static std::map<std::string, int> countLimitCur;    // 合约对应交易数量
 
 //清仓所需全局变量
-//static std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;           // 挂单列表（全局）
 static std::unordered_map<std::string, bool> instrumentCloseFlag;      // 是否触发收盘平仓
 static std::unordered_map<std::string, int> lastCloseAttemptTime;      // 合约->上次清仓尝试时间戳（秒）
 static std::unordered_map<std::string, int> closeAttemptCount;         // 用于控制重挂频率（每个合约）
@@ -50,7 +49,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 		orderInfo& info = cwOrderInfo[productID];
 		cwPositionPtr pPos = nullptr;
-		GetPositionsAndActiveOrders(InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
+		GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
 		int now = GetCurrentTimeInSeconds();
 		bool hasOrder = IsPendingOrder(InstrumentID);
@@ -75,7 +74,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 					std::cout << "[" << InstrumentID << "] 超过最大次数，还未挂上单子，请人工检查。" << std::endl;
 					return;
 				}
-				for (auto& [key, order] : WaitOrderList)
+				for (auto& [key, order] : strategyWaitOrderList)
 				{
 					if (key.InstrumentID == InstrumentID) {
 						CancelOrder(order);
@@ -83,7 +82,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 				}
 				std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
 				if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-				int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
+				int count = std::count_if(strategyWaitOrderList.begin(), strategyWaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
 				std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
 			}
 
@@ -100,7 +99,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 			cwPositionPtr pPos = nullptr;
 
-			GetPositionsAndActiveOrders(InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
+			GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
 			bool hasPos = (pPos && (pPos->LongPosition->TotalPosition > 0 || pPos->ShortPosition->TotalPosition > 0));
 			bool hasOrder = IsPendingOrder(InstrumentID);
@@ -130,14 +129,14 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 				}
 				else
 				{
-					for (auto& [key, order] : WaitOrderList) {
+					for (auto& [key, order] : strategyWaitOrderList) {
 						if (key.InstrumentID == InstrumentID) {
 							CancelOrder(order);
 						}
 					}
 					std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
 					if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-					int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
+					int count = std::count_if(strategyWaitOrderList.begin(), strategyWaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
 					std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
 				}
 			}
@@ -163,7 +162,7 @@ void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicK
 
 		cwPositionPtr pPos = nullptr;
 
-		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
+		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
 
 		if (!pPos)
@@ -201,8 +200,8 @@ void cwIndayStrategy::OnRtnOrder(cwOrderPtr pOrder, cwOrderPtr pOriginOrder)
 	cwActiveOrderKey key(pOrder->OrderRef, pOrder->InstrumentID);
 
 	// 我们只关心在 WaitOrderList 中追踪的挂单
-	auto it = WaitOrderList.find(key);
-	if (it == WaitOrderList.end()) return;
+	auto it = strategyWaitOrderList.find(key);
+	if (it == strategyWaitOrderList.end()) return;
 
 
 	auto status = pOrder->OrderStatus;// 报单状态（主要判断是否结束）
@@ -217,7 +216,7 @@ void cwIndayStrategy::OnRtnOrder(cwOrderPtr pOrder, cwOrderPtr pOriginOrder)
 			<< ", Status: " << status << std::endl;
 
 		// 移除该挂单
-		WaitOrderList.erase(it);
+		strategyWaitOrderList.erase(it);
 	}
 	else if (submitStatus == CW_FTDC_OSS_InsertRejected)// 拒单
 	{
@@ -504,7 +503,7 @@ void cwIndayStrategy::StrategyPosClose(cwMarketDataPtr pPriceData, cwPositionPtr
 
 bool cwIndayStrategy::IsPendingOrder(std::string instrumentID)
 {
-	for (auto& [key, order] : WaitOrderList) {
+	for (auto& [key, order] : strategyWaitOrderList) {
 		if (key.InstrumentID == instrumentID) {
 			return true;
 		}

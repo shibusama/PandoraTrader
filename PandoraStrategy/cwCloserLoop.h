@@ -37,5 +37,5 @@ private:
 
     std::map<std::string, CloserInstrumentState> instrumentStates;
     std::map<std::string, cwPositionPtr> CurrentPosMap;
-    std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList;
+    std::map<cwActiveOrderKey, cwOrderPtr> closerWaitOrderList;
 };

@@ -11,7 +11,7 @@ void cwCloserLoop::Run() {
     const int maxLoop = 3;
 
     while (!IsAllDone() && loopCount++ < maxLoop) {
-        strategy->GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
+        strategy->GetPositionsAndActiveOrders(CurrentPosMap, closerWaitOrderList);
 
         for (auto& [id, state] : instrumentStates) {
             if (state.isDone()) continue;
@@ -103,7 +103,7 @@ void cwCloserLoop::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr 
 
 bool cwCloserLoop::IsPendingOrder(std::string instrumentID)
 {
-    for (auto& [key, order] : WaitOrderList) {
+    for (auto& [key, order] : closerWaitOrderList) {
         if (key.InstrumentID == instrumentID) {
             return true;
         }
