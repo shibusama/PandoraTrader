@@ -1,9 +1,13 @@
 #pragma once
 #include <map>
 #include <string>
+#include <algorithm>
 //#include "cwContext.h" // 保留，含 cwPositionPtr, cwOrderPtr 等定义
 #include "cwBasicKindleStrategy.h" // 包含 GetPositionsAndActiveOrders 定义
 #include "cwBasicCout.h"
+
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
 
 enum class CloseState {
 	Waiting,
@@ -34,7 +38,7 @@ private:
 	bool IsAllDone() const;
 	void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
 	bool IsPendingOrder(std::string instrumentID);
-	void SafeLimitOrder(const char* instrumentID, int volume, double slipTick);
+	void SafeLimitOrder(cwMarketDataPtr pPriceData, int volume, double slipTick, double tickSize);
 	template <typename MapType>
 	std::vector<typename MapType::key_type> ExtractMapKeys(const MapType& m);
 

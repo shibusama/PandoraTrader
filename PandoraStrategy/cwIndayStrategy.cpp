@@ -244,11 +244,8 @@ void cwIndayStrategy::OnReady()
 	// 每 1 秒触发一次，不绑定具体合约
 	//SetTimer(1, 60000);
 
-	/*std::cout << "dd" << std::endl;
-
-	auto md = GetLastestMarketData("au2506");
-
-	std::cout << md->LastPrice << std::endl;*/
+	int a = 4;
+	//m_cwShow.AddLog("%s", a);
 
 
 	//GetPositions(CurrentPosMap):
@@ -257,17 +254,17 @@ void cwIndayStrategy::OnReady()
 
 	closer.Run();
 
-	UpdateBarData();
+	//UpdateBarData();
 
 	//for (auto& futInfMng : tarFutInfo)
 	//{
 	//	SubcribeKindle(futInfMng.second.code.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
 	//};
-	std::cout << "dd" << std::endl;
+	/*std::cout << "dd" << std::endl;
 
 	for (auto& futInfMng : tarFutInfo) {
 		std::cout << futInfMng.first << std::endl;
-	}
+	}*/
 
 	//// 每 1 秒触发一次，不绑定具体合约
 	//SetTimer(1, 1000);

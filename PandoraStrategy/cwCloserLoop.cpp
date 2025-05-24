@@ -44,8 +44,8 @@ void cwCloserLoop::HandleInstrument(const std::string& id, CloserInstrumentState
 		return;
 	}
 
-	bool noLong = state.position->LongPosition->YdPosition == 0;
-	bool noShort = state.position->ShortPosition->YdPosition == 0;
+	bool noLong = state.position->LongPosition->TodayPosition == 0;
+	bool noShort = state.position->ShortPosition->TodayPosition == 0;
 	bool noOrder = !IsPendingOrder(id);
 
 	if (noLong && noShort && noOrder) {
@@ -88,18 +88,18 @@ bool cwCloserLoop::IsAllDone() const {
 	return true;
 }
 
-void cwCloserLoop::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos)
+void cwCloserLoop::TryAggressiveClose(cwMarketDataPtr md, cwPositionPtr pPos)
 {
-	auto& InstrumentID = pPriceData->InstrumentID;
-	if (pPos->LongPosition->TotalPosition > 0)
-	{
-		SafeLimitOrder(InstrumentID, -pPos->LongPosition->TotalPosition, 1);
-		std::cout << "[" << InstrumentID << "] 平多仓 -> 数量: " << pPos->LongPosition->TotalPosition << ", 价格: " << "...." << std::endl;
+	auto& InstrumentID = md->InstrumentID;
+	auto& longPos = pPos->LongPosition->TotalPosition;
+	auto& shortPos = pPos->ShortPosition->TotalPosition;
+	auto tickSize = strategy->GetTickSize(InstrumentID);
+
+	if (longPos > 0) {
+		SafeLimitOrder(md, -longPos, 1, tickSize);
 	}
-	if (pPos->ShortPosition->TotalPosition > 0)
-	{
-		SafeLimitOrder(InstrumentID, pPos->ShortPosition->TotalPosition, 1);
-		std::cout << "[" << InstrumentID << "] 平空仓 -> 数量: " << pPos->ShortPosition->TotalPosition << ", 价格: " << "..." << std::endl;
+	if (shortPos > 0) {
+		SafeLimitOrder(md, shortPos, 1, tickSize);
 	}
 }
 
@@ -113,34 +113,31 @@ bool cwCloserLoop::IsPendingOrder(std::string instrumentID)
 	return false;
 }
 
-void cwCloserLoop::SafeLimitOrder(const char* instrumentID, int volume, double slipTick)
+void cwCloserLoop::SafeLimitOrder(cwMarketDataPtr md, int volume, double slipTick,double tickSize)
 {
-	auto md = strategy->GetLastestMarketData(instrumentID);
-	if (!md) {
-		m_cwShow.AddLog("[SafeLimitOrder] No market data for {}", instrumentID);
-	}
 
 	double upLimit = md->UpperLimitPrice;
 	double lowLimit = md->LowerLimitPrice;
-	double tickSize = strategy->GetTickSize(instrumentID);
+	
 	if (tickSize <= 0) {
-		m_cwShow.AddLog("[SafeLimitOrder] Invalid tick size for {}", instrumentID);
-	}
+		m_cwShow.AddLog("[SafeLimitOrder] Invalid tick size for %s", md->InstrumentID);
 
+	}
 	// 滑价保护
-	double safePrice = md->LastPrice;
+	auto &raw_price = md->LastPrice;
+	double safePrice = raw_price;
 	double slip = slipTick * tickSize;
 
 	if (volume > 0) { // 买
-		if (md->LastPrice >= upLimit) {
+		if (raw_price >= upLimit) {
 			safePrice = upLimit - slip;
-			safePrice = (((safePrice) > (lowLimit + tickSize)) ? (safePrice) : (lowLimit + tickSize)); // 防止越界
+			safePrice = safePrice = MAX(safePrice, lowLimit + tickSize); // 防止越界
 		}
 	}
 	else if (volume < 0) { // 卖
-		if (md->LastPrice <= lowLimit) {
+		if (raw_price <= lowLimit) {
 			safePrice = lowLimit + slip;
-			safePrice = (((safePrice) < (upLimit - tickSize)) ? (safePrice) : (upLimit - tickSize)); // 防止越界
+			safePrice = safePrice = MIN(safePrice, upLimit - tickSize); // 防止越界
 		}
 	}
 	else {
@@ -149,12 +146,12 @@ void cwCloserLoop::SafeLimitOrder(const char* instrumentID, int volume, double s
 
 	// 最终下单
 	cwOrderPtr order = strategy->EasyInputOrder(
-		instrumentID,
+		md->InstrumentID,
 		volume,
 		safePrice
 	);
+	m_cwShow.AddLog("[SafeLimitOrder] Order sent: %s volume=%d price=%.2f (raw=%.2f)", md->InstrumentID, volume, safePrice, raw_price);
 
-	m_cwShow.AddLog("[SafeLimitOrder] Order sent: {} volume={} price={} (raw={})", instrumentID, volume, safePrice, md->LastPrice);
 }
 
 template <typename MapType>
