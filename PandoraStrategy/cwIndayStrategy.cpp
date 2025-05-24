@@ -244,11 +244,11 @@ void cwIndayStrategy::OnReady()
 	// 每 1 秒触发一次，不绑定具体合约
 	//SetTimer(1, 60000);
 
-	std::cout << "dd" << std::endl;
+	/*std::cout << "dd" << std::endl;
 
 	auto md = GetLastestMarketData("au2506");
 
-	std::cout << md->LastPrice << std::endl;
+	std::cout << md->LastPrice << std::endl;*/
 
 
 	//GetPositions(CurrentPosMap):

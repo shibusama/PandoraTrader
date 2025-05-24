@@ -35,6 +35,8 @@ private:
 	void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
 	bool IsPendingOrder(std::string instrumentID);
 	void SafeLimitOrder(const char* instrumentID, int volume, double slipTick);
+	template <typename MapType>
+	std::vector<typename MapType::key_type> ExtractMapKeys(const MapType& m);
 
 	cwBasicKindleStrategy* strategy;
 
