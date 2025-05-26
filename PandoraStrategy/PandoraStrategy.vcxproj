@@ -104,6 +104,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../Interface/include/;../Interface/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,14 +124,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\PandoraTrader-bak\PandoraStrategy\cwSignalOrderExecutor.cpp" />
+    <ClCompile Include="..\..\PandoraTrader-bak\PandoraStrategy\cwTimerManager.cpp" />
+    <ClCompile Include="cwCloserLoop.cpp" />
+    <ClCompile Include="cwIndayStrategy.cpp" />
+    <ClCompile Include="cwInstrumentCloser.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
+    <ClCompile Include="cwTimer.cpp" />
+    <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="CTAPlatformConfig.xml" />
     <Xml Include="cwChasingRisingStrategy.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\PandoraTrader-bak\PandoraStrategy\cwSignalOrderExecutor.h" />
+    <ClInclude Include="cwCloserLoop.h" />
+    <ClInclude Include="cwIndayStrategy.h" />
+    <ClInclude Include="cwInstrumentCloser.h" />
     <ClInclude Include="cwStrategyDemo.h" />
+    <ClInclude Include="cwTimer.h" />
+    <ClInclude Include="cwTimerManager.h" />
+    <ClInclude Include="MyStructs.h" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="sqlLiteHelp.hpp" />
+    <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
