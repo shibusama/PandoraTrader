@@ -123,32 +123,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cwBasicCTAStrategy.cpp" />
-    <ClCompile Include="cwChasingRisingStrategy.cpp" />
-    <ClCompile Include="cwCTAPlatform.cpp" />
-    <ClCompile Include="cwDualTrust.cpp" />
-    <ClCompile Include="cwEmptyStrategy.cpp" />
-    <ClCompile Include="cwMarketDataReceiver.cpp" />
-    <ClCompile Include="cwPandoraAgentManager.cpp" />
-    <ClCompile Include="cwPandoraPairTrading.cpp" />
-    <ClCompile Include="cwPandoraPositionAgent.cpp" />
     <ClCompile Include="cwStrategyDemo.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cwBasicCTAStrategy.h" />
-    <ClInclude Include="cwChasingRisingStrategy.h" />
-    <ClInclude Include="cwCTAPlatform.h" />
-    <ClInclude Include="cwDualTrust.h" />
-    <ClInclude Include="cwEmptyStrategy.h" />
-    <ClInclude Include="cwMarketDataReceiver.h" />
-    <ClInclude Include="cwPandoraAgentManager.h" />
-    <ClInclude Include="cwPandoraPairTrading.h" />
-    <ClInclude Include="cwPandoraPositionAgent.h" />
-    <ClInclude Include="cwStrategyDemo.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="CTAPlatformConfig.xml" />
     <Xml Include="cwChasingRisingStrategy.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cwStrategyDemo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
