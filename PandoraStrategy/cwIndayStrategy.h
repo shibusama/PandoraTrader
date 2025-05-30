@@ -2,6 +2,25 @@
 #include "cwBasicKindleStrategy.h"
 #include "myStructs.h"
 
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+
+enum class CloseState {
+	Waiting,
+	OrderSent,
+	PendingCancel,
+	Closed,
+	Failed
+};
+
+struct CloserInstrumentState {
+	cwPositionPtr position;
+	CloseState state = CloseState::Waiting;
+	int retryCount = 0;
+
+	bool isDone() const { return state == CloseState::Closed || state == CloseState::Failed; }
+};
+
 class cwIndayStrategy :
 	public cwBasicKindleStrategy
 {
@@ -28,7 +47,7 @@ public:
 	// 自动平昨仓函数
 	void AutoCloseAllPositionsLoop();
 
-	void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
+	//void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
 	//当前时间
 	std::string m_strCurrentUpdateTime;
 	// bar更新
@@ -42,20 +61,22 @@ public:
 
 	std::string GetPositionDirection(cwPositionPtr pPos);
 
-	//void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID);	
-
-	cwOrderPtr SafeLimitOrder(
-		const char* instrumentID,
-		int volume,                        // >0买 <0卖
-		double rawPrice,                  // 原始价格（策略计算的目标价格）
-		double slipTick = 1.0            // 滑价 tick 数，默认滑 1 tick
-	);
-
 	virtual void OnStrategyTimer(int iTimerId, const char* szInstrumentID);
+
+	void Run();
 
 private:
 	std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
 	barInfo comBarInfo;                          // barINfo
 	std::map<std::string, int> countLimitCur;    // 合约对应交易数量
-	std::map<cwActiveOrderKey, cwOrderPtr> strategyWaitOrderList;           // 挂单列表（全局）
+
+	std::map<std::string, cwPositionPtr> CurrentPosMap; //定义map，用于保存挂单信息 
+	std::map<cwActiveOrderKey, cwOrderPtr> WaitOrderList; //挂单列表
+	std::map<std::string, CloserInstrumentState> instrumentStates; // 订单状态
+
+	void UpdatePositions();
+	bool IsAllDone() const;
+	void HandleInstrument(const std::string& id, CloserInstrumentState& state);
+	bool TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
+	cwOrderPtr SafeLimitOrder(cwMarketDataPtr md, int volume, double slipTick, double tickSize);
 };

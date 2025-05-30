@@ -116,3 +116,13 @@ bool IsPendingOrder(std::string instrumentID, std::map<cwActiveOrderKey, cwOrder
 	}
 	return false;
 }
+
+template <typename MapType>
+std::vector<typename MapType::key_type> ExtractMapKeys(const MapType& m) {
+	std::vector<typename MapType::key_type> keys;
+	keys.reserve(m.size()); // Ô¤·ÖÅä¿Õ¼ä
+	for (const auto& pair : m) {
+		keys.push_back(pair.first);
+	}
+	return keys;
+}

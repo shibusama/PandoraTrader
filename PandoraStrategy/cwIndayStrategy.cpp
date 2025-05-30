@@ -49,7 +49,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 		orderInfo& info = cwOrderInfo[productID];
 		cwPositionPtr pPos = nullptr;
-		GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
+		GetPositionsAndActiveOrders(InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
 
 		int now = GetCurrentTimeInSeconds();
 		bool hasOrder = IsPendingOrder(InstrumentID);
@@ -74,7 +74,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 					std::cout << "[" << InstrumentID << "] 超过最大次数，还未挂上单子，请人工检查。" << std::endl;
 					return;
 				}
-				for (auto& [key, order] : strategyWaitOrderList)
+				for (auto& [key, order] : WaitOrderList)
 				{
 					if (key.InstrumentID == InstrumentID) {
 						CancelOrder(order);
@@ -82,7 +82,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 				}
 				std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
 				if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-				int count = std::count_if(strategyWaitOrderList.begin(), strategyWaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
+				int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
 				std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
 			}
 
@@ -99,7 +99,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 			cwPositionPtr pPos = nullptr;
 
-			GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
+			GetPositionsAndActiveOrders(InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
 
 			bool hasPos = (pPos && (pPos->LongPosition->TotalPosition > 0 || pPos->ShortPosition->TotalPosition > 0));
 			bool hasOrder = IsPendingOrder(InstrumentID);
@@ -129,14 +129,14 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 				}
 				else
 				{
-					for (auto& [key, order] : strategyWaitOrderList) {
+					for (auto& [key, order] : WaitOrderList) {
 						if (key.InstrumentID == InstrumentID) {
 							CancelOrder(order);
 						}
 					}
 					std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
 					if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-					int count = std::count_if(strategyWaitOrderList.begin(), strategyWaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
+					int count = std::count_if(WaitOrderList.begin(), WaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
 					std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
 				}
 			}
@@ -162,7 +162,7 @@ void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicK
 
 		cwPositionPtr pPos = nullptr;
 
-		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
+		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, WaitOrderList); // 获取指定持仓和挂单列表
 
 
 		if (!pPos)
@@ -200,8 +200,8 @@ void cwIndayStrategy::OnRtnOrder(cwOrderPtr pOrder, cwOrderPtr pOriginOrder)
 	cwActiveOrderKey key(pOrder->OrderRef, pOrder->InstrumentID);
 
 	// 我们只关心在 WaitOrderList 中追踪的挂单
-	auto it = strategyWaitOrderList.find(key);
-	if (it == strategyWaitOrderList.end()) return;
+	auto it = WaitOrderList.find(key);
+	if (it == WaitOrderList.end()) return;
 
 
 	auto status = pOrder->OrderStatus;// 报单状态（主要判断是否结束）
@@ -216,7 +216,7 @@ void cwIndayStrategy::OnRtnOrder(cwOrderPtr pOrder, cwOrderPtr pOriginOrder)
 			<< ", Status: " << status << std::endl;
 
 		// 移除该挂单
-		strategyWaitOrderList.erase(it);
+		WaitOrderList.erase(it);
 	}
 	else if (submitStatus == CW_FTDC_OSS_InsertRejected)// 拒单
 	{
@@ -250,9 +250,7 @@ void cwIndayStrategy::OnReady()
 
 	//GetPositions(CurrentPosMap):
 
-	cwCloserLoop closer(this);
-
-	closer.Run();
+	Run();
 
 	while (true) {
 		std::cout << "test" << std::endl;
@@ -431,22 +429,22 @@ void cwIndayStrategy::UpdateCtx(cwMarketDataPtr pPriceData)
 	comBarInfo.retBar[productID].pop_front();
 }
 
-void cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos)
-{
-	auto& InstrumentID = pPriceData->InstrumentID;
-	double aggressiveBid = pPriceData->BidPrice1 + GetTickSize(InstrumentID);
-	double aggressiveAsk = pPriceData->AskPrice1 - GetTickSize(InstrumentID);
-	if (pPos->LongPosition->TotalPosition > 0 && aggressiveBid > 1e-6)
-	{
-		EasyInputMultiOrder(InstrumentID, -pPos->LongPosition->TotalPosition, aggressiveBid);
-		std::cout << "[" << InstrumentID << "] 平多仓 -> 数量: " << pPos->LongPosition->TotalPosition << ", 价格: " << aggressiveBid << std::endl;
-	}// 重新挂 Bid
-	if (pPos->ShortPosition->TotalPosition > 0 && aggressiveAsk > 1e-6)
-	{
-		EasyInputMultiOrder(InstrumentID, pPos->ShortPosition->TotalPosition, aggressiveAsk);
-		std::cout << "[" << InstrumentID << "] 平空仓 -> 数量: " << pPos->ShortPosition->TotalPosition << ", 价格: " << aggressiveAsk << std::endl;
-	}// 重新挂 Ask
-}
+//void cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos)
+//{
+//	auto& InstrumentID = pPriceData->InstrumentID;
+//	double aggressiveBid = pPriceData->BidPrice1 + GetTickSize(InstrumentID);
+//	double aggressiveAsk = pPriceData->AskPrice1 - GetTickSize(InstrumentID);
+//	if (pPos->LongPosition->TotalPosition > 0 && aggressiveBid > 1e-6)
+//	{
+//		EasyInputMultiOrder(InstrumentID, -pPos->LongPosition->TotalPosition, aggressiveBid);
+//		std::cout << "[" << InstrumentID << "] 平多仓 -> 数量: " << pPos->LongPosition->TotalPosition << ", 价格: " << aggressiveBid << std::endl;
+//	}// 重新挂 Bid
+//	if (pPos->ShortPosition->TotalPosition > 0 && aggressiveAsk > 1e-6)
+//	{
+//		EasyInputMultiOrder(InstrumentID, pPos->ShortPosition->TotalPosition, aggressiveAsk);
+//		std::cout << "[" << InstrumentID << "] 平空仓 -> 数量: " << pPos->ShortPosition->TotalPosition << ", 价格: " << aggressiveAsk << std::endl;
+//	}// 重新挂 Ask
+////}
 
 void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered_map<std::string, orderInfo>& cwOrderInfo)
 {
@@ -510,16 +508,6 @@ void cwIndayStrategy::StrategyPosClose(cwMarketDataPtr pPriceData, cwPositionPtr
 	}
 }
 
-bool cwIndayStrategy::IsPendingOrder(std::string instrumentID)
-{
-	for (auto& [key, order] : strategyWaitOrderList) {
-		if (key.InstrumentID == instrumentID) {
-			return true;
-		}
-	}
-	return false;
-}
-
 std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
 {
 	if (!pPos) return "other";
@@ -530,55 +518,6 @@ std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
 	if (hasLong && !hasShort) return "Long";
 	if (!hasLong && hasShort) return "Short";
 	return "other";
-}
-
-cwOrderPtr cwIndayStrategy::SafeLimitOrder(const char* instrumentID, int volume, double rawPrice, double slipTick)
-{
-	auto md = GetLastestMarketData(instrumentID);
-	if (!md) {
-		m_cwShow.AddLog("[SafeLimitOrder] No market data for {}", instrumentID);
-		return nullptr;
-	}
-
-	double upLimit = md->UpperLimitPrice;
-	double lowLimit = md->LowerLimitPrice;
-	double tickSize = GetTickSize(instrumentID);
-	if (tickSize <= 0) {
-		m_cwShow.AddLog("[SafeLimitOrder] Invalid tick size for {}", instrumentID);
-		return nullptr;
-	}
-
-	// 滑价保护
-	double safePrice = rawPrice;
-	double slip = slipTick * tickSize;
-
-	if (volume > 0) { // 买
-		if (rawPrice >= upLimit) {
-			safePrice = upLimit - slip;
-			safePrice = (((safePrice) > (lowLimit + tickSize)) ? (safePrice) : (lowLimit + tickSize)); // 防止越界
-		}
-	}
-	else if (volume < 0) { // 卖
-		if (rawPrice <= lowLimit) {
-			safePrice = lowLimit + slip;
-			safePrice = (((safePrice) < (upLimit - tickSize)) ? (safePrice) : (upLimit - tickSize)); // 防止越界
-		}
-	}
-	else {
-		m_cwShow.AddLog("[SafeLimitOrder] Volume = 0, no order sent.");
-		return nullptr;
-	}
-
-	// 最终下单
-	cwOrderPtr order = EasyInputOrder(
-		instrumentID,
-		volume,
-		safePrice
-	);
-
-	m_cwShow.AddLog("[SafeLimitOrder] Order sent: {} volume={} price={} (raw={})", instrumentID, volume, safePrice, rawPrice);
-
-	return order;
 }
 
 void cwIndayStrategy::OnStrategyTimer(int iTimerId, const char* szInstrumentID)
@@ -616,4 +555,245 @@ void cwIndayStrategy::OnStrategyTimer(int iTimerId, const char* szInstrumentID)
 	{
 		printf("[定时器2] 每2秒触发，合约: %s\n", szInstrumentID);
 	}
+}
+
+void cwIndayStrategy::Run() {
+	UpdatePositions();
+	std::vector<std::string> instruments = ExtractMapKeys(CurrentPosMap);
+	SubScribePrice(instruments);
+
+	int loopCount = 0;
+	const int maxLoop = 10;
+
+	while (!IsAllDone() && loopCount++ < maxLoop) {
+		GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
+
+		for (auto& [id, state] : instrumentStates) {
+			if (state.isDone()) continue;
+			HandleInstrument(id, state);
+		}
+
+		cwSleep(5000);
+	}
+
+	UnSubScribePrice(instruments);
+	std::cout << "清仓任务结束。" << std::endl;
+}
+
+void cwIndayStrategy::UpdatePositions() {
+
+	GetPositionsAndActiveOrders(CurrentPosMap, WaitOrderList);
+
+	for (auto& [id, pos] : CurrentPosMap) {// 假设 pos 有 LongPos 和 ShortPos 字段
+		if (pos->LongPosition->TotalPosition == 0 && pos->ShortPosition->TotalPosition == 0) { continue; } // 跳过持仓为0的合约
+
+		// 打印持仓合约及持仓数量
+		m_cwShow.AddLog("[持仓合约] %s 多头: %d 空头: %d",
+			id.c_str(),
+			pos->LongPosition->TotalPosition,
+			pos->ShortPosition->TotalPosition);
+
+		instrumentStates[id] = CloserInstrumentState{ pos, CloseState::Waiting, 0 };// 添加到 instrumentStates
+	}
+}
+
+bool cwIndayStrategy::IsAllDone() const {
+	for (const auto& [id, state] : instrumentStates) {
+		if (!state.isDone()) return false;
+	}
+	return true;
+}
+
+void cwIndayStrategy::HandleInstrument(const std::string& id, CloserInstrumentState& state) {
+	auto md = GetLastestMarketData(id);
+	if (!md) {
+		m_cwShow.AddLog("[%s] 无有效行情数据，跳过。", id.c_str());
+		return;
+	}
+
+	bool noLong = state.position->LongPosition->TotalPosition == 0;
+	bool noShort = state.position->ShortPosition->TotalPosition == 0;
+	bool noOrder = !IsPendingOrder(id);
+
+	// 清仓完成检查
+	if (noLong && noShort && noOrder) {
+		m_cwShow.AddLog("[%s] 持仓清空完毕。", id.c_str());
+		state.state = CloseState::Closed;
+		return;
+	}
+
+	// 超过最大重试次数
+	if (state.retryCount >= 3) {
+		m_cwShow.AddLog("[%s] 超过最大尝试次数，清仓失败。", id.c_str());
+		state.state = CloseState::Failed;
+		return;
+	}
+
+	/****************************************************************************/
+	// 如果有持仓但无挂单，直接发送清仓订单
+	if ((!noLong || !noShort) && noOrder) {
+		bool success = TryAggressiveClose(md, state.position);
+		if (success) {
+			m_cwShow.AddLog("[%s] 清仓指令已发送。", id.c_str());
+			state.state = CloseState::OrderSent;
+		}
+		else {
+			m_cwShow.AddLog("[%s] 清仓指令发送失败，将重试。", id.c_str());
+			++state.retryCount;
+		}
+		return;
+	}
+
+	// 如果有挂单，先撤单
+	if (!noOrder) {
+		//std::map<cwActiveOrderKey, cwOrderPtr> closerWaitOrderList;
+		cwPositionPtr unused;
+		GetPositionsAndActiveOrders(id, unused, WaitOrderList);
+
+		bool allCancelled = true;
+		for (auto& [key, order] : WaitOrderList) {
+			if (!order) continue;
+
+			if (order->OrderStatus == CW_FTDC_OST_AllTraded || order->OrderStatus == CW_FTDC_OST_Canceled) continue;
+
+			if (CancelOrder(order)) {
+				cwActiveOrderKey key(order->OrderRef, order->InstrumentID);
+
+				// 我们只关心在 WaitOrderList 中追踪的挂单
+				auto it = WaitOrderList.find(key);
+				if (it == WaitOrderList.end()) return;
+
+
+				auto status = order->OrderStatus;// 报单状态（主要判断是否结束）
+				auto submitStatus = order->OrderSubmitStatus;// 报单提交状态（主要判断是否结束）
+
+				if (status == CW_FTDC_OST_AllTraded ||   // 全部成交
+					status == CW_FTDC_OST_Canceled)    // 撤单     
+				{
+					// 日志记录
+					std::cout << "Order Finished - InstrumentID: " << order->InstrumentID
+						<< ", Ref: " << order->OrderRef
+						<< ", Status: " << status << std::endl;
+
+					// 移除该挂单
+					WaitOrderList.erase(it);
+				}
+			}
+			else
+			{
+				allCancelled = false;
+				m_cwShow.AddLog("[%s] 撤单失败: OrderRef=%s", id.c_str(), order->OrderRef);
+			}
+		}
+
+		if (allCancelled) {
+			m_cwShow.AddLog("[%s] 所有挂单已撤，下轮重试下单", id.c_str());
+		}
+		else {
+			m_cwShow.AddLog("[%s] 存在未成功撤销订单，等待下轮继续", id.c_str());
+		}
+		++state.retryCount;
+	}
+}
+
+bool cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr md, cwPositionPtr pPos)
+{
+	auto& InstrumentID = md->InstrumentID;
+	auto& longPos = pPos->LongPosition->TotalPosition;
+	auto& shortPos = pPos->ShortPosition->TotalPosition;
+	auto tickSize = GetTickSize(InstrumentID);
+
+	bool success = true;
+
+	if (longPos > 0) {
+		auto order = SafeLimitOrder(md, -longPos, 1, tickSize);
+		if (!order) success = false;
+	}
+	if (shortPos > 0) {
+		auto order = SafeLimitOrder(md, shortPos, 1, tickSize);
+		if (!order) success = false;
+	}
+	return success;
+}
+
+cwOrderPtr cwIndayStrategy::SafeLimitOrder(cwMarketDataPtr md, int volume, double slipTick, double tickSize)
+{
+	if (tickSize <= 0) {
+		m_cwShow.AddLog("[SafeLimitOrder] Invalid tick size for %s", md->InstrumentID);
+		return nullptr;
+	}
+
+	if (volume == 0) {
+		m_cwShow.AddLog("[SafeLimitOrder] Volume = 0, no order sent.");
+		return nullptr;
+	}
+
+	double upLimit = md->UpperLimitPrice;
+	double lowLimit = md->LowerLimitPrice;
+	double slip = slipTick * tickSize;
+	double safePrice = 0.0;
+	double raw_price = 0.0;  // 声明在函数作用域
+
+	if (volume > 0) { // 买入
+		raw_price = md->AskPrice1;
+
+		// 检查卖一价有效性
+		if (raw_price <= 0 || raw_price > upLimit) {
+			// 卖一价无效或已涨停，直接用涨停价减少滑价
+			safePrice = upLimit - slip;
+			m_cwShow.AddLog("[SafeLimitOrder] Ask price invalid/limit up, using adjusted limit price");
+		}
+		else {
+			// 正常情况，使用卖一价（对手价）
+			safePrice = raw_price;
+		}
+	}
+	else if (volume < 0) { // 卖出
+		raw_price = md->BidPrice1;
+
+		// 检查买一价有效性  
+		if (raw_price <= 0 || raw_price < lowLimit) {
+			// 买一价无效或已跌停，直接用跌停价加少量滑价
+			safePrice = lowLimit + slip;
+			m_cwShow.AddLog("[SafeLimitOrder] Bid price invalid/limit down, using adjusted limit price");
+		}
+		else {
+			// 正常情况，使用买一价（对手价）
+			safePrice = raw_price;
+		}
+	}
+
+	// 最终价格必须是tickSize的整数倍
+	safePrice = round(safePrice / tickSize) * tickSize;
+
+	// 关键修正：确保价格在涨跌停范围内
+	safePrice = MAX(safePrice, lowLimit);
+	safePrice = MIN(safePrice, upLimit);
+
+	// 最终下单
+	cwOrderPtr order = EasyInputOrder(
+		md->InstrumentID,
+		volume,
+		safePrice
+	);
+
+	if (order) {
+		m_cwShow.AddLog("[SafeLimitOrder] Order sent successfully: %s volume=%d price=%.2f (raw=%.2f)",
+			md->InstrumentID, volume, safePrice, raw_price);
+	}
+	else {
+		m_cwShow.AddLog("[SafeLimitOrder] Order failed: %s volume=%d price=%.2f",
+			md->InstrumentID, volume, safePrice);
+	}
+	return order;
+}
+
+bool cwIndayStrategy::IsPendingOrder(std::string instrumentID)
+{
+	for (auto& [key, order] : WaitOrderList) {
+		if (key.InstrumentID == instrumentID) {
+			return true;
+		}
+	}
+	return false;
 }
