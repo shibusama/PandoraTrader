@@ -1,8 +1,8 @@
 #include "cwCloserLoop.h"
 #include <iostream>
 //
-cwCloserLoop::cwCloserLoop(cwBasicKindleStrategy* strategy)
-	: strategy(strategy) {
+cwCloserLoop::cwCloserLoop(cwBasicKindleStrategy* strategy, std::map<cwActiveOrderKey, cwOrderPtr>& sharedOrderList)
+	: strategy(strategy), closerWaitOrderList(sharedOrderList){
 }
 
 void cwCloserLoop::Run() {
@@ -90,12 +90,13 @@ void cwCloserLoop::HandleInstrument(const std::string& id, CloserInstrumentState
 
 	// 如果有挂单，先撤单
 	if (!noOrder) {
-		std::map<cwActiveOrderKey, cwOrderPtr> activeOrders;
+		std::map<cwActiveOrderKey, cwOrderPtr> closerWaitOrderList;
 		cwPositionPtr unused;
-		strategy->GetPositionsAndActiveOrders(id, unused, activeOrders);
+		strategy->GetPositionsAndActiveOrders(id, unused, closerWaitOrderList);
 
 		bool allCancelled = true;
-		for (auto& [key, order] : activeOrders) {
+		for (auto& [key, order] : closerWaitOrderList) {
+			if (order->OrderStatus == CW_FTDC_OST_AllTraded || order->OrderStatus == CW_FTDC_OST_Canceled) continue;
 			if (!strategy->CancelOrder(order)) {
 				allCancelled = false;
 				m_cwShow.AddLog("[%s] 撤单失败: OrderRef=%s", id.c_str(), order->OrderRef);
@@ -103,12 +104,12 @@ void cwCloserLoop::HandleInstrument(const std::string& id, CloserInstrumentState
 		}
 
 		if (allCancelled) {
-			m_cwShow.AddLog("[%s] 撤单完成，下次循环重新下单", id.c_str());
-			return; // 撤单完成，等待下次循环重新下单
+			m_cwShow.AddLog("[%s] 所有挂单已撤，下轮重试下单", id.c_str());
 		}
-
+		else {
+			m_cwShow.AddLog("[%s] 存在未成功撤销订单，等待下轮继续", id.c_str());
+		}
 		++state.retryCount;
-		m_cwShow.AddLog("[%s] 存在挂单，撤单处理（第 %d 次）", id.c_str(), state.retryCount);
 	}
 }
 
@@ -141,13 +142,18 @@ bool cwCloserLoop::TryAggressiveClose(cwMarketDataPtr md, cwPositionPtr pPos)
 
 bool cwCloserLoop::IsPendingOrder(std::string instrumentID)
 {
-	for (auto& [key, order] : closerWaitOrderList) {
-		if (key.InstrumentID == instrumentID) {
-			return true;
-		}
-	}
-	return false;
-}//这一块有问题 /？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    std::map<cwActiveOrderKey, cwOrderPtr> closerWaitOrderList;
+    strategy->GetActiveOrders(closerWaitOrderList);
+    
+    for (const auto& [key, order] : closerWaitOrderList) {
+        if (key.InstrumentID == instrumentID &&
+            order->OrderStatus == CW_FTDC_OST_NoTradeQueueing) { // 假设这个枚举存在
+            return true;
+        }
+    }
+    return false;
+}
+
 
 cwOrderPtr cwCloserLoop::SafeLimitOrder(cwMarketDataPtr md, int volume, double slipTick, double tickSize)
 {
@@ -200,8 +206,8 @@ cwOrderPtr cwCloserLoop::SafeLimitOrder(cwMarketDataPtr md, int volume, double s
 	safePrice = round(safePrice / tickSize) * tickSize;
 
 	// 关键修正：确保价格在涨跌停范围内
-	safePrice = max(safePrice, lowLimit);
-	safePrice = min(safePrice, upLimit);
+	safePrice = MAX(safePrice, lowLimit);
+	safePrice = MIN(safePrice, upLimit);
 
 	// 最终下单
 	cwOrderPtr order = strategy->EasyInputOrder(
