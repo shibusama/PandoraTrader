@@ -177,10 +177,45 @@ void cwStrategyDemo::PriceUpdate(cwMarketDataPtr pPriceData)
 
 void cwStrategyDemo::OnRtnTrade(cwTradePtr pTrade)
 {
+	std::cout << "ddddddd" << std::endl;
 }
 
 void cwStrategyDemo::OnRtnOrder(cwOrderPtr pOrder, cwOrderPtr pOriginOrder)
 {
+	if (pOrder == nullptr) return;
+	std::cout << "5455555555555555555555555555" << std::endl;
+	// 构造挂单的 key
+	cwActiveOrderKey key(pOrder->OrderRef, pOrder->InstrumentID);
+
+	// 我们只关心在 WaitOrderList 中追踪的挂单
+	auto it = strategyWaitOrderList.find(key);
+	if (it == strategyWaitOrderList.end()) return;
+
+
+	auto status = pOrder->OrderStatus;// 报单状态（主要判断是否结束）
+	auto submitStatus = pOrder->OrderSubmitStatus;// 报单提交状态（主要判断是否结束）
+
+	if (status == CW_FTDC_OST_AllTraded ||   // 全部成交
+		status == CW_FTDC_OST_Canceled)    // 撤单     
+	{
+		// 日志记录
+		std::cout << "Order Finished - InstrumentID: " << pOrder->InstrumentID
+			<< ", Ref: " << pOrder->OrderRef
+			<< ", Status: " << status << std::endl;
+
+		// 移除该挂单
+		strategyWaitOrderList.erase(it);
+	}
+	else if (submitStatus == CW_FTDC_OSS_InsertRejected)// 拒单
+	{
+		// 日志记录
+		std::cout << "Order Finished - InstrumentID: " << pOrder->InstrumentID
+			<< ", Ref: " << pOrder->OrderRef
+			<< ", Status: " << submitStatus << std::endl;
+	}
+	else {
+		// 可选：你也可以更新该挂单的信息（部分成交数量等）
+	}
 }
 
 void cwStrategyDemo::OnOrderCanceled(cwOrderPtr pOrder)
@@ -189,6 +224,6 @@ void cwStrategyDemo::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwStrategyDemo::OnReady()
 {
-	SubScribePrice("ag2312");
+	SubScribePrice("si2507");
 }
 

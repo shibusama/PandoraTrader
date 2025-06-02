@@ -23,5 +23,6 @@ public:
 	virtual void			OnReady();
 
 	std::string m_strCurrentUpdateTime;
+	std::map<cwActiveOrderKey, cwOrderPtr> strategyWaitOrderList;
 };
 

@@ -48,12 +48,46 @@ double ArithmeticMean(const std::vector<double>& arr) {
 }
 //计算简单标准差
 double SampleStd(const std::vector<double>& arr) {
-	double mean = ArithmeticMean(arr);
-	double result = 0.0;
-	for (const double num : arr) {
-		result += pow(num - mean, 2);
+	std::vector<double> cleanArr;
+	cleanArr.reserve(arr.size());
+
+	bool hasNaN = false;
+
+	for (size_t i = 0; i < arr.size(); ++i) {
+		double v = arr[i];
+		if (std::isnan(v)) {
+			hasNaN = true;
+			std::cerr << "[SampleStd] Warning: NaN detected at index " << i << std::endl;
+		}
+		else {
+			cleanArr.push_back(v);
+		}
 	}
-	return sqrt(result / (static_cast<double>(arr.size()) - 1));
+
+	if (cleanArr.size() <= 1) {
+		std::cerr << "[SampleStd] Error: Not enough valid data points to compute sample standard deviation (valid count = "
+			<< cleanArr.size() << ")." << std::endl;
+		return std::numeric_limits<double>::quiet_NaN();
+	}
+
+	double sum = 0.0;
+	for (double v : cleanArr) {
+		sum += v;
+	}
+	double mean = sum / static_cast<double>(cleanArr.size());
+
+	double result = 0.0;
+	for (double v : cleanArr) {
+		result += (v - mean) * (v - mean);
+	}
+
+	double stddev = std::sqrt(result / static_cast<double>(cleanArr.size() - 1));
+
+	if (std::isnan(stddev)) {
+		std::cerr << "[SampleStd] Error: Computed standard deviation is NaN (possible numerical instability)." << std::endl;
+	}
+
+	return stddev;
 }
 
 timePara IsTradingTime() {
@@ -91,7 +125,8 @@ inline bool IsNormalTradingTime(int hour, int minute) {
 	return
 		(time >= 901 && time < 1015) ||  // 上午前段
 		(time >= 1030 && time < 1130) ||  // 上午后段
-		(time >= 1330 && time < 1445);    // 下午
+		(time >= 1330 && time < 1445) || // 下午
+		(time >= 1300 && time <= 2359);    
 }
 
 inline bool IsClosingTime(int hour, int minute) { return (hour == 14 && minute >= 45) || (hour == 15 && minute == 0); }

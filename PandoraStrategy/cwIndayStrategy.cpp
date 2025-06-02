@@ -17,10 +17,6 @@
 #include "sqlLiteHelp.hpp"
 #include "cwCloserLoop.h"
 
-//static std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
-//static barInfo comBarInfo;                          // barINfo
-//static std::map<std::string, int> countLimitCur;    // 合约对应交易数量
-
 //清仓所需全局变量
 static std::unordered_map<std::string, bool> instrumentCloseFlag;      // 是否触发收盘平仓
 static std::unordered_map<std::string, int> lastCloseAttemptTime;      // 合约->上次清仓尝试时间戳（秒）
@@ -154,9 +150,11 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicKindleStrategy::cwKindleSeriesPtr pKindleSeries) {
 	if (pPriceData.get() == NULL) { return; }
 
-	auto [hour, minute, second] = IsTradingTime();
-
-	if (IsNormalTradingTime(hour, minute))
+	timePara tp{};
+	tp = IsTradingTime();
+	auto [hour, minute, second] = std::make_tuple(tp.hour, tp.minute, tp.second);
+	
+ 	if (IsNormalTradingTime(hour, minute))
 	{
 		UpdateCtx(pPriceData);
 
@@ -241,37 +239,17 @@ void cwIndayStrategy::OnOrderCanceled(cwOrderPtr pOrder)
 
 void cwIndayStrategy::OnReady()
 {
-	// 每 1 秒触发一次，不绑定具体合约
-	//SetTimer(1, 60000);
 
-	int a = 4;
-	//m_cwShow.AddLog("%s", a);
-
-
-	//GetPositions(CurrentPosMap):
-
-	cwCloserLoop closer(this);
-
-	closer.Run();
-
-	while (true) {
-		std::cout << "test" << std::endl;
-		cwSleep(5000);
-	}
-
-	//UpdateBarData();
+	UpdateBarData();
 
 	//for (auto& futInfMng : tarFutInfo)
 	//{
 	//	SubcribeKindle(futInfMng.second.code.c_str(), cwKINDLE_TIMESCALE_1MIN, 50);
 	//};
-	/*std::cout << "dd" << std::endl;
 
-	for (auto& futInfMng : tarFutInfo) {
-		std::cout << futInfMng.first << std::endl;
-	}*/
+	SubcribeKindle("v2509", cwKINDLE_TIMESCALE_1MIN, 50);
 
-	//// 每 1 秒触发一次，不绑定具体合约
+	// 每 1 秒触发一次，不绑定具体合约
 	//SetTimer(1, 1000);
 
 	// 每 2 秒触发一次，绑定某个合约
@@ -451,6 +429,7 @@ void cwIndayStrategy::TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionP
 void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered_map<std::string, orderInfo>& cwOrderInfo)
 {
 	std::string productID(GetProductID(pPriceData->InstrumentID));
+
 	// 计算 stdLong
 	std::vector<double> retBarSubsetLong(std::prev(comBarInfo.retBar[productID].end(), tarFutInfo[productID].Rl), comBarInfo.retBar[productID].end());
 	double stdLong = SampleStd(retBarSubsetLong);
