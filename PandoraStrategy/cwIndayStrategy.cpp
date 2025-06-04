@@ -38,16 +38,23 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 	if (pPriceData.get() == NULL) { return; }
 
 	auto [hour, minute, second] = IsTradingTime();
+
 	auto& InstrumentID = pPriceData->InstrumentID;
+
 	std::string productID(GetProductID(InstrumentID));
+
+	std::map<cwActiveOrderKey, cwOrderPtr> strategyWaitOrderList;
+
+	cwPositionPtr pPos = nullptr;
+
+	GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
 	if (IsNormalTradingTime(hour, minute) && !(cwOrderInfo.find(productID) == cwOrderInfo.end())) {
 
 		orderInfo& info = cwOrderInfo[productID];
-		cwPositionPtr pPos = nullptr;
-		GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
 		int now = GetCurrentTimeInSeconds();
+
 		bool hasOrder = IsPendingOrder(InstrumentID);
 
 		if (lastCloseAttemptTime[InstrumentID] == 0 || now - lastCloseAttemptTime[InstrumentID] >= 5) //挂单超时撤单判断是单一的：5秒设置根据合约活跃度动态调整时间；或者基于盘口价差判断是否撤单更具优势。
@@ -62,24 +69,36 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 				return;
 			}
 			if (!hasOrder) {
-				EasyInputOrder(info.szInstrumentID.c_str(), info.volume, info.price);
+				bool success = TryAggressiveClose(pPriceData, pPos);
+				if (success) {
+					m_cwShow.AddLog("[%s] 清仓指令已发送。", InstrumentID);
+				}
+				else {
+					m_cwShow.AddLog("[%s] 清仓指令发送失败，将重试。", InstrumentID);
+				}
+				return;
 			}
 			else if (hasOrder)
 			{
 				if (++closeAttemptCount[InstrumentID] > 3) {
-					std::cout << "[" << InstrumentID << "] 超过最大次数，还未挂上单子，请人工检查。" << std::endl;
+					m_cwShow.AddLog("[%s] 超过最大次数，还未挂上单子，请人工检查。", InstrumentID);
 					return;
 				}
+				bool allCancelled = true;
 				for (auto& [key, order] : strategyWaitOrderList)
 				{
-					if (key.InstrumentID == InstrumentID) {
-						CancelOrder(order);
+					if (!CancelOrder(order)) {
+						allCancelled = false;
+						m_cwShow.AddLog("[%s] 撤单失败: OrderRef=%s", InstrumentID, order->OrderRef);
 					}
 				}
-				std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
-				if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-				int count = std::count_if(strategyWaitOrderList.begin(), strategyWaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
-				std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
+				if (allCancelled) {
+					m_cwShow.AddLog("[%s] 所有挂单已撤，下轮重试下单", InstrumentID);
+				}
+				else {
+					m_cwShow.AddLog("[%s] 存在未成功撤销订单，等待下轮继续", InstrumentID);
+				}
+				//++state.retryCount;
 			}
 
 		}
@@ -92,12 +111,6 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 		if (lastCloseAttemptTime[InstrumentID] == 0 || now - lastCloseAttemptTime[InstrumentID] >= 5)
 		{
 			lastCloseAttemptTime[InstrumentID] = now;  // 更新尝试时间
-
-			std::map<cwActiveOrderKey, cwOrderPtr> strategyWaitOrderList;
-
-			cwPositionPtr pPos = nullptr;
-
-			GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
 			bool hasPos = (pPos && (pPos->LongPosition->TotalPosition > 0 || pPos->ShortPosition->TotalPosition > 0));
 			bool hasOrder = strategyWaitOrderList.empty();
@@ -144,13 +157,6 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 			}
 		}
 	}
-
-	//cwInstrumentCloser closer(this, "rb2409");
-	//closer.RunOnce(hour, minute, second);
-	//if (closer.IsFinished()) {
-	//	// done
-	//}
-
 }
 
 void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicKindleStrategy::cwKindleSeriesPtr pKindleSeries) {
@@ -159,8 +165,8 @@ void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicK
 	timePara tp{};
 	tp = IsTradingTime();
 	auto [hour, minute, second] = std::make_tuple(tp.hour, tp.minute, tp.second);
-	
- 	if (IsNormalTradingTime(hour, minute))
+
+	if (IsNormalTradingTime(hour, minute))
 	{
 		UpdateCtx(pPriceData);
 
