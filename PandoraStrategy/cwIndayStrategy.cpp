@@ -15,7 +15,6 @@
 #include "sqlite3.h"
 #include "utils.hpp"
 #include "sqlLiteHelp.hpp"
-#include "cwCloserLoop.h"
 
 //清仓所需全局变量
 static std::unordered_map<std::string, bool> instrumentCloseFlag;      // 是否触发收盘平仓
@@ -49,7 +48,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 	GetPositionsAndActiveOrders(InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
 
-	if (IsNormalTradingTime(hour, minute) && !(cwOrderInfo.find(productID) == cwOrderInfo.end())) {
+	if (!(cwOrderInfo.find(productID) == cwOrderInfo.end())) {
 
 		orderInfo& info = cwOrderInfo[productID];
 
@@ -166,37 +165,37 @@ void cwIndayStrategy::OnBar(cwMarketDataPtr pPriceData, int iTimeScale, cwBasicK
 	tp = IsTradingTime();
 	auto [hour, minute, second] = std::make_tuple(tp.hour, tp.minute, tp.second);
 
-	if (IsNormalTradingTime(hour, minute))
+	//if (IsNormalTradingTime(hour, minute))
+	//{
+	UpdateCtx(pPriceData);
+
+	cwPositionPtr pPos = nullptr;
+
+	GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
+
+
+	if (!pPos)
 	{
-		UpdateCtx(pPriceData);
-
-		cwPositionPtr pPos = nullptr;
-
-		GetPositionsAndActiveOrders(pPriceData->InstrumentID, pPos, strategyWaitOrderList); // 获取指定持仓和挂单列表
-
-
-		if (!pPos)
-		{
-			StrategyPosOpen(pPriceData, cwOrderInfo);
-		}
-		else
-		{
-			StrategyPosClose(pPriceData, pPos, cwOrderInfo);
-		}
-	}
-	else if (IsAfterMarket(hour, minute))
-	{
-		std::cout << "----------------- TraderOver ----------------" << std::endl;
-		std::cout << "--------------- StoreBaseData ---------------" << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
+		StrategyPosOpen(pPriceData, cwOrderInfo);
 	}
 	else
 	{
-		if (minute == 0 || minute == 10 || minute == 20 || minute == 30 || minute == 40 || minute == 50)
-		{
-			std::cout << "waiting" << hour << "::" << minute << "::" << second << std::endl;
-		}
+		StrategyPosClose(pPriceData, pPos, cwOrderInfo);
 	}
+	//}
+	//else if (IsAfterMarket(hour, minute))
+	//{
+	//	std::cout << "----------------- TraderOver ----------------" << std::endl;
+	//	std::cout << "--------------- StoreBaseData ---------------" << std::endl;
+	//	std::cout << "---------------------------------------------" << std::endl;
+	//}
+	//else
+	//{
+	//	if (minute == 0 || minute == 10 || minute == 20 || minute == 30 || minute == 40 || minute == 50)
+	//	{
+	//		std::cout << "waiting" << hour << "::" << minute << "::" << second << std::endl;
+	//	}
+	//}
 };
 
 void cwIndayStrategy::OnRtnTrade(cwTradePtr pTrade)
@@ -447,6 +446,8 @@ void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered
 		cwOrderInfo[productID].volume = isMom ? baseVolume : -baseVolume;
 		cwOrderInfo[productID].szInstrumentID = pPriceData->InstrumentID;
 		cwOrderInfo[productID].price = comBarInfo.barFlow[productID].back();
+
+
 	}
 }
 
