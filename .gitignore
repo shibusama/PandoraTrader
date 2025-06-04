@@ -8,3 +8,6 @@
 /.vs/PandoraTrader
 /PandoraTrade/x64/Debug
 /.vs
+/PandoraTrade/his2025.db
+/PandoraTrade/system.db
+/PandoraTrade/tmp.db

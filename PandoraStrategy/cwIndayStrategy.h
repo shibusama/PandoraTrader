@@ -28,7 +28,7 @@ public:
 	// 自动平昨仓函数
 	void AutoCloseAllPositionsLoop();
 
-	void TryAggressiveClose(cwMarketDataPtr pPriceData, cwPositionPtr pPos);
+	bool TryAggressiveClose(cwMarketDataPtr md, cwPositionPtr pPos);
 	//当前时间
 	std::string m_strCurrentUpdateTime;
 	// bar更新
@@ -44,12 +44,7 @@ public:
 
 	//void cwIndayStrategy::CloseAllPositionWithRetry(const std::string& instrumentID);	
 
-	cwOrderPtr SafeLimitOrder(
-		const char* instrumentID,
-		int volume,                        // >0买 <0卖
-		double rawPrice,                  // 原始价格（策略计算的目标价格）
-		double slipTick = 1.0            // 滑价 tick 数，默认滑 1 tick
-	);
+	cwOrderPtr SafeLimitOrder(cwMarketDataPtr md, int volume, double slipTick, double tickSize);
 
 	virtual void OnStrategyTimer(int iTimerId, const char* szInstrumentID);
 
