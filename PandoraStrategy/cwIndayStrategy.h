@@ -56,4 +56,13 @@ private:
 	barInfo comBarInfo;                          // barINfo
 	std::map<std::string, int> countLimitCur;    // 合约对应交易数量
 	std::map<cwActiveOrderKey, cwOrderPtr> strategyWaitOrderList;           // 挂单列表（全局）
+
+
+	//清仓所需全局变量
+	std::unordered_map<std::string, bool> instrumentCloseFlag;      // 是否触发收盘平仓
+	std::unordered_map<std::string, int> lastCloseAttemptTime;      // 合约->上次清仓尝试时间戳（秒）
+	std::unordered_map<std::string, int> closeAttemptCount;         // 用于控制重挂频率（每个合约）
+
+	//交易所需全局变量
+	static std::unordered_map<std::string, orderInfo> cwOrderInfo;
 };

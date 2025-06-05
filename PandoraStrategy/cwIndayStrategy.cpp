@@ -16,14 +16,6 @@
 #include "utils.hpp"
 #include "sqlLiteHelp.hpp"
 
-//清仓所需全局变量
-static std::unordered_map<std::string, bool> instrumentCloseFlag;      // 是否触发收盘平仓
-static std::unordered_map<std::string, int> lastCloseAttemptTime;      // 合约->上次清仓尝试时间戳（秒）
-static std::unordered_map<std::string, int> closeAttemptCount;         // 用于控制重挂频率（每个合约）
-
-//交易所需全局变量
-static std::unordered_map<std::string, orderInfo> cwOrderInfo;
-
 cwIndayStrategy::cwIndayStrategy()
 {
 }
@@ -60,7 +52,16 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 		{
 			lastCloseAttemptTime[InstrumentID] = now;
 
-			bool result = (info.volume == pPos->LongPosition->TodayPosition) ? true : (info.volume == pPos->ShortPosition->TodayPosition) ? true : false;
+			bool result = false;
+
+			if (pPos != nullptr) {
+				if (pPos->LongPosition && info.volume == pPos->LongPosition->TodayPosition) {
+					result = true;
+				}
+				else if (pPos->ShortPosition && info.volume == pPos->ShortPosition->TodayPosition) {
+					result = true;
+				}
+			}
 
 			if (result) {
 				cwOrderInfo.erase(productID);
@@ -97,9 +98,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 				else {
 					m_cwShow.AddLog("[%s] 存在未成功撤销订单，等待下轮继续", InstrumentID);
 				}
-				//++state.retryCount;
 			}
-
 		}
 	}
 
@@ -117,7 +116,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 			// 情况 1：无持仓 + 无挂单 => 清仓完毕
 			if (!hasPos && !hasOrder)
 			{
-				std::cout << "[" << InstrumentID << "] 持仓清空完毕。" << std::endl;
+				m_cwShow.AddLog("[%s] 持仓清空完毕。", InstrumentID);
 				instrumentCloseFlag[InstrumentID] = true;
 				closeAttemptCount.erase(InstrumentID);
 				return;
@@ -141,17 +140,19 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 					instrumentCloseFlag[InstrumentID] = true;
 					return;
 				}
-				else
+				bool allCancelled = true;
+				for (auto& [key, order] : strategyWaitOrderList)
 				{
-					for (auto& [key, order] : strategyWaitOrderList) {
-						if (key.InstrumentID == InstrumentID) {
-							CancelOrder(order);
-						}
+					if (!CancelOrder(order)) {
+						allCancelled = false;
+						m_cwShow.AddLog("[%s] 撤单失败: OrderRef=%s", InstrumentID, order->OrderRef);
 					}
-					std::cout << "[" << InstrumentID << "] 撤销未成交挂单，准备重新挂单..." << std::endl;
-					if (pPos) { TryAggressiveClose(pPriceData, pPos); }
-					int count = std::count_if(strategyWaitOrderList.begin(), strategyWaitOrderList.end(), [&](const auto& pair) { return pair.first.InstrumentID == InstrumentID; });
-					std::cout << "[" << InstrumentID << "] 等待挂单成交中，挂单数：" << count << std::endl;
+				}
+				if (allCancelled) {
+					m_cwShow.AddLog("[%s] 所有挂单已撤，下轮重试下单", InstrumentID);
+				}
+				else {
+					m_cwShow.AddLog("[%s] 存在未成功撤销订单，等待下轮继续", InstrumentID);
 				}
 			}
 		}
@@ -446,8 +447,6 @@ void cwIndayStrategy::StrategyPosOpen(cwMarketDataPtr pPriceData, std::unordered
 		cwOrderInfo[productID].volume = isMom ? baseVolume : -baseVolume;
 		cwOrderInfo[productID].szInstrumentID = pPriceData->InstrumentID;
 		cwOrderInfo[productID].price = comBarInfo.barFlow[productID].back();
-
-
 	}
 }
 
