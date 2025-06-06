@@ -104,6 +104,8 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 
 	if (IsClosingTime(hour, minute) && !instrumentCloseFlag[InstrumentID])
 	{
+		orderInfo& info = cwOrderInfo[productID];
+
 		int now = GetCurrentTimeInSeconds();
 
 		if (lastCloseAttemptTime[InstrumentID] == 0 || now - lastCloseAttemptTime[InstrumentID] >= 5)
@@ -124,7 +126,7 @@ void cwIndayStrategy::PriceUpdate(cwMarketDataPtr pPriceData)
 			// 情况 2：有持仓 + 无挂单 => 初次挂清仓单
 			else if (hasPos && !hasOrder)
 			{
-				bool success = TryAggressiveClose(pPriceData, pPos);
+				bool success = TryAggressiveClose(pPriceData, info);
 				if (success) {
 					m_cwShow.AddLog("[%s] 清仓指令已发送。", InstrumentID);
 				}
@@ -432,14 +434,34 @@ std::string cwIndayStrategy::GetPositionDirection(cwPositionPtr pPos)
 }
 
 void cwIndayStrategy::GenCloseOrder(cwMarketDataPtr pPriceData, std::unordered_map<std::string, orderInfo>& cwOrderInfo) {
+	std::string instrumentID = pPriceData->InstrumentID;
 	std::string productID(GetProductID(pPriceData->InstrumentID));
 
+	std::map<std::string, cwPositionPtr> PositionMap;
+	GetPositions(PositionMap);  // 获取当前所有持仓信息
 
+	auto it = PositionMap.find(instrumentID);
+	if (it == PositionMap.end() || (!it->second->LongPosition->TotalPosition && !it->second->ShortPosition->TotalPosition)) {
+		// 没有持仓，直接返回
+		return;
+	}
 
-	cwOrderInfo[productID].volume = isMom ? baseVolume : -baseVolume;
-	cwOrderInfo[productID].szInstrumentID = pPriceData->InstrumentID;
-	cwOrderInfo[productID].price = comBarInfo.barFlow[productID].back();
-	
+	int volumn = 0;
+
+	// 判断持仓方向并设置 volumn（多仓为负，空仓为正）
+	if (it->second->LongPosition->TotalPosition > 0) {
+		volumn = -static_cast<int>(it->second->LongPosition->TotalPosition);
+	}
+	else if (it->second->ShortPosition->TotalPosition > 0) {
+		volumn = static_cast<int>(it->second->ShortPosition->TotalPosition);
+	}
+
+	// 填写订单信息
+	cwOrderInfo[productID].volume = volumn;
+	cwOrderInfo[productID].szInstrumentID = instrumentID;
+
+	// 使用最近的价格作为下单价格
+	cwOrderInfo[productID].price = comBarInfo.barFlow[productID].back(); // 你这里假设 barFlow 已存在且不为空
 }
 
 bool cwIndayStrategy::IsPendingOrder(std::string instrumentID)
