@@ -31,7 +31,7 @@ public:
 	// 自动平昨仓函数
 	void AutoCloseAllPositionsLoop();
 
-	bool TryAggressiveClose(cwMarketDataPtr md, cwPositionPtr pPos);
+	bool TryAggressiveClose(cwMarketDataPtr md, orderInfo info);
 	//当前时间
 	std::string m_strCurrentUpdateTime;
 	// bar更新
@@ -51,6 +51,8 @@ public:
 
 	virtual void OnStrategyTimer(int iTimerId, const char* szInstrumentID);
 
+	void GenCloseOrder(cwMarketDataPtr pPriceData, std::unordered_map<std::string, orderInfo>& cwOrderInfo);
+
 private:
 	std::map<std::string, futInfMng> tarFutInfo; // 策略上下文
 	barInfo comBarInfo;                          // barINfo
@@ -64,5 +66,5 @@ private:
 	std::unordered_map<std::string, int> closeAttemptCount;         // 用于控制重挂频率（每个合约）
 
 	//交易所需全局变量
-	static std::unordered_map<std::string, orderInfo> cwOrderInfo;
+	std::unordered_map<std::string, orderInfo> cwOrderInfo;
 };
